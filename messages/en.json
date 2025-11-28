@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "Hello Friends",
+    "description": "Good Night My Lord, I Will Protect with my life",
+    "CTA": "Buy Now"
+  },
+  "products": {
+    "title": "Our Products",
+    "search": "Search products...",
+    "noResults": "No products found"
+  }
+}

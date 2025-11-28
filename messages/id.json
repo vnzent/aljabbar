@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "Halo Kawan",
+    "description": "Selamat Malam Tuhanku, Aku Akan Melindungi dengan hidupku",
+    "CTA": "Beli Sekarang"
+  },
+  "products": {
+    "title": "Produk Kami",
+    "search": "Cari produk...",
+    "noResults": "Tidak ada produk ditemukan"
+  }
+}
