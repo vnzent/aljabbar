@@ -14,3 +14,9 @@ export const navSocialIcons = [
     { href: "instagram.com", icon: AiOutlineInstagram },
     { href: "youtube.com", icon: AiOutlineYoutube }
 ];
+
+export const collections = [
+  { src: "/our-collection-1.jpg", name: "Hand Made Carpet"},
+  { src: "/our-collection-2.jpg", name: "Hand Made Carpet"},
+  { src: "/our-collection-3.jpg", name: "Hand Made Carpet"},
+]
