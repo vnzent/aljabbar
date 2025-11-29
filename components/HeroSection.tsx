@@ -13,7 +13,7 @@ export default function HeroSection() {
         />
       </div>
       <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full"></div>
-      <div className="h-full w-full flex justify-start items-end pb-45 max-w-7xl mx-40">
+      <div className="h-full w-full pb-45 flex max-w-[1575px] justify-start items-end px-8 mx-auto">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
             <p className="text-white font-open-sans font-normal text-2xl uppercase">
