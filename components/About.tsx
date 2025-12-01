@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 export default function About() {
   return (
     <section className="w-full min-h-screen relative">
-      <div className="max-w-[1575px] px-8 mx-auto flex gap-20 items-center">
+      <div className="main-wrapper mx-auto flex gap-20 items-center">
         <div className="aspect-3/4 relative">
           <Image
             src="/about.png"

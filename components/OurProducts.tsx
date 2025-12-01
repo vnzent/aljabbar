@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function OurProducts() {
   return (
-    <section className="min-h-screen w-full mx-auto max-w-[1575px]">
-      <div className="flex flex-col gap-18 px-8">
+    <section className="min-h-screen w-full mx-auto main-wrapper">
+      <div className="flex flex-col gap-18">
         <div className="flex justify-between items-center">
           <h2 className="font-poppins font-medium text-5xl capitalize">
             Our Products
