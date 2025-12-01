@@ -14,13 +14,13 @@ export default function UniqueSellingPoints() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {uniqueSellingPoints.map((item, index) => (
-            <Card key={index} className="border border-primary/50 mx-auto px-10 py-10 gap-3">
+            <Card key={index} className="border border-primary/50 mx-auto px-10 py-10 gap-3 w-full">
               <CardTitle className="font-poppins font-semibold text-lg flex flex-col gap-3">
                 {<item.icon className="size-7 text-primary" />}
                 {item.point}
               </CardTitle>
               <CardDescription className="capitalize font-inter font-base text-base">
-                {item.subpoint}
+                {item.subpoint} 
               </CardDescription>
             </Card>
           ))}
