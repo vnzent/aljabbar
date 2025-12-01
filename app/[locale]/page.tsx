@@ -5,6 +5,7 @@ import IconLine from "@/components/IconLine";
 import OurCollections from "@/components/OurCollections";
 import OurProducts from "@/components/OurProducts";
 import UniqueSellingPoints from "@/components/UniqueSellingPoints";
+import ValueCounter from "@/components/ValueCounter";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -15,6 +16,7 @@ export default function Home() {
     <main className="space-y-30">
       <HeroSection />
       <OurCollections />
+      <ValueCounter />
       <About />
       <IconLine />
       <UniqueSellingPoints />
