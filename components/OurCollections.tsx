@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function OurCollections() {
   return (
-    <section className="w-full py-30">
+    <section className="w-full">
       <div className="flex flex-col gap-10 px-8 max-w-[1575px] mx-auto">
         <div className="flex justify-between items-center">
           <h2 className="font-poppins text-[38px] font-medium text-black">

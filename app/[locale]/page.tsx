@@ -12,7 +12,7 @@ export default function Home() {
   const t = useTranslations("home");
 
   return (
-    <main className="">
+    <main className="space-y-30">
       <HeroSection />
       <OurCollections />
       <About />

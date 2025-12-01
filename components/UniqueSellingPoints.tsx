@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function UniqueSellingPoints() {
   return (
-    <section className="h-screen w-full mx-auto px-8 max-w-[1575px] mt-20 py-20">
+    <section className="w-full mx-auto px-8 max-w-[1575px]">
       <div className="flex flex-col items-center gap-20 h-full">
         <div className="flex flex-col gap-3 items-center">
           <p className="uppercase font-poppins text-xl font-base">
