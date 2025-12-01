@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Banner from "@/components/Banner";
 import HeroSection from "@/components/HeroSection";
 import IconLine from "@/components/IconLine";
 import OurCollections from "@/components/OurCollections";
@@ -18,6 +19,7 @@ export default function Home() {
       <IconLine />
       <UniqueSellingPoints />
       <OurProducts />
+      <Banner />
     </main>
   );
 }
