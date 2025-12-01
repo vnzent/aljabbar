@@ -61,3 +61,36 @@ export const uniqueSellingPoints = [
   },
 
 ];
+
+export const ourProducts = [
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+  {
+    src: "/our-products.png",
+    name: "Afghan Chobi hand-made carpet 16AA2230",
+    description: "Afghanistan, Hand-made Carpets",
+  },
+];
