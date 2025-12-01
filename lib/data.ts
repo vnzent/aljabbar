@@ -1,5 +1,5 @@
 import { BiLogoFacebook } from "react-icons/bi";
-import { AiOutlineInstagram } from "react-icons/ai";
+import { AiOutlineInstagram, AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
@@ -7,6 +7,8 @@ import { PiRug } from "react-icons/pi";
 import { FaRegSmileBeam } from "react-icons/fa";
 import { FaGem } from "react-icons/fa";
 import { FaRegHandshake } from "react-icons/fa6";
+import { BiPhoneCall } from "react-icons/bi";
+import { SiGooglemaps } from "react-icons/si";
 
 export const navMenus = [
   { href: "/collections", name: "collections" },
@@ -105,5 +107,12 @@ export const ourProducts = [
     name: "Afghan Chobi hand-made carpet 16AA2230",
     description: "Afghanistan, Hand-made Carpets",
   },
+];
+
+export const contactInfo = [
+  { icon: BiPhoneCall, name: "(021) 7197770" },
+  { icon: AiOutlineMail, name: "sales@aljabbarcarpets.com" },
+  { icon: AiOutlineWhatsApp, name: "+6281-319-849-981" },
+  { icon: SiGooglemaps, name: "Jl. Kemang Raya No. 69 Jakarta Selatan" },
 ];
 

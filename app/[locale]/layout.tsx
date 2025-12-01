@@ -5,6 +5,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -50,6 +51,7 @@ export default async function RootLayout({
       >
         <Navbar />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <Footer />
       </body>
     </html>
   );
