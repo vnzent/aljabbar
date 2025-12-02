@@ -1,5 +1,9 @@
 import Image from "next/image";
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
+import { count } from "@/lib/data";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import CountUp from "@/components/CountUp";
+import IconLine from "@/components/IconLine";
 
 export default function About() {
   return (
@@ -123,6 +127,55 @@ export default function About() {
           </div>
         </div>
       </section>
+      {/* Counter Section */}
+      <section className="w-full">
+        <div className="flex flex-col gap-10 px-8 max-w-[1575px] mx-auto">
+          <div className="flex justify-between items-center">
+            <h2 className="font-poppins text-[38px] font-medium text-black">
+              Numbers That Tell Our Story
+            </h2>
+            <p className="font-inter font-normal text-base text-black/60 capitalize">
+              Decades of serving customers with a diverse collection of
+              <br /> rugs have built a strong foundation of trust and
+              reliability.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {count.map((item, index) => (
+              <Card
+                className="w-full bg-primary flex flex-col justify-between py-8 px-10 mx-auto gap-15"
+                key={index}
+              >
+                <CardTitle>
+                  <span className="text-white font-poppins font-medium text-xl">
+                    {item.title}
+                  </span>
+                </CardTitle>
+                <CardContent className="flex flex-col gap-2">
+                  <CountUp
+                    from={0}
+                    to={
+                      typeof item.total === "number"
+                        ? item.total
+                        : parseFloat(item.total)
+                    }
+                    separator=","
+                    direction="up"
+                    duration={0.5}
+                    suffix={item.showPlus ? "+" : ""}
+                    className="count-up-text font-poppins font-medium text-4xl text-white"
+                  />
+                  <span className="font-inter text-xl text-white/80 font-base">
+                    {item.subtitle}
+                  </span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Logo Seperator */}
+      <IconLine />
     </main>
   );
 }
