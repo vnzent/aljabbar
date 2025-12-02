@@ -9,6 +9,9 @@ import Banner from "@/components/Banner";
 import AboutSection from "@/components/AboutSection";
 import Faq from "@/components/Faq";
 import DynamicHero from "@/components/DynamicHero";
+import HeaderBetween from "@/components/HeaderBetween";
+import ValueCounter from "@/components/ValueCounter";
+import OurCollections from "@/components/OurCollections";
 
 export default function About() {
   return (
@@ -51,7 +54,7 @@ export default function About() {
         isButton={false}
       />
       {/* Vision Mision */}
-      <section className="w-full relative ">
+      <section className="w-full relative">
         <div className="bg-black/50 absolute inset-0">
           <div className="absolute -z-10 h-full overflow-hidden w-full">
             <Image
@@ -63,118 +66,21 @@ export default function About() {
             />
           </div>
         </div>
-        <div className="relative z-10 main-wrapper mx-auto flex items-center min-h-200">
-          <div className="flex gap-10 items-start justify-between w-full">
-            <div className="flex flex-col gap-7 flex-1">
-              <h3 className="font-poppins text-4xl text-white font-medium">
-                Vision
-              </h3>
-              <div className="flex flex-col gap-5">
-                <span className="bg-white h-0.5 w-40" />
-                <p className="font-poppins text-xl text-white capitalize">
-                  To implement market development and be a global market leader
-                  in carpets.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-7 flex-1">
-              <h3 className="font-poppins text-4xl text-white font-medium">
-                Mision
-              </h3>
-              <div className="flex flex-col gap-5">
-                <span className="bg-white h-0.5 w-40" />
-                <p className="font-poppins text-xl text-white capitalize">
-                  To infuse Al-Jabbar carpets to be incorporated in our
-                  customers lifestyle, whether their home, office or place of
-                  worship.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
       {/* Counter Section */}
       <section className="w-full">
-        <div className="flex flex-col gap-10 px-8 max-w-[1575px] mx-auto">
-          <div className="flex justify-between items-center">
-            <h2 className="font-poppins text-[38px] font-medium text-black">
-              Numbers That Tell Our Story
-            </h2>
-            <p className="font-inter font-normal text-base text-black/60 capitalize">
-              Decades of serving customers with a diverse collection of
-              <br /> rugs have built a strong foundation of trust and
-              reliability.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {count.map((item, index) => (
-              <Card
-                className="w-full bg-primary flex flex-col justify-between py-8 px-10 mx-auto gap-15"
-                key={index}
-              >
-                <CardTitle>
-                  <span className="text-white font-poppins font-medium text-xl">
-                    {item.title}
-                  </span>
-                </CardTitle>
-                <CardContent className="flex flex-col gap-2">
-                  <CountUp
-                    from={0}
-                    to={
-                      typeof item.total === "number"
-                        ? item.total
-                        : parseFloat(item.total)
-                    }
-                    separator=","
-                    direction="up"
-                    duration={0.5}
-                    suffix={item.showPlus ? "+" : ""}
-                    className="count-up-text font-poppins font-medium text-4xl text-white"
-                  />
-                  <span className="font-inter text-xl text-white/80 font-base">
-                    {item.subtitle}
-                  </span>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="flex flex-col gap-10 main-wrapper mx-auto">
+          <HeaderBetween
+            heading="Numbers That Tell Our Story"
+            subheading={`Decades of serving customers with a diverse collection of\nrugs have built a strong foundation of trust and reliability.`}
+          />
+          <ValueCounter />
         </div>
       </section>
       {/* Logo Seperator */}
       <IconLine />
       {/* Collection */}
-      <section className="w-full">
-        <div className="flex flex-col gap-10 px-8 max-w-[1575px] mx-auto">
-          <div className="flex justify-between items-center">
-            <h2 className="font-poppins text-[38px] font-medium text-black">
-              Our Collections
-            </h2>
-            <p className="font-inter font-normal text-base text-black/60 capitalize">
-              Decades of serving customers with a diverse collection of
-              <br /> rugs have built a strong foundation of trust and
-              reliability.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {collections.map((item, index) => (
-              <div className="group flex flex-col gap-3" key={index}>
-                <div className="aspect-4/3 relative">
-                  <Image
-                    src={item.src}
-                    alt={item.name}
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <span className="font-poppins font-normal text-lg">
-                  {item.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <OurCollections />
       <Gallery />
       <Faq />
       <Banner />

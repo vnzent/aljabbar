@@ -5,7 +5,6 @@ import CountUp from "./CountUp";
 export default function ValueCounter() {
 
     return (
-      <section className="w-full main-wrapper mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {count.map((item, index) => (
             <Card
@@ -34,6 +33,5 @@ export default function ValueCounter() {
             </Card>
           ))}
         </div>
-      </section>
     );
 }

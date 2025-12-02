@@ -33,7 +33,7 @@ export default function AboutSection({
             {paragraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className="font-inter font-light text-lg text-black/70 capitalize"
+                className="font-inter font-light text-lg text-black/70 capitalize text-justify"
               >
                 {paragraph}
               </p>
