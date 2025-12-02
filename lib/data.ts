@@ -116,3 +116,12 @@ export const contactInfo = [
   { icon: SiGooglemaps, name: "Jl. Kemang Raya No. 69 Jakarta Selatan" },
 ];
 
+export const galleryLookBook = [
+  { src: "/gallery/gallery-1.jpg"},
+  { src: "/gallery/gallery-2.jpg"},
+  { src: "/gallery/gallery-3.jpg"},
+  { src: "/gallery/gallery-4.jpg"},
+  { src: "/gallery/gallery-5.jpg"},
+  { src: "/gallery/gallery-6.jpg"},
+]
+

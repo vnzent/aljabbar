@@ -4,6 +4,7 @@ import { collections, count } from "@/lib/data";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import CountUp from "@/components/CountUp";
 import IconLine from "@/components/IconLine";
+import Gallery from "@/components/Gallery";
 
 export default function About() {
   return (
@@ -208,6 +209,7 @@ export default function About() {
               </div>
             </div>
           </section>
+          <Gallery />
     </main>
   );
 }
