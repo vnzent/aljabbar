@@ -125,3 +125,31 @@ export const galleryLookBook = [
   { src: "/gallery/gallery-6.jpg"},
 ]
 
+export const faqs = [
+  {
+    question: "You have more questions?",
+    answer: "Please don’t hesitate to contact us on WhatsApp.",
+  },
+  {
+    question: "How does a hand-made carpet differ from a machine-made carpet?",
+    answer:
+      "There are numerous differences but some of the main ones are: \n\nHandmade carpets are one-off unique whereas machine made carpets are available in bulk. \n\nHand-made carpets material has original wool or silk and sometimes a mix of both depending on the carpet but a machine-made carpets material is synthetic. \n\nHand-made carpets are made by hand therefore guaranteeing exquisite detail and are labor-intensive whereas machine made carpets are made by machines and are capital-intensive.",
+  },
+  {
+    question: "How often do I need to clean my carpet?",
+    answer:
+      "Just vacuum the carpet monthly once a week. Also, if it gets too dirty Al-Jabbar does provide washing services. Click Our services to find out more.",
+  },
+  {
+    question:
+      "Does Al-Jabbar provide the service or washing and repairing carpets?",
+    answer:
+      "Yes, we definitely do! Please go to Our services to find out more about it.",
+  },
+  {
+    question: "I want to inquire about carpets who should I contact?",
+    answer:
+      "You can go to our Collection where there will be a WhatsApp number which you can contact for any detail on the carpets.",
+  },
+];
+
