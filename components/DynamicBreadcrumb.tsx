@@ -48,7 +48,7 @@ export default function DynamicBreadcrumb() {
   if (pathSegments.length === 0) return null;
 
   return (
-    <Breadcrumb>
+    <Breadcrumb className="px-2">
       <BreadcrumbList className="flex items-center">
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
