@@ -54,21 +54,21 @@ export default function DynamicBreadcrumb() {
           <BreadcrumbLink asChild>
             <Link
               href="/"
-              className="text-white transition-colors uppercase font-poppins text-2xl"
+              className="text-white transition-colors font-poppins text-xl"
             >
               Home
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator className="text-white flex items-center">
-          <MdArrowForwardIos className="size-6" />
+          <MdArrowForwardIos className="size-3" />
         </BreadcrumbSeparator>
 
         {breadcrumbItems.map((item, index) => (
           <div key={item.href} className="flex items-center gap-2">
             <BreadcrumbItem>
               {item.isLast ? (
-                <BreadcrumbPage className="text-white uppercase font-poppins text-2xl">
+                <BreadcrumbPage className="text-white capitalize font-poppins text-xl">
                   {item.name}
                 </BreadcrumbPage>
               ) : (
@@ -76,7 +76,7 @@ export default function DynamicBreadcrumb() {
                   <BreadcrumbLink asChild>
                     <Link
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors uppercase font-poppins text-2xl"
+                      className="text-white/80 hover:text-white transition-colors font-poppins text-xl"
                     >
                       {item.name}
                     </Link>
@@ -85,8 +85,8 @@ export default function DynamicBreadcrumb() {
               )}
             </BreadcrumbItem>
             {!item.isLast && (
-              <BreadcrumbSeparator className="text-white text-2xl flex items-center">
-                <MdArrowForwardIos className="size-6" />
+              <BreadcrumbSeparator className="text-white text-xl flex items-center">
+                <MdArrowForwardIos className="size-3" />
               </BreadcrumbSeparator>
             )}
           </div>
