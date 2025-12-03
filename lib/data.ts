@@ -1,5 +1,9 @@
 import { BiLogoFacebook } from "react-icons/bi";
-import { AiOutlineInstagram, AiOutlineMail, AiOutlineWhatsApp } from "react-icons/ai";
+import {
+  AiOutlineInstagram,
+  AiOutlineMail,
+  AiOutlineWhatsApp,
+} from "react-icons/ai";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
@@ -18,36 +22,54 @@ export const navMenus = [
 ];
 
 export const navSocialIcons = [
-    { href: "facebook.com", icon: BiLogoFacebook },
-    { href: "instagram.com", icon: AiOutlineInstagram },
-    { href: "youtube.com", icon: AiOutlineYoutube }
+  { href: "facebook.com", icon: BiLogoFacebook },
+  { href: "instagram.com", icon: AiOutlineInstagram },
+  { href: "youtube.com", icon: AiOutlineYoutube },
 ];
 
 export const collections = [
-  { src: "/our-collection-1.jpg", name: "Hand Made Carpet"},
-  { src: "/our-collection-2.jpg", name: "Hand Made Carpet"},
-  { src: "/our-collection-3.jpg", name: "Hand Made Carpet"},
-]
+  { src: "/our-collection-1.jpg", name: "Hand Made Carpet" },
+  { src: "/our-collection-2.jpg", name: "Hand Made Carpet" },
+  { src: "/our-collection-3.jpg", name: "Hand Made Carpet" },
+];
 
 export const count = [
-  { title: "Expert", total: 26, subtitle: "Years Of Expertise", showPlus: true },
-  { title: "Showrooms", total: 9, subtitle: "Showrooms Across Indonesia", showPlus: false },
-  { title: "Collections", total: 10000, subtitle: "Curated Collections", showPlus: true },
-  { title: "Customers", total: 5000, subtitle: "Satisfied Customers", showPlus: true },
+  {
+    title: "Expert",
+    total: 26,
+    subtitle: "Years Of Expertise",
+    showPlus: true,
+  },
+  {
+    title: "Showrooms",
+    total: 9,
+    subtitle: "Showrooms Across Indonesia",
+    showPlus: false,
+  },
+  {
+    title: "Collections",
+    total: 10000,
+    subtitle: "Curated Collections",
+    showPlus: true,
+  },
+  {
+    title: "Customers",
+    total: 5000,
+    subtitle: "Satisfied Customers",
+    showPlus: true,
+  },
 ];
 
 export const uniqueSellingPoints = [
   {
     icon: VscWorkspaceTrusted,
     point: "26+ Years of Expertise",
-    subpoint:
-      "A generational legacy in crafting and curating premium carpets.",
+    subpoint: "A generational legacy in crafting and curating premium carpets.",
   },
   {
     icon: HiOutlineBuildingStorefront,
     point: "9 Branches Across Indonesia",
-    subpoint:
-      "Providing a seamless shopping experience wherever you are.",
+    subpoint: "Providing a seamless shopping experience wherever you are.",
   },
   {
     icon: PiRug,
@@ -58,8 +80,7 @@ export const uniqueSellingPoints = [
   {
     icon: FaRegSmileBeam,
     point: "5,090+ Happy Customers",
-    subpoint:
-      "A proven track record of quality and satisfaction.",
+    subpoint: "A proven track record of quality and satisfaction.",
   },
   {
     icon: FaGem,
@@ -73,7 +94,13 @@ export const uniqueSellingPoints = [
     subpoint:
       "Fast, friendly assistance and decades of reliability you can count on.",
   },
+];
 
+export const aboutParagraphs = [
+  "Al-Jabbar carpets is a retail carpet business which dates back to its originating date being **March 1994**. From the start we have been dedicated to providing the best quality carpets.",
+  "Al-Jabbar carpets we specializes in **hand-made carpets** which come from different countries such as Iran, Pakistan, Afghanistan and Kashmir, machine-made carpets and mosque rugs from Iran and Turkey and wall to wall carpets from Europe and the United States of America.",
+  "Our collection can be viewed in any of our showrooms but also, we offer the service of bringing the carpets directly to your house without any charge and match the carpets with your interior.",
+  "We have a complete collection ranging from traditional rugs to modern rugs we have it all. We have been dedicated to not only providing the best quality carpets from day one but also truly focus on customer service and we assure you the experience you get in our showrooms will be one of a kind.",
 ];
 
 export const ourProducts = [
@@ -117,13 +144,13 @@ export const contactInfo = [
 ];
 
 export const galleryLookBook = [
-  { src: "/gallery/gallery-1.jpg"},
-  { src: "/gallery/gallery-2.jpg"},
-  { src: "/gallery/gallery-3.jpg"},
-  { src: "/gallery/gallery-4.jpg"},
-  { src: "/gallery/gallery-5.jpg"},
-  { src: "/gallery/gallery-6.jpg"},
-]
+  { src: "/gallery/gallery-1.jpg" },
+  { src: "/gallery/gallery-2.jpg" },
+  { src: "/gallery/gallery-3.jpg" },
+  { src: "/gallery/gallery-4.jpg" },
+  { src: "/gallery/gallery-5.jpg" },
+  { src: "/gallery/gallery-6.jpg" },
+];
 
 export const faqs = [
   {
@@ -153,3 +180,9 @@ export const faqs = [
   },
 ];
 
+export const contacts = [
+  { title: "Address", subtitle: "Jl. Kemang Raya No. 69 Jakarta Selatan" },
+  { title: "Phone number", subtitle: "021-7197770 \n+6281-319-849-981" },
+  { title: "We are open", subtitle: "Monday – Friday 9 AM – 9 PM" },
+  { title: "Email", subtitle: "sales@aljabbarcarpets.com" },
+];
