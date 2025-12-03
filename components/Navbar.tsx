@@ -45,8 +45,8 @@ export default function Navbar() {
             className={cn(
               "flex justify-between border-b py-3 transition-colors duration-300",
               isScrolled
-                ? "text-black border-black/30 hover:text-primary"
-                : "text-white border-white/20"
+                ? "text-black border-black/60 hover:text-primary"
+                : "text-white border-white"
             )}
           >
             <div className="flex gap-5">

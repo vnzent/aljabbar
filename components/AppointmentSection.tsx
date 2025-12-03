@@ -21,15 +21,13 @@ export default function AppointmentSection() {
   return (
     <section className="w-full">
       <div className="main-wrapper mx-auto">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-30">
           {/* Header */}
           <div className="flex flex-col gap-5 text-center">
             <div className="flex gap-3 items-center justify-center">
-              <span className="w-26 h-0.5 bg-primary" />
               <h2 className="text-black font-poppins font-medium text-5xl">
                 Schedule Your Visit
               </h2>
-              <span className="w-26 h-0.5 bg-primary" />
             </div>
             <p className="font-inter text-lg text-black/70 max-w-2xl mx-auto">
               Choose a convenient date and time to visit our showroom or
@@ -59,29 +57,29 @@ export default function AppointmentSection() {
                 <h4 className="font-poppins font-medium text-xl text-black mb-4">
                   Important Information
                 </h4>
-                <ul className="space-y-2 font-inter text-black/70">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
+                <ul className="space-y-4 font-inter text-black/70">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">•</span>
                     <span>
                       Appointments must be booked at least 24 hours in advance
                     </span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">•</span>
                     <span>
                       You will receive a confirmation email once your booking is
                       approved
                     </span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">•</span>
                     <span>
                       For urgent inquiries, please call us directly at (021)
                       7197770
                     </span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">•</span>
                     <span>
                       Home visit service is available within Jakarta and
                       surrounding areas

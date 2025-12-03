@@ -180,13 +180,6 @@ export const faqs = [
   },
 ];
 
-export const contacts = [
-  { title: "Address", subtitle: "Jl. Kemang Raya No. 69 Jakarta Selatan" },
-  { title: "Phone number", subtitle: "021-7197770 \n+6281-319-849-981" },
-  { title: "We are open", subtitle: "Monday – Friday 9 AM – 9 PM" },
-  { title: "Email", subtitle: "sales@aljabbarcarpets.com" },
-];
-
 export const branches = [
   {
     city: "Jakarta",

@@ -8,10 +8,10 @@ export default function Gallery() {
     <section className="min-h-screen w-full mx-auto main-wrapper">
       <div className="flex flex-col gap-18">
         <div className="flex flex-col gap-3 items-center">
-          <p className="uppercase font-poppins text-xl font-base">
-            Gallery
-          </p>
-          <h2 className="font-poppins font-medium text-5xl capitalize">Explore Our Lookbook</h2>
+          <p className="uppercase font-poppins text-xl font-normal">Gallery</p>
+          <h2 className="font-poppins font-medium text-5xl capitalize">
+            Explore Our Lookbook
+          </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryLookBook.map((product, index) => (

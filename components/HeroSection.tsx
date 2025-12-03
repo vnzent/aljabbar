@@ -24,7 +24,7 @@ export default function HeroSection() {
               With Premium Carpets
             </h1>
           </div>
-          <div className="flex gap-5 font-poppins font-normal">
+          <div className="flex gap-5 font-poppins">
             <Button className="text-base">SHOP NOW</Button>
             <Button variant="secondary" className="text-base">VIEW COLLECTIONS</Button>
           </div>
