@@ -7,7 +7,6 @@ import OurProducts from "@/components/OurProducts";
 import UniqueSellingPoints from "@/components/UniqueSellingPoints";
 import ValueCounter from "@/components/ValueCounter";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export default function Home() {
   const t = useTranslations("home");
