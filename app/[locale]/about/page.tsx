@@ -11,6 +11,7 @@ import VisionMision from "@/components/VisionMision";
 import { aboutParagraphs } from "@/lib/data";
 import { parseTextWithBold } from "@/lib/textParser";
 import CounterSection from "@/components/CounterSection";
+import Branches from "@/components/Branches";
 
 export default function About() {
   return (
@@ -31,6 +32,7 @@ export default function About() {
       {/* Collection */}
       <OurCollections />
       <Gallery />
+      <Branches />
       <Faq />
       <Banner />
     </main>

@@ -186,3 +186,88 @@ export const contacts = [
   { title: "We are open", subtitle: "Monday – Friday 9 AM – 9 PM" },
   { title: "Email", subtitle: "sales@aljabbarcarpets.com" },
 ];
+
+export const branches = [
+  {
+    city: "Jakarta",
+    store: [
+      {
+        name: "Al-Jabbar Carpets Kemang",
+        address: "Jl. Kemang Raya No. 69 Jakarta Selatan",
+        dial: "021-7197770",
+      },
+      {
+        name: "Nosherwan Carpets",
+        address: "Jl. Kemang Selatan Raya No. 14C Jakarta Selatan",
+        dial: "021-7180486, 7182556"
+      },
+      {
+        name: "Al Kabir Carpet",
+        address: "Jl. Benda Raya No. 38 A Jakarta Selatan",
+        dial: "021-7819010"
+      },
+    ],
+  },
+  {
+    city: "Bekasi",
+    store: [
+      {
+        name: "Al-Jabbar Carpet",
+        address: "Grand Galaxy City Jl. Boulevard Raya Rukan Blok RGG No 32 Bekasi",
+        dial: ""
+      }
+    ]
+  },
+  {
+    city: "Surabaya",
+    store: [
+      {
+        name: "Al-Jabbar Carpet",
+        address: "Jl. H. Muhammad No. 395 Surabaya",
+        dial: "031-99020388"
+      },
+      {
+        name: "Al-Jabbar Carpet",
+        address: "Jl. Raya Kertajaya No. 182 Gubeng Surabaya",
+        dial: "031-5018623"
+      }
+    ]
+  },
+  {
+    city: "Banten",
+    store: [
+      {
+        name: "Al Matah Carpets",
+        address: "Jl. Serpong Raya No. 94 BSD City Serpong Tangerang",
+        dial: "021-22232554"
+      }
+    ]
+  },
+  {
+    city: "Garut",
+    store: [
+      {
+        name: "Al Jabbar Carpets",
+        address: "Jl. Ahmad Yani No. 231 Kel. Ciwalen Kec. Garut Kota Garut"
+      }
+    ]
+  },
+  {
+    city: "Tasikmalaya",
+    store: [
+      {
+        name: "Al Jabbar Carpets",
+        address: "Jl. Gunung Sabeulah No. 51 Kec. Cihideung Kel. Argasari Tasikmalaya"
+      }
+    ]
+  },
+  {
+    city: "Gorontalo",
+    store: [
+      {
+        name: "Al-Jabbar Carpet",
+        address: "Jl. HB Yassin 786 Kel. Tomulabutao Kec. Dungingi Kota Gorontalo"
+      }
+    ]
+  }
+];
