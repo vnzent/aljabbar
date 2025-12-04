@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import SearchModal from "./SearchModal";
+import CollectionsDropdown from "./CollectionsDropdown";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { BiSearch } from "react-icons/bi";
@@ -16,6 +18,11 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef(null);
+  const pathname = usePathname();
+
+  // Check if we're on collections or product detail page
+  const isCollectionPage = pathname?.includes("/collections");
+  const shouldBeWhite = isScrolled || isCollectionPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +43,7 @@ export default function Navbar() {
         ref={navRef}
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-          isScrolled ? "bg-white shadow-md py-3" : "bg-transparent"
+          shouldBeWhite ? "bg-white shadow-md py-3" : "bg-transparent"
         )}
       >
         <nav className="container mx-auto px-4 flex flex-col">
@@ -44,7 +51,7 @@ export default function Navbar() {
           <div
             className={cn(
               "flex justify-between border-b py-3 transition-colors duration-300",
-              isScrolled
+              shouldBeWhite
                 ? "text-black border-black/60 hover:text-primary"
                 : "text-white border-white"
             )}
@@ -70,7 +77,7 @@ export default function Navbar() {
                   href={social.href}
                   className={cn(
                     "transition-colors duration-300",
-                    isScrolled
+                    shouldBeWhite
                       ? "text-black hover:text-primary"
                       : "text-white hover:text-black"
                   )}
@@ -86,7 +93,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="">
               <Image
-                src={cn(isScrolled ? "/logo-black.png" : "/logo-white.png")}
+                src={cn(shouldBeWhite ? "/logo-black.png" : "/logo-white.png")}
                 alt="logo"
                 width={150}
                 height={50}
@@ -98,23 +105,35 @@ export default function Navbar() {
             <div
               className={cn(
                 "flex gap-6 items-center hover:text-black transition-colors duration-300",
-                isScrolled ? "text-black hover:text-primary" : "text-white"
+                shouldBeWhite ? "text-black hover:text-primary" : "text-white"
               )}
             >
-              {navMenus.map((menu, index) => (
-                <Link
-                  key={index}
-                  href={menu.href}
-                  className={cn(
-                    "uppercase font-poppins text-lg font-normal transition-colors duration-300",
-                    isScrolled
-                      ? "text-black hover:text-primary"
-                      : "text-white hover:text-black"
-                  )}
-                >
-                  {menu.name}
-                </Link>
-              ))}
+              {navMenus.map((menu, index) => {
+                // Special handling for Collections menu
+                if (menu.name === "collections") {
+                  return (
+                    <CollectionsDropdown
+                      key={index}
+                      shouldBeWhite={shouldBeWhite}
+                    />
+                  );
+                }
+
+                return (
+                  <Link
+                    key={index}
+                    href={menu.href}
+                    className={cn(
+                      "uppercase font-poppins text-lg font-normal transition-colors duration-300",
+                      shouldBeWhite
+                        ? "text-black hover:text-primary"
+                        : "text-white hover:text-black"
+                    )}
+                  >
+                    {menu.name}
+                  </Link>
+                );
+              })}
               {/* Icon Buttons */}
               <div className="flex gap-2">
                 <Button
@@ -127,7 +146,7 @@ export default function Navbar() {
                   <span
                     className={cn(
                       "hidden sm:inline text-sm cursor-pointer transition-colors duration-300",
-                      isScrolled
+                      shouldBeWhite
                         ? "text-black hover:text-primary"
                         : "text-white hover:text-black"
                     )}
@@ -145,7 +164,7 @@ export default function Navbar() {
                   <span
                     className={cn(
                       "hidden sm:inline text-sm cursor-pointer transition-colors duration-300",
-                      isScrolled
+                      shouldBeWhite
                         ? "text-black hover:text-primary"
                         : "text-white hover:text-black"
                     )}

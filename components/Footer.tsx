@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex flex-col gap-5">
               <Link href="/">
                 <Image
-                  src="/logo-white.svg"
+                  src="/logo-white.png"
                   alt="Al-Jabbar House of Carpets"
                   width={150}
                   height={50}

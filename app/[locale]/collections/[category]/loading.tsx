@@ -11,6 +11,8 @@ export default function Loading() {
             <div className="h-4 w-16 bg-gray-200 rounded animate-pulse" />
             <span>/</span>
             <div className="h-4 w-24 bg-gray-200 rounded animate-pulse" />
+            <span>/</span>
+            <div className="h-4 w-32 bg-gray-200 rounded animate-pulse" />
           </div>
         </div>
       </div>
