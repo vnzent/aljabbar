@@ -86,7 +86,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="">
               <Image
-                src={cn(isScrolled ? "/logo-black.svg" : "/logo-white.svg")}
+                src={cn(isScrolled ? "/logo-black.png" : "/logo-white.png")}
                 alt="logo"
                 width={150}
                 height={50}
