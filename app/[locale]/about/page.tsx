@@ -15,7 +15,7 @@ import Branches from "@/components/Branches";
 
 export default function About() {
   return (
-    <main className="space-y-30">
+    <main className="flex flex-col gap-30">
       <DynamicHero
         heading={`Crafting Comfort &\nElegance Since 1998`}
         subheading="A legacy of craftsmanship and refined interior taste."
