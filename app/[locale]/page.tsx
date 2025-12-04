@@ -4,9 +4,11 @@ import HeroSection from "@/components/HeroSection";
 import IconLine from "@/components/IconLine";
 import OurCollections from "@/components/OurCollections";
 import OurProducts from "@/components/OurProducts";
+import OurProductsSkeleton from "@/components/OurProductsSkeleton";
 import UniqueSellingPoints from "@/components/UniqueSellingPoints";
 import ValueCounter from "@/components/ValueCounter";
 import { useTranslations } from "next-intl";
+import { Suspense } from "react";
 
 export default function Home() {
   const t = useTranslations("home");
