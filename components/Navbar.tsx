@@ -110,7 +110,7 @@ export default function Navbar() {
             >
               {navMenus.map((menu, index) => {
                 // Special handling for Collections menu
-                if (menu.name === "collections") {
+                if (menu.name === "Collections") {
                   return (
                     <CollectionsDropdown
                       key={index}

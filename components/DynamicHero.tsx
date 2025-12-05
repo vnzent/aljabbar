@@ -24,7 +24,7 @@ export default function DynamicHero({
       <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full"></div>
       <div className="h-200 w-full pb-45 flex main-wrapper justify-start items-end mx-auto">
         <div className="flex flex-col gap-5">
-          <DynamicBreadcrumb />
+          <DynamicBreadcrumb textColor="text-white" separatorColor="text-white" textSize="text-xl" separatorSize="size-3"/>
           <div className="flex flex-col gap-3">
             <h1 className="text-white font-poppins font-medium text-5xl leading-tight text-[70px]">
               {parseTextWithLineBreaks(heading)}

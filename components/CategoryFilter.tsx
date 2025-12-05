@@ -60,54 +60,31 @@ export default function CategoryFilter({
 
   // Sync state with props whenever they change
   useEffect(() => {
-    console.log(
-      "CategoryFilter - activeCategorySlugs changed:",
-      activeCategorySlugs
-    );
-    console.log(
-      "CategoryFilter - all available category slugs:",
-      categories.map((c) => c.slug)
-    );
-
-    // Check each slug individually
-    activeCategorySlugs.forEach((inputSlug) => {
-      const matchingCat = categories.find((cat) => cat.slug === inputSlug);
-      console.log(
-        `CategoryFilter - checking slug "${inputSlug}":`,
-        matchingCat
-          ? `✅ FOUND (id: ${matchingCat.id}, name: ${matchingCat.name})`
-          : `❌ NOT FOUND`
-      );
-    });
-
-    // Check which active slugs are found in categories
-    const foundSlugs = activeCategorySlugs.filter((slug) =>
-      categories.some((cat) => cat.slug === slug)
-    );
-    const notFoundSlugs = activeCategorySlugs.filter(
-      (slug) => !categories.some((cat) => cat.slug === slug)
-    );
-
-    console.log("CategoryFilter - found slugs:", foundSlugs);
-    console.log("CategoryFilter - NOT FOUND slugs:", notFoundSlugs);
-
     setSelectedCategories(activeCategorySlugs);
 
-    // Auto-expand parent categories of selected items
+    // Auto-expand all parent categories of selected items (recursive)
+    const getAllParents = (categoryId: number): number[] => {
+      const category = categories.find((cat) => cat.id === categoryId);
+      if (!category || !category.parent || category.parent === 0) {
+        return [];
+      }
+      // Recursively get all parents up the chain
+      return [category.parent, ...getAllParents(category.parent)];
+    };
+
     const selectedCategoryIds = categories
       .filter((cat) => activeCategorySlugs.includes(cat.slug))
       .map((cat) => cat.id);
 
-    const parentsToExpand: number[] = [];
+    const allParentsToExpand: number[] = [];
     selectedCategoryIds.forEach((id) => {
-      const category = categories.find((cat) => cat.id === id);
-      if (category?.parent && category.parent !== 0) {
-        parentsToExpand.push(category.parent);
-      }
+      const parents = getAllParents(id);
+      allParentsToExpand.push(...parents);
     });
 
+    // Remove duplicates and set expanded categories
     setExpandedCategories((prev) => {
-      const newExpanded = [...new Set([...prev, ...parentsToExpand])];
+      const newExpanded = [...new Set([...prev, ...allParentsToExpand])];
       return newExpanded;
     });
   }, [activeCategorySlugs.join(","), categories]);
@@ -128,19 +105,6 @@ export default function CategoryFilter({
     } else {
       newSelected = [...selectedCategories, categorySlug];
     }
-
-    console.log("=== CategoryFilter - handleCategoryToggle START ===");
-    console.log("CategoryFilter - toggling category:", categorySlug);
-    console.log(
-      "CategoryFilter - current selectedCategories STATE:",
-      selectedCategories
-    );
-    console.log(
-      "CategoryFilter - current activeCategorySlugs PROPS:",
-      activeCategorySlugs
-    );
-    console.log("CategoryFilter - new selection:", newSelected);
-    console.log("=== CategoryFilter - handleCategoryToggle END ===");
 
     // Trigger callback immediately to show skeleton
     if (onFilterChange) {
@@ -167,7 +131,6 @@ export default function CategoryFilter({
     const targetUrl = `${pathname}${
       params.toString() ? `?${params.toString()}` : ""
     }`;
-    console.log("CategoryFilter - navigating to:", targetUrl);
 
     // Use startTransition to trigger Suspense immediately
     startTransition(() => {
@@ -254,7 +217,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
+    <div className="bg-white rounded-lg sticky top-24">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-poppins font-bold text-xl text-black">
           Categories

@@ -7,35 +7,55 @@ export async function fetchProducts(
   params: FetchProductsParams = {}
 ): Promise<{ products: Product[]; pagination: Pagination }> {
   try {
-    const { page = 1, perPage = 12, search = "", categories = "" } = params;
-
-    console.log("fetchProducts - params:", {
-      page,
-      perPage,
-      search,
-      categories,
-      categoriesType: typeof categories,
-      categoriesLength: categories.length,
-    });
+    const {
+      page = 1,
+      perPage = 12,
+      search = "",
+      categories = "",
+      orderby = "",
+    } = params;
 
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");
 
+    // Map orderby values to WooCommerce API format
+    // Default is title A-Z
+    let wcOrderBy = "title";
+    let wcOrder = "asc";
+
+    switch (orderby) {
+      case "title-asc":
+        wcOrderBy = "title";
+        wcOrder = "asc";
+        break;
+      case "title-desc":
+        wcOrderBy = "title";
+        wcOrder = "desc";
+        break;
+      case "latest":
+        wcOrderBy = "date";
+        wcOrder = "desc";
+        break;
+      case "oldest":
+        wcOrderBy = "date";
+        wcOrder = "asc";
+        break;
+      default:
+        wcOrderBy = "title";
+        wcOrder = "asc";
+    }
+
     const queryParams = new URLSearchParams({
       per_page: perPage.toString(),
       page: page.toString(),
+      orderby: wcOrderBy,
+      order: wcOrder,
       ...(search && { search }),
       ...(categories && categories.trim() && { category: categories }),
     });
 
     const fullUrl = `${baseURL}?${queryParams}`;
-    console.log("fetchProducts - API URL:", fullUrl);
-    console.log(
-      "fetchProducts - has category param:",
-      queryParams.has("category")
-    );
-    console.log("fetchProducts - category value:", queryParams.get("category"));
 
     const response = await axios.get(fullUrl, {
       headers: {
@@ -86,19 +106,11 @@ export async function fetchProductCategories(): Promise<Category[] | null> {
         },
       }
     );
-
-    console.log(
-      "fetchProductCategories - total categories fetched:",
-      response.data.length
-    );
-    console.log(
-      "fetchProductCategories - categories:",
-      response.data.map((cat: Category) => ({
-        id: cat.id,
-        name: cat.name,
-        slug: cat.slug,
-      }))
-    );
+    response.data.map((cat: Category) => ({
+      id: cat.id,
+      name: cat.name,
+      slug: cat.slug,
+    }));
 
     return response.data || null;
   } catch (error) {

@@ -1,10 +1,14 @@
-import { fetchProductBySlug } from "@/lib/fetchProducts";
-import Image from "next/image";
+import {
+  fetchProductBySlug,
+  fetchProductCategories,
+} from "@/lib/fetchProducts";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import Banner from "@/components/Banner";
 import RelatedProducts from "@/components/RelatedProducts";
-import { Suspense } from "react";
 import ProductDetailSkeleton from "@/components/ProductDetailSkeleton";
 import { Button } from "@/components/ui/button";
 
@@ -16,22 +20,41 @@ async function ProductDetailContent({
   category: string;
 }) {
   const product = await fetchProductBySlug(slug);
+  const allCategories = await fetchProductCategories();
 
   if (!product) {
     notFound();
   }
 
+  // Determine parent categories (hand-made, machine-made, mosque)
+  const parentCategorySlugs = [
+    "hand-made-carpets",
+    "machine-made-carpets",
+    "mosque-carpets",
+  ];
+
+  // Helper to get category link
+  const getCategoryLink = (catSlug: string) => {
+    // Check if it's a parent category
+    if (parentCategorySlugs.includes(catSlug)) {
+      return `/collections/${catSlug}`;
+    }
+    // Otherwise use query param for child/regular categories
+    return `/collections?categories=${catSlug}`;
+  };
+
   return (
     <>
-      <div className="pt-32 pb-10">
-        <div className="container mx-auto px-4">
-          <DynamicBreadcrumb />
-        </div>
-      </div>
+      <div className="container mx-auto px-4 pt-60 pb-10">
+        <DynamicBreadcrumb
+          textColor="text-black"
+          separatorColor="text-black"
+          textSize="text-base"
+          separatorSize="size-2"
+        />
 
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Image Gallery */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-8">
+          {/* Product Images */}
           <div className="space-y-4">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               <Image
@@ -42,6 +65,7 @@ async function ProductDetailContent({
                 priority
               />
             </div>
+
             {product.images.length > 1 && (
               <div className="grid grid-cols-4 gap-4">
                 {product.images.slice(1, 5).map((image, index) => (
@@ -61,26 +85,30 @@ async function ProductDetailContent({
             )}
           </div>
 
-          {/* Product Info */}
+          {/* Product Information */}
           <div className="space-y-6 flex flex-col justify-center">
+            {/* Title & Categories */}
             <div>
               <h1 className="font-poppins font-semibold text-4xl text-black mb-4">
                 {product.name}
               </h1>
+
               {product.categories && product.categories.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {product.categories.map((category) => (
-                    <span
-                      key={category.id}
-                      className="inline-block px-4 py-2 text-sm font-medium text-primary/80 bg-primary/10 rounded-full"
+                <div className="flex flex-wrap gap-2">
+                  {product.categories.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      href={getCategoryLink(cat.slug)}
+                      className="text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-colors cursor-pointer"
                     >
-                      {category.name}
-                    </span>
+                      {cat.name}
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
+            {/* Short Description */}
             {product.short_description && (
               <div
                 className="prose prose-lg max-w-none text-gray-700"
@@ -88,6 +116,7 @@ async function ProductDetailContent({
               />
             )}
 
+            {/* Full Description */}
             {product.description && (
               <div className="border-t pt-6">
                 <h2 className="font-poppins font-semibold text-2xl text-black mb-4">
@@ -100,6 +129,7 @@ async function ProductDetailContent({
               </div>
             )}
 
+            {/* Contact Button */}
             <div className="border-t pt-6">
               <Button className="w-fit text-lg">
                 Contact Us for This Product
@@ -109,7 +139,7 @@ async function ProductDetailContent({
         </div>
       </div>
 
-      {/* Related Products */}
+      {/* Related Products Section */}
       {product.categories && product.categories.length > 0 && (
         <Suspense
           fallback={

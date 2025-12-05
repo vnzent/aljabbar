@@ -48,8 +48,6 @@ export default function ProductCard({
       ? currentCategoriesParam.split(",").map((s) => s.trim())
       : [];
 
-    console.log("ProductCard - current categories:", currentCategories);
-    console.log("ProductCard - clicked category:", clickedCategorySlug);
 
     // Add clicked category if not already in selection
     let newCategories: string[];
@@ -60,8 +58,6 @@ export default function ProductCard({
       // Add to selection
       newCategories = [...currentCategories, clickedCategorySlug];
     }
-
-    console.log("ProductCard - new categories:", newCategories);
 
     // Build URL with query params
     const params = new URLSearchParams(searchParams.toString());
@@ -97,7 +93,7 @@ export default function ProductCard({
           </div>
 
           {/* Content Container */}
-          <div className="p-6 space-y-3">
+          <div className="py-5">
             <h3 className="font-poppins font-semibold text-xl text-black line-clamp-2">
               {product.name}
             </h3>

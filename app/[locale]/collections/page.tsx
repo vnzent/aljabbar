@@ -16,6 +16,8 @@ type SearchParams = Promise<{
   page?: string;
   search?: string;
   categories?: string;
+  orderby?: string;
+  per_page?: string;
 }>;
 
 // Helper to get category IDs from slugs - NOW SYNCHRONOUS
@@ -29,9 +31,6 @@ function getCategoryIdsFromSlugs(
     .filter((cat) => slugs.includes(cat.slug))
     .map((cat) => cat.id);
 
-  console.log("getCategoryIdsFromSlugs - input slugs:", slugs);
-  console.log("getCategoryIdsFromSlugs - matched IDs:", matchedIds);
-
   return matchedIds.join(",");
 }
 
@@ -41,17 +40,22 @@ async function ProductsGrid({
   search,
   categoryIds,
   categorySlugs,
+  orderby,
+  perPage,
 }: {
   page: string;
   search: string;
   categoryIds: string;
   categorySlugs: string[];
+  orderby: string;
+  perPage: string;
 }) {
   const { products, pagination } = await fetchProducts({
     page: parseInt(page),
-    perPage: 12,
+    perPage: parseInt(perPage),
     search,
     categories: categoryIds,
+    orderby,
   });
 
   if (products.length === 0) {
@@ -89,7 +93,13 @@ export default async function Collections({
 }: {
   searchParams: SearchParams;
 }) {
-  const { page = "1", search = "", categories = "" } = await searchParams;
+  const {
+    page = "1",
+    search = "",
+    categories = "",
+    orderby = "",
+    per_page = "12",
+  } = await searchParams;
 
   // FETCH CATEGORIES ONLY ONCE
   const allCategories = (await fetchProductCategories()) || [];
@@ -102,38 +112,40 @@ export default async function Collections({
   // Convert slugs to IDs - NOW SYNCHRONOUS, NO EXTRA FETCH
   const categoryIds = getCategoryIdsFromSlugs(categorySlugs, allCategories);
 
-  console.log("Collections Page - categorySlugs:", categorySlugs);
-  console.log("Collections Page - categoryIds:", categoryIds);
-
   return (
     <>
-      <div className="pt-32 pb-10">
-        <div className="container mx-auto px-4">
-          <DynamicBreadcrumb />
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          <CollectionsClientWrapper
-            categorySlugs={categorySlugs}
-            categories={allCategories}
-          >
-            <Suspense
-              key={page + search + categories}
-              fallback={<ProductsGridSkeleton />}
+      <div className="pt-40 pb-20">
+        <div className="container mx-auto px-4 py-8">
+          <div className="py-3">
+            <DynamicBreadcrumb
+              textColor="text-black"
+              separatorColor="text-black"
+              textSize="text-base"
+              separatorSize="size-2"
+            />
+          </div>
+          <div className="flex gap-8">
+            <CollectionsClientWrapper
+              categorySlugs={categorySlugs}
+              categories={allCategories}
             >
-              <ProductsGrid
-                page={page}
-                search={search}
-                categoryIds={categoryIds}
-                categorySlugs={categorySlugs}
-              />
-            </Suspense>
-          </CollectionsClientWrapper>
+              <Suspense
+                key={page + search + categories + orderby + per_page}
+                fallback={<ProductsGridSkeleton />}
+              >
+                <ProductsGrid
+                  page={page}
+                  search={search}
+                  categoryIds={categoryIds}
+                  categorySlugs={categorySlugs}
+                  orderby={orderby}
+                  perPage={per_page}
+                />
+              </Suspense>
+            </CollectionsClientWrapper>
+          </div>
         </div>
       </div>
-
       <Banner />
     </>
   );

@@ -4,6 +4,8 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 import ProductsGridSkeleton from "@/components/ProductsGridSkeleton";
 import CategoryFilterClient from "@/components/CategoryFilterClient";
+import SortByDropdown from "@/components/SortByDropdown";
+import ShowProductsDropdown from "@/components/ShowProductsDropdown";
 
 // Create context for filter state
 const FilterContext = createContext<{
@@ -73,17 +75,26 @@ export default function CollectionsClientWrapper({
 
       {/* Products Grid */}
       <div className="flex-1">
-        <div className="mb-6">
-          <h1 className="font-poppins font-bold text-3xl text-black">
-            {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
-          </h1>
-          <p className="text-gray-600 mt-2">
-            {categorySlugs.length > 0
-              ? `Showing ${categorySlugs.length} selected ${
-                  categorySlugs.length === 1 ? "category" : "categories"
-                }`
-              : "Browse our complete collection"}
-          </p>
+        {/* Header with Dropdowns */}
+        <div className="mb-6 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h1 className="font-poppins font-bold text-3xl text-black">
+              {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
+            </h1>
+            <p className="text-gray-600 mt-2">
+              {categorySlugs.length > 0
+                ? `Showing ${categorySlugs.length} selected ${
+                    categorySlugs.length === 1 ? "category" : "categories"
+                  }`
+                : "Browse our complete collection"}
+            </p>
+          </div>
+
+          {/* Dropdowns */}
+          <div className="flex items-center gap-3">
+            <ShowProductsDropdown />
+            <SortByDropdown />
+          </div>
         </div>
 
         {/* Show skeleton immediately when filtering */}

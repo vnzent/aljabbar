@@ -15,10 +15,10 @@ import { BiPhoneCall } from "react-icons/bi";
 import { SiGooglemaps } from "react-icons/si";
 
 export const navMenus = [
-  { href: "/collections", name: "collections" },
-  { href: "/about", name: "about us" },
-  { href: "/service", name: "service" },
-  { href: "/contact", name: "contact" },
+  { href: "/collections", name: "Collections" },
+  { href: "/about", name: "About us" },
+  { href: "/service", name: "Service" },
+  { href: "/contact", name: "Contact" },
 ];
 
 export const navSocialIcons = [
@@ -28,9 +28,9 @@ export const navSocialIcons = [
 ];
 
 export const collections = [
-  { src: "/our-collection-1.jpg", name: "Hand Made Carpet" },
-  { src: "/our-collection-2.jpg", name: "Hand Made Carpet" },
-  { src: "/our-collection-3.jpg", name: "Hand Made Carpet" },
+  { src: "/our-collection-1.jpg", name: "Hand Made Carpets" },
+  { src: "/our-collection-2.jpg", name: "Machine-Made Carpets" },
+  { src: "/our-collection-3.jpg", name: "Mosque Carpets" },
 ];
 
 export const count = [

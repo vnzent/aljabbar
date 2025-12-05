@@ -81,11 +81,11 @@ export default function CollectionsDropdown({
       {isOpen && (
         <div
           className={cn(
-            "absolute top-full left-0 mt-2 w-72 rounded-lg shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200",
+            "absolute top-full left-0 mt-2 w-72 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200",
             "bg-white border border-gray-100"
           )}
         >
-          <div className="py-2">
+          <div className="">
             {collectionCategories.map((category, index) => (
               <Link
                 key={category.slug}
@@ -109,17 +109,6 @@ export default function CollectionsDropdown({
                 </div>
               </Link>
             ))}
-          </div>
-
-          {/* View All Footer */}
-          <div className="border-t border-gray-200 bg-gray-50">
-            <Link
-              href="/collections"
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-3 text-center text-sm font-semibold text-primary hover:text-primary/80 hover:bg-gray-100 transition-colors"
-            >
-              View All Collections →
-            </Link>
           </div>
         </div>
       )}

@@ -28,6 +28,8 @@ export interface FetchProductsParams {
   perPage?: number;
   search?: string;
   categories?: string;
+  orderby?: string;
+  order?: string;
 }
 export interface Pagination {
   total: number;

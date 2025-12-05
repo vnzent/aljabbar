@@ -1,6 +1,7 @@
 import { collections } from "@/lib/data";
 import Image from "next/image";
 import HeaderBetween from "./HeaderBetween";
+import Link from "next/link";
 
 export default function OurCollections() {
   return (
@@ -22,9 +23,12 @@ export default function OurCollections() {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <span className="font-poppins font-normal text-lg">
+              <Link
+                href=""
+                className="font-poppins font-normal text-lg text-black"
+              >
                 {item.name}
-              </span>
+              </Link>
             </div>
           ))}
         </div>

@@ -11,8 +11,14 @@ export default async function OurProducts() {
           <h2 className="font-poppins font-medium text-5xl capitalize">
             Our Products
           </h2>
-          <Link href="/" className="uppercase font-inter text-lg font-normal">
-            View All
+          <Link
+            href="/collections"
+            className="group uppercase font-inter text-lg font-normal text-black relative"
+          >
+            <span className="transition-colors duration-500 group-hover:text-primary">
+              View All
+            </span>
+            <span className="absolute left-0 bottom-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full" />
           </Link>
         </div>
         <Suspense fallback={<OurProductsSkeleton />}>

@@ -26,6 +26,8 @@ type SearchParams = Promise<{
   page?: string;
   search?: string;
   subcategories?: string;
+  orderby?: string;
+  per_page?: string;
 }>;
 
 // Helper to get category IDs - synchronous
@@ -72,17 +74,22 @@ async function ProductsGrid({
   search,
   categoryIds,
   categorySlugs,
+  orderby,
+  perPage,
 }: {
   page: string;
   search: string;
   categoryIds: string;
   categorySlugs: string[];
+  orderby: string;
+  perPage: string;
 }) {
   const { products, pagination } = await fetchProducts({
     page: parseInt(page),
-    perPage: 12,
+    perPage: parseInt(perPage),
     search,
     categories: categoryIds,
+    orderby,
   });
 
   if (products.length === 0) {
@@ -123,7 +130,13 @@ export default async function CategoryPage({
   searchParams: SearchParams;
 }) {
   const { category: parentCategorySlug } = await params;
-  const { page = "1", search = "", subcategories = "" } = await searchParams;
+  const {
+    page = "1",
+    search = "",
+    subcategories = "",
+    orderby = "",
+    per_page = "12",
+  } = await searchParams;
 
   // Get parent category and its children
   const { parent, children, allDescendantIds } = await getParentAndChildren(
@@ -161,53 +174,45 @@ export default async function CategoryPage({
     categoryIdsToFilter = allDescendantIds.join(",");
   }
 
-  console.log("CategoryPage - parent:", parent.name);
-  console.log("CategoryPage - children count:", children.length);
-  console.log(
-    "CategoryPage - selected subcategories:",
-    selectedSubcategorySlugs
-  );
-  console.log("CategoryPage - filtering by IDs:", categoryIdsToFilter);
-
   return (
     <>
-      <div className="pt-32 pb-10">
-        <div className="container mx-auto px-4">
-          <Suspense
-            fallback={
-              <div className="h-6 w-48 bg-gray-200 rounded animate-pulse" />
-            }
-          >
-            <DynamicBreadcrumb />
-          </Suspense>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          <CollectionsClientWrapper
-            categorySlugs={selectedSubcategorySlugs}
-            categories={children}
-            mode="parent"
-          >
-            <Suspense
-              key={`${page}-${subcategories}`}
-              fallback={<ProductsGridSkeleton />}
+      <div className="pt-40 pb-20">
+        <div className="container mx-auto px-4 py-8">
+          <div className="py-3">
+            <DynamicBreadcrumb
+              textColor="text-black"
+              separatorColor="text-black"
+              textSize="text-base"
+              separatorSize="size-2"
+            />
+          </div>
+          <div className="flex gap-8">
+            <CollectionsClientWrapper
+              categorySlugs={selectedSubcategorySlugs}
+              categories={children}
+              mode="parent"
             >
-              <ProductsGrid
-                page={page}
-                search={search}
-                categoryIds={categoryIdsToFilter}
-                categorySlugs={selectedSubcategorySlugs}
-              />
-            </Suspense>
-          </CollectionsClientWrapper>
+              <Suspense
+                key={`${page}-${subcategories}-${orderby}-${per_page}`}
+                fallback={<ProductsGridSkeleton />}
+              >
+                <ProductsGrid
+                  page={page}
+                  search={search}
+                  categoryIds={categoryIdsToFilter}
+                  categorySlugs={selectedSubcategorySlugs}
+                  orderby={orderby}
+                  perPage={per_page}
+                />
+              </Suspense>
+            </CollectionsClientWrapper>
+          </div>
         </div>
-      </div>
 
-      <Suspense fallback={null}>
-        <Banner />
-      </Suspense>
+        <Suspense fallback={null}>
+          <Banner />
+        </Suspense>
+      </div>
     </>
   );
 }

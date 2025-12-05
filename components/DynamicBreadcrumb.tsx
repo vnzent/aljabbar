@@ -12,8 +12,21 @@ import {
 } from "@/components/ui/breadcrumb";
 import { navMenus } from "@/lib/data";
 import { MdArrowForwardIos } from "react-icons/md";
+import { cn } from "@/lib/utils";
 
-export default function DynamicBreadcrumb() {
+interface DynamicBreadcrumbProps {
+  textColor?: string;
+  separatorColor?: string;
+  textSize?: string;
+  separatorSize?: string;
+}
+
+export default function DynamicBreadcrumb({
+  textColor = "",
+  separatorColor = "",
+  textSize = "",
+  separatorSize = "",
+}: DynamicBreadcrumbProps) {
   const pathname = usePathname();
 
   // Remove locale from pathname (e.g., /en/about -> /about)
@@ -37,9 +50,33 @@ export default function DynamicBreadcrumb() {
       .join(" ");
   };
 
-  // Generate breadcrumb items
+  // Generate breadcrumb items with proper category linking
   const breadcrumbItems = pathSegments.map((segment, index) => {
-    const href = "/" + pathSegments.slice(0, index + 1).join("/");
+    // Check if this is a category segment (second segment in /collections/[category]/[slug])
+    const isCollectionsPath = pathSegments[0] === "collections";
+    const isCategorySegment = isCollectionsPath && index === 1;
+
+    // Parent categories that use direct path
+    const parentCategorySlugs = [
+      "hand-made-carpets",
+      "machine-made-carpets",
+      "mosque-carpets",
+    ];
+
+    // For category segments, determine the link type
+    let href: string;
+    if (isCategorySegment) {
+      // Check if it's a parent category
+      if (parentCategorySlugs.includes(segment)) {
+        href = `/collections/${segment}`;
+      } else {
+        // Use query param for child/regular categories
+        href = `/collections?categories=${segment}`;
+      }
+    } else {
+      href = "/" + pathSegments.slice(0, index + 1).join("/");
+    }
+
     const name = getPageName(segment);
     return { name, href, isLast: index === pathSegments.length - 1 };
   });
@@ -48,27 +85,35 @@ export default function DynamicBreadcrumb() {
   if (pathSegments.length === 0) return null;
 
   return (
-    <Breadcrumb className="px-2">
+    <Breadcrumb className="">
       <BreadcrumbList className="flex items-center">
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link
               href="/"
-              className="text-white transition-colors font-poppins text-xl"
+              className={cn(
+                textColor,
+                textSize,
+                "opacity-60 hover:opacity-100 transition-colors font-poppins"
+              )}
             >
               Home
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator className="text-white flex items-center">
-          <MdArrowForwardIos className="size-3" />
+        <BreadcrumbSeparator
+          className={cn(separatorColor, "flex items-center")}
+        >
+          <MdArrowForwardIos className={separatorSize} />
         </BreadcrumbSeparator>
 
         {breadcrumbItems.map((item, index) => (
           <div key={item.href} className="flex items-center gap-2">
             <BreadcrumbItem>
               {item.isLast ? (
-                <BreadcrumbPage className="text-white capitalize font-poppins text-xl">
+                <BreadcrumbPage
+                  className={cn(textColor, textSize, "capitalize font-poppins")}
+                >
                   {item.name}
                 </BreadcrumbPage>
               ) : (
@@ -76,7 +121,11 @@ export default function DynamicBreadcrumb() {
                   <BreadcrumbLink asChild>
                     <Link
                       href={item.href}
-                      className="text-white/80 hover:text-white transition-colors font-poppins text-xl"
+                      className={cn(
+                        textColor,
+                        textSize,
+                        "opacity-60 hover:opacity-100 transition-colors font-poppins"
+                      )}
                     >
                       {item.name}
                     </Link>
@@ -85,8 +134,10 @@ export default function DynamicBreadcrumb() {
               )}
             </BreadcrumbItem>
             {!item.isLast && (
-              <BreadcrumbSeparator className="text-white text-xl flex items-center">
-                <MdArrowForwardIos className="size-3" />
+              <BreadcrumbSeparator
+                className={cn(separatorColor, "text-xl flex items-center")}
+              >
+                <MdArrowForwardIos className={separatorSize} />
               </BreadcrumbSeparator>
             )}
           </div>

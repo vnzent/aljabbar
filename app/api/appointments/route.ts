@@ -60,10 +60,6 @@ export async function POST(request: NextRequest) {
       status: "pending",
     });
 
-    // Log to console for debugging
-    console.log("✅ Appointment created:", appointment);
-    console.log("📊 All appointments:", mockDB.getAll());
-
     const result: WPAppointmentResponse = {
       success: true,
       data: appointment,

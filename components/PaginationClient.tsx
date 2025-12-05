@@ -5,13 +5,12 @@ import {
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import { useFilterContext } from "@/components/CollectionsClientWrapper";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PaginationClientProps {
   currentPage: number;
@@ -73,81 +72,69 @@ export default function PaginationClient({
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 flex justify-center">
       <Pagination>
-        <PaginationContent>
+        <PaginationContent className="gap-2">
+          {/* Previous Button */}
           <PaginationItem>
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pl-2.5 ${
-                currentPage <= 1 ? "pointer-events-none opacity-50" : ""
-              }`}
+              className={cn(
+                "group flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-200",
+                "border border-gray-200 hover:border-primary/50",
+                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
+                currentPage <= 1 &&
+                  "opacity-50 cursor-not-allowed hover:border-gray-200 hover:bg-transparent"
+              )}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-              <span>Previous</span>
+              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+              <span className="hidden sm:inline">Previous</span>
             </button>
           </PaginationItem>
 
-          {visiblePages.map((pageNum, index) =>
-            typeof pageNum === "string" ? (
-              <PaginationItem key={`${pageNum}-${index}`}>
-                <PaginationEllipsis />
-              </PaginationItem>
-            ) : (
-              <PaginationItem key={pageNum}>
-                <button
-                  onClick={() => handlePageChange(pageNum)}
-                  className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 ${
-                    pageNum === currentPage
-                      ? "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
-                      : ""
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              </PaginationItem>
-            )
-          )}
+          {/* Page Numbers */}
+          <div className="flex items-center gap-1">
+            {visiblePages.map((pageNum, index) =>
+              typeof pageNum === "string" ? (
+                <PaginationItem key={`${pageNum}-${index}`}>
+                  <PaginationEllipsis className="text-gray-400" />
+                </PaginationItem>
+              ) : (
+                <PaginationItem key={pageNum}>
+                  <button
+                    onClick={() => handlePageChange(pageNum)}
+                    className={cn(
+                      "min-w-10 h-10 rounded-lg font-medium transition-all duration-200",
+                      "hover:bg-linear-to-r hover:from-primary/10 hover:to-primary/20",
+                      "hover:scale-105 active:scale-95",
+                      pageNum === currentPage
+                        ? "bg-linear-to-br from-primary to-primary/80 text-white shadow-lg shadow-primary/30 scale-105"
+                        : "border border-gray-200 hover:border-primary/50 text-gray-700"
+                    )}
+                  >
+                    {pageNum}
+                  </button>
+                </PaginationItem>
+              )
+            )}
+          </div>
 
+          {/* Next Button */}
           <PaginationItem>
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= totalPages}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-1 pr-2.5 ${
-                currentPage >= totalPages
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }`}
+              className={cn(
+                "group flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-200",
+                "border border-gray-200 hover:border-primary/50",
+                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
+                currentPage >= totalPages &&
+                  "opacity-50 cursor-not-allowed hover:border-gray-200 hover:bg-transparent"
+              )}
             >
-              <span>Next</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
+              <span className="hidden sm:inline">Next</span>
+              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </PaginationItem>
         </PaginationContent>

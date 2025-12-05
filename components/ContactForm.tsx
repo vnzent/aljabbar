@@ -14,7 +14,7 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log(formData);
+    formData;
   };
 
   const handleChange = (
@@ -94,10 +94,7 @@ export default function ContactForm() {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            variant="tertiary"
-          >
+          <Button type="submit" variant="tertiary">
             Send a message
           </Button>
         </form>
