@@ -19,6 +19,7 @@ interface DynamicBreadcrumbProps {
   separatorColor?: string;
   textSize?: string;
   separatorSize?: string;
+  hoverText?: string;
 }
 
 export default function DynamicBreadcrumb({
@@ -26,6 +27,7 @@ export default function DynamicBreadcrumb({
   separatorColor = "",
   textSize = "",
   separatorSize = "",
+  hoverText = "hover:",
 }: DynamicBreadcrumbProps) {
   const pathname = usePathname();
 
@@ -94,6 +96,7 @@ export default function DynamicBreadcrumb({
               className={cn(
                 textColor,
                 textSize,
+                hoverText,
                 "opacity-60 hover:opacity-100 transition-colors font-poppins"
               )}
             >
@@ -112,7 +115,7 @@ export default function DynamicBreadcrumb({
             <BreadcrumbItem>
               {item.isLast ? (
                 <BreadcrumbPage
-                  className={cn(textColor, textSize, "capitalize font-poppins")}
+                  className={cn(textColor, textSize, hoverText, "capitalize font-poppins")}
                 >
                   {item.name}
                 </BreadcrumbPage>
@@ -124,6 +127,7 @@ export default function DynamicBreadcrumb({
                       className={cn(
                         textColor,
                         textSize,
+                        hoverText,
                         "opacity-60 hover:opacity-100 transition-colors font-poppins"
                       )}
                     >

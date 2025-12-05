@@ -1,7 +1,7 @@
-import { collections } from "@/lib/data";
 import Image from "next/image";
 import HeaderBetween from "@/components/templates/HeaderBetween";
 import Link from "next/link";
+import { collectionCategories } from "@/lib/data";
 
 interface OurCollectionsProps {
   id?: string;
@@ -16,7 +16,7 @@ export default function OurCollections({id}: OurCollectionsProps) {
           subheading={` Decades of serving customers with a diverse collection of \nrugs have built a strong foundation of trust and reliability.`}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {collections.map((item, index) => (
+          {collectionCategories.map((item, index) => (
             <div className="group flex flex-col gap-3" key={index}>
               <div className="aspect-4/3 relative">
                 <Image
@@ -28,8 +28,8 @@ export default function OurCollections({id}: OurCollectionsProps) {
                 />
               </div>
               <Link
-                href=""
-                className="font-poppins font-normal text-lg text-black"
+                href={`/collections/${item.slug}`}
+                className="font-poppins font-normal text-lg text-black underline underline-offset-2 transition-colors duration-500 hover:text-primary w-fit"
               >
                 {item.name}
               </Link>

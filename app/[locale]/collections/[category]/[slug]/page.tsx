@@ -99,7 +99,7 @@ async function ProductDetailContent({
                     <Link
                       key={cat.id}
                       href={getCategoryLink(cat.slug)}
-                      className="text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-colors cursor-pointer"
+                      className="text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-colors duration-500 cursor-pointer"
                     >
                       {cat.name}
                     </Link>

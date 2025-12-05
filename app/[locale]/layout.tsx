@@ -49,9 +49,11 @@ export default async function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} ${open_sans.variable} antialiased`}
       >
-        <Navbar />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        <Footer />
+        <NextIntlClientProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

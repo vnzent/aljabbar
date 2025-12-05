@@ -27,10 +27,25 @@ export const navSocialIcons = [
   { href: "youtube.com", icon: AiOutlineYoutube },
 ];
 
-export const collections = [
-  { src: "/our-collection-1.jpg", name: "Hand-Made Carpets" },
-  { src: "/our-collection-2.jpg", name: "Machine-Made Carpets" },
-  { src: "/our-collection-3.jpg", name: "Mosque Carpets" },
+export const collectionCategories = [
+  {
+    src: "/our-collection-1.jpg",
+    name: "Hand-made Carpets",
+    slug: "hand-made-carpets",
+    description: "Authentic handwoven masterpieces",
+  },
+  {
+    src: "/our-collection-2.jpg",
+    name: "Machine-made Carpets",
+    slug: "machine-made-carpets",
+    description: "Modern precision and style",
+  },
+  {
+    src: "/our-collection-3.jpg",
+    name: "Mosque Carpets",
+    slug: "mosque-carpets",
+    description: "Sacred spaces, elegant designs",
+  },
 ];
 
 export const count = [

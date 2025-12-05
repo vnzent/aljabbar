@@ -4,10 +4,10 @@ import { useRef, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import SearchModal from "@/components/molecules/SearchModal";
 import CollectionsDropdown from "@/components/molecules/CollectionsDropdown";
+import LanguageDropdown from "@/components/molecules/LanguageDropdown";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BiSearch } from "react-icons/bi";
-import { HiLanguage } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import Image from "next/image";
@@ -123,9 +123,7 @@ export default function Navbar() {
                     href={menu.href}
                     className={cn(
                       "uppercase font-poppins text-lg font-normal transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite
-                        ? "text-black "
-                        : "text-white"
+                      shouldBeWhite ? "text-black " : "text-white"
                     )}
                   >
                     {menu.name}
@@ -133,43 +131,20 @@ export default function Navbar() {
                 );
               })}
               {/* Icon Buttons */}
-              <div className="flex gap-2">
-                <Button
-                  size="icon"
-                  variant="ghost"
+              <div className="flex gap-2 items-center">
+                <LanguageDropdown shouldBeWhite={shouldBeWhite} />
+                <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors"
-                  asChild
+                  className={cn(
+                    "p-2 rounded-lg transition-all duration-300",
+                    shouldBeWhite
+                      ? "text-black hover:bg-gray-100 hover:text-primary"
+                      : "text-white hover:bg-white/10 hover:text-primary"
+                  )}
+                  aria-label="Search"
                 >
-                  <span
-                    className={cn(
-                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite
-                        ? "text-black"
-                        : "text-white"
-                    )}
-                  >
-                    <HiLanguage className="size-5" />
-                  </span>
-                </Button>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={() => setIsSearchOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors"
-                  asChild
-                >
-                  <span
-                    className={cn(
-                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite
-                        ? "text-black"
-                        : "text-white"
-                    )}
-                  >
-                    <BiSearch className="size-5" />
-                  </span>
-                </Button>
+                  <BiSearch className="size-5" />
+                </button>
               </div>
             </div>
           </div>

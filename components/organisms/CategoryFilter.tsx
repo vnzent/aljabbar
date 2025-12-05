@@ -217,7 +217,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <div className="bg-white rounded-lg sticky top-24">
+    <div className="bg-white rounded-lg sticky top-44">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-poppins font-bold text-xl text-black">
           Categories
@@ -232,7 +232,7 @@ export default function CategoryFilter({
         )}
       </div>
 
-      <div className="space-y-1 max-h-[600px] overflow-y-auto pr-2">
+      <div className="space-y-1 max-h-[calc(100vh-250px)] overflow-y-auto pr-2">
         {categoryTree.map((category) => renderCategory(category))}
       </div>
     </div>

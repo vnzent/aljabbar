@@ -29,6 +29,7 @@ export default function DynamicHero({
             separatorColor="text-white"
             textSize="text-xl"
             separatorSize="size-3"
+            hoverText="hover:text-primary"
           />
           <div className="flex flex-col gap-3">
             <h1 className="text-white font-poppins font-medium text-5xl leading-tight text-[70px]">

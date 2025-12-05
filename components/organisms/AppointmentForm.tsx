@@ -223,21 +223,36 @@ export default function AppointmentForm({
           >
             Booking Type*
           </label>
-          <select
-            id="bookingType"
-            name="bookingType"
-            value={formData.bookingType}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
-          >
-            <option value="">Choose Booking</option>
-            <option value="consultation">Consultation</option>
-            <option value="viewing">Carpet Viewing</option>
-            <option value="home-visit">Home Visit</option>
-            <option value="repair">Repair Service</option>
-            <option value="cleaning">Cleaning Service</option>
-          </select>
+          <div className="relative">
+            <select
+              id="bookingType"
+              name="bookingType"
+              value={formData.bookingType}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
+            >
+              <option value="">Choose Booking</option>
+              <option value="consultation">Consultation</option>
+              <option value="viewing">Carpet Viewing</option>
+              <option value="home-visit">Home Visit</option>
+              <option value="repair">Repair Service</option>
+              <option value="cleaning">Cleaning Service</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <svg
+                className="h-5 w-5 text-black"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Location */}
@@ -248,30 +263,45 @@ export default function AppointmentForm({
           >
             Location*
           </label>
-          <select
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
-          >
-            <option value="">Choose Place</option>
-            <option value="kemang">Al-Jabbar Kemang</option>
-            <option value="nosherwan">Nosherwan Carpets</option>
-            <option value="benda">Al Kabir Carpet</option>
-            <option value="bekasi">Al-Jabbar Bekasi</option>
-            <option value="surabaya-muhammad">
-              Al-Jabbar Surabaya (H. Muhammad)
-            </option>
-            <option value="surabaya-kertajaya">
-              Al-Jabbar Surabaya (Kertajaya)
-            </option>
-            <option value="banten">Al Matah Carpets</option>
-            <option value="garut">Al Jabbar Garut</option>
-            <option value="tasikmalaya">Al Jabbar Tasikmalaya</option>
-            <option value="gorontalo">Al-Jabbar Gorontalo</option>
-          </select>
+          <div className="relative">
+            <select
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
+            >
+              <option value="">Choose Place</option>
+              <option value="kemang">Al-Jabbar Kemang</option>
+              <option value="nosherwan">Nosherwan Carpets</option>
+              <option value="benda">Al Kabir Carpet</option>
+              <option value="bekasi">Al-Jabbar Bekasi</option>
+              <option value="surabaya-muhammad">
+                Al-Jabbar Surabaya (H. Muhammad)
+              </option>
+              <option value="surabaya-kertajaya">
+                Al-Jabbar Surabaya (Kertajaya)
+              </option>
+              <option value="banten">Al Matah Carpets</option>
+              <option value="garut">Al Jabbar Garut</option>
+              <option value="tasikmalaya">Al Jabbar Tasikmalaya</option>
+              <option value="gorontalo">Al-Jabbar Gorontalo</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <svg
+                className="h-5 w-5 text-black"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -32,7 +32,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-white/70 transition-colors duration-300"
+                  className="text-white hover:text-primary transition-colors duration-300"
                 >
                   <social.icon className="size-6" />
                 </Link>
@@ -50,7 +50,7 @@ export default function Footer() {
                 <Link
                   href={menu.href}
                   key={index}
-                  className="font-poppins text-sm text-white/80 hover:text-white transition-colors capitalize"
+                  className="font-poppins text-sm text-white/80 hover:text-primary transition-colors capitalize"
                 >
                   {menu.name}
                 </Link>

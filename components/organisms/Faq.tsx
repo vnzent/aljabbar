@@ -44,7 +44,7 @@ export default function Faq() {
                 <AccordionTrigger className="font-poppins font-medium text-lg text-black hover:text-primary hover:no-underline cursor-pointer">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="font-inter text-base text-black/70 leading-relaxed pt-2">
+                <AccordionContent className="font-inter text-base text-black/70 leading-relaxed pt-2 text-justify">
                   {parseTextWithParagraphs(item.answer)}
                 </AccordionContent>
               </AccordionItem>

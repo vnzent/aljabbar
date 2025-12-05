@@ -5,34 +5,18 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { set } from "date-fns";
+import { collectionCategories } from "@/lib/data";
 
 interface CollectionsDropdownProps {
   shouldBeWhite: boolean;
 }
-
-const collectionCategories = [
-  {
-    name: "Hand-made Carpets",
-    slug: "hand-made-carpets",
-    description: "Authentic handwoven masterpieces",
-  },
-  {
-    name: "Machine-made Carpets",
-    slug: "machine-made-carpets",
-    description: "Modern precision and style",
-  },
-  {
-    name: "Mosque Carpets",
-    slug: "mosque-carpets",
-    description: "Sacred spaces, elegant designs",
-  },
-];
 
 export default function CollectionsDropdown({
   shouldBeWhite,
 }: CollectionsDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeOutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -48,12 +32,34 @@ export default function CollectionsDropdown({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (timeOutRef.current) {
+        clearTimeout(timeOutRef.current);
+      }
+    }
+  }, [])
+
+  const handleMouseEnter = () => {
+    if (timeOutRef.current) {
+      clearTimeout(timeOutRef.current);
+      timeOutRef.current = null;
+    }
+    setIsOpen(true);
+  }
+
+  const handleMouseLeave = () => {
+    timeOutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 150)
+  }
+
   return (
     <div
       ref={dropdownRef}
       className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Main Collections Link with Dropdown Toggle */}
       <div className="flex items-center gap-1 group">
