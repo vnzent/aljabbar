@@ -1,7 +1,7 @@
-import AppointmentSection from "@/components/AppointmentSection";
-import Banner from "@/components/Banner";
-import InfoSection from "@/components/InfoSection";
-import DynamicHero from "@/components/DynamicHero";
+import AppointmentSection from "@/components/templates/AppointmentSection";
+import Banner from "@/components/templates/Banner";
+import InfoSection from "@/components/organisms/InfoSection";
+import DynamicHero from "@/components/templates/DynamicHero";
 
 export default function Contact() {
   return (

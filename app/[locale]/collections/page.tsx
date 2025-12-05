@@ -1,11 +1,11 @@
 import { fetchProducts, fetchProductCategories } from "@/lib/fetchProducts";
 import { Suspense } from "react";
-import ProductsGridSkeleton from "@/components/ProductsGridSkeleton";
-import ProductCard from "@/components/ProductCard";
-import PaginationClient from "@/components/PaginationClient";
-import CollectionsClientWrapper from "@/components/CollectionsClientWrapper";
-import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
-import Banner from "@/components/Banner";
+import ProductsGridSkeleton from "@/components/molecules/ProductsGridSkeleton";
+import ProductCard from "@/components/molecules/ProductCard";
+import PaginationClient from "@/components/organisms/PaginationClient";
+import CollectionsClientWrapper from "@/components/organisms/CollectionsClientWrapper";
+import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
+import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
 
 // Allow partial pre-rendering for instant navigation

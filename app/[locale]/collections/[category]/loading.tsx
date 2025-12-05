@@ -1,5 +1,5 @@
-import ProductsGridSkeleton from "@/components/ProductsGridSkeleton";
-import CategoryFilterSkeleton from "@/components/CategoryFilterSkeleton";
+import ProductsGridSkeleton from "@/components/molecules/ProductsGridSkeleton";
+import CategoryFilterSkeleton from "@/components/molecules/CategoryFilterSkeleton";
 
 export default function Loading() {
   return (

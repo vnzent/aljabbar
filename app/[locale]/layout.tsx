@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, Open_Sans} from "next/font/google";
+import { Poppins, Inter, Open_Sans } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/organisms/Navbar";
+import Footer from "@/components/organisms/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const inter = Inter({
@@ -21,7 +21,7 @@ const inter = Inter({
 const open_sans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",

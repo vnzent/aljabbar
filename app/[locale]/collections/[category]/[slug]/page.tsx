@@ -6,10 +6,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
-import Banner from "@/components/Banner";
-import RelatedProducts from "@/components/RelatedProducts";
-import ProductDetailSkeleton from "@/components/ProductDetailSkeleton";
+import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
+import Banner from "@/components/templates/Banner";
+import RelatedProducts from "@/components/organisms/RelatedProducts";
+import ProductDetailSkeleton from "@/components/molecules/ProductDetailSkeleton";
 import { Button } from "@/components/ui/button";
 
 async function ProductDetailContent({

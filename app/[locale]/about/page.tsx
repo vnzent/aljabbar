@@ -1,17 +1,17 @@
-import IconLine from "@/components/IconLine";
-import Gallery from "@/components/Gallery";
-import Banner from "@/components/Banner";
-import AboutSection from "@/components/AboutSection";
-import Faq from "@/components/Faq";
-import DynamicHero from "@/components/DynamicHero";
-import HeaderBetween from "@/components/HeaderBetween";
-import ValueCounter from "@/components/ValueCounter";
-import OurCollections from "@/components/OurCollections";
-import VisionMision from "@/components/VisionMision";
+import IconLine from "@/components/atoms/IconLine";
+import Gallery from "@/components/organisms/Gallery";
+import Banner from "@/components/templates/Banner";
+import AboutSection from "@/components/organisms/AboutSection";
+import Faq from "@/components/organisms/Faq";
+import DynamicHero from "@/components/templates/DynamicHero";
+import HeaderBetween from "@/components/templates/HeaderBetween";
+import ValueCounter from "@/components/atoms/ValueCounter";
+import OurCollections from "@/components/templates/OurCollections";
+import VisionMision from "@/components/organisms/VisionMision";
 import { aboutParagraphs } from "@/lib/data";
 import { parseTextWithBold } from "@/lib/textParser";
-import CounterSection from "@/components/CounterSection";
-import Branches from "@/components/Branches";
+import CounterSection from "@/components/organisms/CounterSection";
+import Branches from "@/components/organisms/Branches";
 
 export default function About() {
   return (
@@ -22,7 +22,12 @@ export default function About() {
         image="/hero-bg.png"
       />
       {/* About us */}
-      <AboutSection paragraphs={aboutParagraphs.map((paragraph) => parseTextWithBold(paragraph))} isButton={false} />
+      <AboutSection
+        paragraphs={aboutParagraphs.map((paragraph) =>
+          parseTextWithBold(paragraph)
+        )}
+        isButton={false}
+      />
       {/* Vision Mision */}
       <VisionMision />
       {/* Counter Section */}

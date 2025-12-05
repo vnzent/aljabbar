@@ -1,12 +1,12 @@
-import AboutSection from "@/components/AboutSection";
-import Banner from "@/components/Banner";
-import HeroSection from "@/components/HeroSection";
-import IconLine from "@/components/IconLine";
-import OurCollections from "@/components/OurCollections";
-import OurProducts from "@/components/OurProducts";
-import OurProductsSkeleton from "@/components/OurProductsSkeleton";
-import UniqueSellingPoints from "@/components/UniqueSellingPoints";
-import ValueCounter from "@/components/ValueCounter";
+import AboutSection from "@/components/organisms/AboutSection";
+import Banner from "@/components/templates/Banner";
+import HeroSection from "@/components/organisms/HeroSection";
+import IconLine from "@/components/atoms/IconLine";
+import OurCollections from "@/components/templates/OurCollections";
+import OurProducts from "@/components/templates/OurProducts";
+import OurProductsSkeleton from "@/components/molecules/OurProductsSkeleton";
+import UniqueSellingPoints from "@/components/organisms/UniqueSellingPoints";
+import ValueCounter from "@/components/atoms/ValueCounter";
 import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 
