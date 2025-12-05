@@ -69,8 +69,8 @@ export default function SortByDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           "flex items-center justify-between gap-3 px-4 py-2.5 min-w-[200px]",
-          "border border-gray-300 rounded-lg bg-white",
-          "hover:border-primary/50 transition-colors duration-200",
+          "border border-gray-300 bg-white",
+          "hover:border-primary/50 hover:cursor-pointer transition-colors duration-200",
           "text-sm font-medium text-gray-700"
         )}
       >
@@ -84,17 +84,17 @@ export default function SortByDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50">
-          <div className="py-1">
+        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg overflow-hidden z-50">
+          <div className="">
             {sortOptions.map((option) => (
               <button
                 key={option.value}
                 onClick={() => handleSortChange(option.value)}
                 className={cn(
-                  "w-full px-4 py-3 text-left text-sm transition-colors duration-150",
+                  "w-full px-4 py-3 text-left text-sm transition-colors duration-150 cursor-pointer active:bg-primary/20",
                   "flex items-center justify-between gap-2",
                   selectedSort === option.value
-                    ? "bg-primary/10 text-primary font-medium"
+                    ? "bg-primary/30 text-primary font-medium"
                     : "text-gray-700 hover:bg-gray-50"
                 )}
               >

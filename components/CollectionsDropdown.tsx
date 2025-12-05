@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { set } from "date-fns";
 
 interface CollectionsDropdownProps {
   shouldBeWhite: boolean;
@@ -48,27 +49,29 @@ export default function CollectionsDropdown({
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div
+      ref={dropdownRef}
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       {/* Main Collections Link with Dropdown Toggle */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 group">
         <Link
           href="/collections"
           className={cn(
-            "uppercase font-poppins text-lg font-normal transition-colors duration-300",
-            shouldBeWhite
-              ? "text-black hover:text-primary"
-              : "text-white hover:text-black"
+            "uppercase font-poppins text-lg font-normal transition-colors duration-300 group-hover:text-primary",
+            shouldBeWhite ? "text-black" : "text-white"
           )}
         >
           Collections
         </Link>
         <button
-          onClick={() => setIsOpen(!isOpen)}
           className={cn(
-            "p-1 rounded-md transition-all duration-300",
+            "p-1 rounded-md transition-all duration-300 group-hover:text-primary",
             shouldBeWhite
-              ? "text-black hover:text-primary hover:bg-gray-100"
-              : "text-white hover:text-black hover:bg-white/10",
+              ? "text-black group-hover:bg-gray-100"
+              : "text-white group-hover:bg-white/10",
             isOpen && "rotate-180"
           )}
           aria-label="Toggle collections menu"

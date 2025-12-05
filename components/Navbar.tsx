@@ -50,9 +50,9 @@ export default function Navbar() {
           {/* Top Bar */}
           <div
             className={cn(
-              "flex justify-between border-b py-3 transition-colors duration-300",
+              "flex justify-between border-b py-3 transition-colors duration-300 hover:text-primary",
               shouldBeWhite
-                ? "text-black border-black/60 hover:text-primary"
+                ? "text-black border-black/60"
                 : "text-white border-white"
             )}
           >
@@ -76,10 +76,8 @@ export default function Navbar() {
                   key={index}
                   href={social.href}
                   className={cn(
-                    "transition-colors duration-300",
-                    shouldBeWhite
-                      ? "text-black hover:text-primary"
-                      : "text-white hover:text-black"
+                    "transition-colors duration-300 hover:text-primary",
+                    shouldBeWhite ? "text-black" : "text-white"
                   )}
                 >
                   <social.icon className="size-7" />
@@ -104,8 +102,8 @@ export default function Navbar() {
             {/* Navigation Links */}
             <div
               className={cn(
-                "flex gap-6 items-center hover:text-black transition-colors duration-300",
-                shouldBeWhite ? "text-black hover:text-primary" : "text-white"
+                "flex gap-6 items-center transition-colors duration-300 hover:text-primary",
+                shouldBeWhite ? "text-black" : "text-white"
               )}
             >
               {navMenus.map((menu, index) => {
@@ -124,10 +122,10 @@ export default function Navbar() {
                     key={index}
                     href={menu.href}
                     className={cn(
-                      "uppercase font-poppins text-lg font-normal transition-colors duration-300",
+                      "uppercase font-poppins text-lg font-normal transition-colors duration-300 hover:text-primary",
                       shouldBeWhite
-                        ? "text-black hover:text-primary"
-                        : "text-white hover:text-black"
+                        ? "text-black "
+                        : "text-white"
                     )}
                   >
                     {menu.name}
@@ -145,10 +143,10 @@ export default function Navbar() {
                 >
                   <span
                     className={cn(
-                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300",
+                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
                       shouldBeWhite
-                        ? "text-black hover:text-primary"
-                        : "text-white hover:text-black"
+                        ? "text-black"
+                        : "text-white"
                     )}
                   >
                     <HiLanguage className="size-5" />
@@ -163,10 +161,10 @@ export default function Navbar() {
                 >
                   <span
                     className={cn(
-                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300",
+                      "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
                       shouldBeWhite
-                        ? "text-black hover:text-primary"
-                        : "text-white hover:text-black"
+                        ? "text-black"
+                        : "text-white"
                     )}
                   >
                     <BiSearch className="size-5" />
