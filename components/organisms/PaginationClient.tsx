@@ -83,7 +83,7 @@ export default function PaginationClient({
               className={cn(
                 "group flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-200",
                 "border border-gray-200 hover:border-primary/50",
-                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
+                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10 cursor-pointer",
                 currentPage <= 1 &&
                   "opacity-50 cursor-not-allowed hover:border-gray-200 hover:bg-transparent"
               )}
@@ -107,10 +107,10 @@ export default function PaginationClient({
                     className={cn(
                       "min-w-10 h-10 rounded-lg font-medium transition-all duration-200",
                       "hover:bg-linear-to-r hover:from-primary/10 hover:to-primary/20",
-                      "hover:scale-105 active:scale-95",
+                      "hover:scale-105 active:scale-95 cursor-pointer",
                       pageNum === currentPage
-                        ? "bg-linear-to-br from-primary to-primary/80 text-white shadow-lg shadow-primary/30 scale-105"
-                        : "border border-gray-200 hover:border-primary/50 text-gray-700"
+                        ? "bg-linear-to-br from-primary to-primary/80 text-white hover:text-primary shadow-lg shadow-primary/30 scale-105"
+                        : "border border-gray-200 hover:border-primary/50 text-gray-700 cursor-pointer"
                     )}
                   >
                     {pageNum}
@@ -128,7 +128,7 @@ export default function PaginationClient({
               className={cn(
                 "group flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-200",
                 "border border-gray-200 hover:border-primary/50",
-                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
+                "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10 cursor-pointer",
                 currentPage >= totalPages &&
                   "opacity-50 cursor-not-allowed hover:border-gray-200 hover:bg-transparent"
               )}

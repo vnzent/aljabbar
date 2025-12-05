@@ -160,7 +160,7 @@ export default function CollectionsClientWrapper({
               </span>
               <button
                 onClick={clearAllCategories}
-                className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                className="text-sm text-primary hover:text-primary/80 font-medium transition-colors hover:cursor-pointer"
               >
                 Clear All
               </button>

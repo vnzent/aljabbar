@@ -225,7 +225,7 @@ export default function CategoryFilter({
         {selectedCategories.length > 0 && (
           <button
             onClick={clearFilters}
-            className="text-sm text-primary hover:underline"
+            className="text-sm text-primary hover:underline hover:cursor-pointer"
           >
             Clear All
           </button>
