@@ -123,7 +123,9 @@ export default function Navbar() {
                     href={menu.href}
                     className={cn(
                       "uppercase font-poppins text-lg font-normal transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite ? "text-black " : "text-white"
+                      shouldBeWhite
+                        ? "text-black "
+                        : "text-white"
                     )}
                   >
                     {menu.name}
@@ -142,7 +144,9 @@ export default function Navbar() {
                   <span
                     className={cn(
                       "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite ? "text-black" : "text-white"
+                      shouldBeWhite
+                        ? "text-black"
+                        : "text-white"
                     )}
                   >
                     <HiLanguage className="size-5" />
@@ -158,7 +162,9 @@ export default function Navbar() {
                   <span
                     className={cn(
                       "hidden sm:inline text-sm cursor-pointer transition-colors duration-300 hover:text-primary",
-                      shouldBeWhite ? "text-black" : "text-white"
+                      shouldBeWhite
+                        ? "text-black"
+                        : "text-white"
                     )}
                   >
                     <BiSearch className="size-5" />
