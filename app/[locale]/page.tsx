@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="space-y-30">
       <HeroSection />
-      <OurCollections />
+      <OurCollections id="collections" />
       <section className="main-wrapper mx-auto">
         <ValueCounter />
       </section>

@@ -28,7 +28,7 @@ export const navSocialIcons = [
 ];
 
 export const collections = [
-  { src: "/our-collection-1.jpg", name: "Hand Made Carpets" },
+  { src: "/our-collection-1.jpg", name: "Hand-Made Carpets" },
   { src: "/our-collection-2.jpg", name: "Machine-Made Carpets" },
   { src: "/our-collection-3.jpg", name: "Mosque Carpets" },
 ];

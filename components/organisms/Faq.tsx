@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
+} from "@/components/ui/accordion";
 import { faqs } from "@/lib/data";
 import { parseTextWithParagraphs } from "@/lib/textParser";
 import Link from "next/link";

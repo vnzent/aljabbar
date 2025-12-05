@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export default function HeroSection() {
   return (
@@ -25,9 +26,11 @@ export default function HeroSection() {
             </h1>
           </div>
           <div className="flex gap-5 font-poppins">
-            <Button className="text-base">SHOP NOW</Button>
-            <Button variant="secondary" className="text-base">
-              VIEW COLLECTIONS
+            <Button className="text-base">
+              <Link href="/collections">SHOP NOW</Link>
+            </Button>
+            <Button variant="secondary" className="text-base" asChild>
+              <Link href="#collections">VIEW COLLECTIONS</Link>
             </Button>
           </div>
         </div>

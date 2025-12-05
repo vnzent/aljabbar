@@ -3,9 +3,13 @@ import Image from "next/image";
 import HeaderBetween from "@/components/templates/HeaderBetween";
 import Link from "next/link";
 
-export default function OurCollections() {
+interface OurCollectionsProps {
+  id?: string;
+}
+
+export default function OurCollections({id}: OurCollectionsProps) {
   return (
-    <section className="w-full">
+    <section className="w-full" id={id}>
       <div className="flex flex-col gap-10 main-wrapper mx-auto">
         <HeaderBetween
           heading="Our Collections"
