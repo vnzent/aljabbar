@@ -28,12 +28,12 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 border-t">
-      <h2 className="font-poppins font-bold text-3xl text-black mb-8">
+    <div className="container mx-auto px-4 py-10 md:py-12 lg:py-16 border-t">
+      <h2 className="font-poppins font-bold text-2xl md:text-3xl text-black mb-6 md:mb-8">
         Related Products
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
         {relatedProducts.map((product) => (
           <ProductCard
             key={product.id}

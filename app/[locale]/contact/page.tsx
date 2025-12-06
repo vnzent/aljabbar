@@ -5,7 +5,7 @@ import DynamicHero from "@/components/templates/DynamicHero";
 
 export default function Contact() {
   return (
-    <main className="space-y-30">
+    <main className="space-y-16 md:space-y-24 lg:space-y-30">
       <DynamicHero
         heading={`Crafting Comfort &\nElegance Since 1998`}
         subheading="A legacy of craftsmanship and refined interior taste."

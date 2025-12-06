@@ -50,29 +50,83 @@ export default function AppointmentsAdminPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-10">
+    <main className="min-h-screen bg-gray-50 py-6 md:py-8 lg:py-10">
       <div className="main-wrapper mx-auto">
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           {/* Header */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-poppins font-bold text-black">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-black">
                 Appointments Management
               </h1>
-              <p className="text-gray-600 mt-2">
+              <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-base">
                 Local Mode - Total: {appointments.length} appointments
               </p>
             </div>
-            <Button onClick={fetchAppointments}>Refresh</Button>
+            <Button onClick={fetchAppointments} className="w-full sm:w-auto">Refresh</Button>
           </div>
 
           {/* Table */}
           {appointments.length === 0 ? (
-            <div className="bg-white rounded-lg shadow p-10 text-center">
-              <p className="text-gray-500">No appointments yet</p>
+            <div className="bg-white rounded-lg shadow p-8 md:p-10 text-center">
+              <p className="text-gray-500 text-sm md:text-base">No appointments yet</p>
             </div>
           ) : (
-            <div className="bg-white rounded-lg shadow overflow-hidden">
+            <>
+              {/* Mobile Cards View */}
+              <div className="lg:hidden space-y-4">
+                {appointments.map((apt) => (
+                  <div key={apt.id} className="bg-white rounded-lg shadow p-4 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-gray-900">#{apt.id}</span>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(apt.status)}`}>
+                        {apt.status}
+                      </span>
+                    </div>
+                    <div className="border-t pt-3 space-y-2">
+                      <div>
+                        <p className="text-xs text-gray-500">Date & Time</p>
+                        <p className="text-sm font-medium">
+                          {new Date(apt.date).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </p>
+                        <p className="text-xs text-gray-500">{apt.timeSlot}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500">Customer</p>
+                        <p className="text-sm font-medium">{apt.name}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500">Contact</p>
+                        <p className="text-sm">{apt.email}</p>
+                        <p className="text-sm">{apt.phone}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500">Type</p>
+                        <p className="text-sm capitalize">{apt.visitType}</p>
+                      </div>
+                      {apt.address && (
+                        <div>
+                          <p className="text-xs text-gray-500">Location</p>
+                          <p className="text-sm">{apt.address}</p>
+                        </div>
+                      )}
+                      {apt.notes && (
+                        <div>
+                          <p className="text-xs text-gray-500">Notes</p>
+                          <p className="text-sm text-gray-600">{apt.notes}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden lg:block bg-white rounded-lg shadow overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-100 border-b">
                   <tr>
@@ -120,7 +174,7 @@ export default function AppointmentsAdminPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {apt.firstName}
+                        {apt.name}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-900">
                         <div>
@@ -128,11 +182,11 @@ export default function AppointmentsAdminPage() {
                           <p className="text-xs text-gray-500">{apt.phone}</p>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {apt.bookingType}
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">
+                        {apt.visitType}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {apt.location}
+                      <td className="px-6 py-4 text-sm text-gray-900 max-w-xs truncate">
+                        {apt.address || "-"}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
@@ -148,14 +202,15 @@ export default function AppointmentsAdminPage() {
                 </tbody>
               </table>
             </div>
+            </>
           )}
 
           {/* Instructions */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="font-poppins font-medium text-lg text-black mb-3">
+          <div className=\"bg-blue-50 border border-blue-200 rounded-lg p-4 md:p-6\">
+            <h3 className=\"font-poppins font-medium text-base md:text-lg text-black mb-2 md:mb-3\">
               📝 Local Mode Active
             </h3>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className=\"space-y-2 text-xs md:text-sm text-gray-700\">
               <li>
                 • Data disimpan di memory (akan hilang saat refresh server)
               </li>
@@ -164,8 +219,8 @@ export default function AppointmentsAdminPage() {
               <li>• Conflict detection tetap berjalan</li>
               <li>
                 • Test booking di{" "}
-                <a href="/appointment" className="text-primary underline">
-                  /appointment
+                <a href=\"/contact\" className=\"text-primary underline\">
+                  /contact
                 </a>
               </li>
             </ul>

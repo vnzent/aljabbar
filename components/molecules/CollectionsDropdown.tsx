@@ -2,10 +2,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { FiChevronDown } from "react-icons/fi";
 import { cn } from "@/lib/utils";
-import { set } from "date-fns";
 import { collectionCategories } from "@/lib/data";
+import { Button } from "../ui";
 
 interface CollectionsDropdownProps {
   shouldBeWhite: boolean;
@@ -17,20 +17,6 @@ export default function CollectionsDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeOutRef = useRef<NodeJS.Timeout | null>(null)
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   useEffect(() => {
     return () => {
@@ -72,18 +58,21 @@ export default function CollectionsDropdown({
         >
           Collections
         </Link>
-        <button
+        <Button
+        variant="ghost"
+        size="icon-sm"
+        onClick={() => setIsOpen(!isOpen)}
           className={cn(
-            "p-1 rounded-md transition-all duration-300 group-hover:text-primary",
+            "pl-1 transition-all duration-300 group-hover:text-primary cursor-pointer",
             shouldBeWhite
-              ? "text-black group-hover:bg-gray-100"
-              : "text-white group-hover:bg-white/10",
+              ? "text-black"
+              : "text-white",
             isOpen && "rotate-180"
           )}
           aria-label="Toggle collections menu"
         >
-          <ChevronDown className="w-4 h-4" />
-        </button>
+          <FiChevronDown className="size-5" />
+        </Button>
       </div>
 
       {/* Dropdown Menu */}
@@ -104,8 +93,6 @@ export default function CollectionsDropdown({
                   "block px-4 py-3 transition-all duration-200",
                   "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
                   "border-l-4 border-transparent hover:border-primary",
-                  index !== collectionCategories.length - 1 &&
-                    "border-b border-gray-100"
                 )}
               >
                 <div className="flex flex-col">

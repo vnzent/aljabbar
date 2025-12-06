@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
-import { ChevronDown, Check } from "lucide-react";
-import { HiLanguage } from "react-icons/hi2";
+import { MdOutlineCheck } from "react-icons/md";
 import { cn } from "@/lib/utils";
+import { FiChevronDown } from "react-icons/fi";
+import { Button } from "../ui";
 
 interface LanguageDropdownProps {
   shouldBeWhite: boolean;
@@ -29,20 +30,6 @@ export default function LanguageDropdown({
 
   const currentLanguage =
     languages.find((lang) => lang.code === locale) || languages[0];
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   useEffect(() => {
     return () => {
@@ -80,45 +67,49 @@ export default function LanguageDropdown({
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={() => setIsOpen(!isOpen)}
     >
       {/* Language Toggle Button */}
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         className={cn(
-          "flex items-center gap-1.5 p-2 rounded-lg transition-all duration-300 hover:cursor-pointer",
+          "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-full",
           shouldBeWhite
-            ? "text-black hover:bg-gray-100 hover:text-primary"
-            : "text-white hover:bg-white/10 hover:text-primary"
+            ? "text-black hover:text-primary"
+            : "text-white hover:text-primary"
         )}
         aria-label="Select language"
       >
-        <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="text-sm font-medium uppercase hidden sm:inline">
+        <span className="text-xl">{currentLanguage.flag}</span>
+        <span className="text-lg font-medium uppercase hidden sm:inline">
           {currentLanguage.code}
         </span>
-        <ChevronDown
-          className={cn(
-            "w-3.5 h-3.5 transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-        />
-      </button>
+          <FiChevronDown
+            className={cn(
+              "size-5 transition-transform duration-200 cursor-pointer",
+              isOpen && "rotate-180"
+            )}
+          />
+      </Button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full right-0 pt-2 z-50">
+        <div className="absolute top-0 lg:top-full right-0 pt-2 z-50">
           <div
             className={cn(
-              "w-44 bg-white shadow-2xl border border-gray-100 overflow-hidden",
+              "w-45 bg-white shadow-2xl border border-gray-100 overflow-hidden",
               "animate-in fade-in slide-in-from-top-2 duration-200"
             )}
           >
             <div className="">
               {languages.map((language) => (
-                <button
+                <Button
+                  variant="ghost"
                   key={language.code}
                   onClick={() => switchLocale(language.code)}
                   className={cn(
-                    "w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200",
+                    "w-full flex items-center gap-3 px-4 py-6 text-left transition-all duration-200 rounded-none",
                     "hover:bg-primary/10 active:bg-primary/20 hover:cursor-pointer",
                     locale === language.code
                       ? "bg-primary/30 text-primary"
@@ -128,9 +119,9 @@ export default function LanguageDropdown({
                   <span className="text-xl">{language.flag}</span>
                   <span className="flex-1 font-medium">{language.name}</span>
                   {locale === language.code && (
-                    <Check className="w-4 h-4 text-primary" />
+                    <MdOutlineCheck className="size-4 lg:size-5 text-primary" />
                   )}
-                </button>
+                </Button>
               ))}
             </div>
           </div>

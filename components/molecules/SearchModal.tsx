@@ -130,12 +130,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </div>
 
           {/* Keyboard shortcut hint */}
-          <div className="px-5 pb-3 flex items-center gap-2 text-xs text-gray-400">
+          {/* <div className="px-5 pb-3 flex items-center gap-2 text-xs text-gray-400">
             <kbd className="px-2 py-1 bg-gray-100 rounded text-gray-500 font-mono">
               ESC
             </kbd>
             <span>to close</span>
-          </div>
+          </div> */}
 
           {/* Divider */}
           <div className="h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />

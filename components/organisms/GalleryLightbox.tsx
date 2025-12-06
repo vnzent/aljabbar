@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -21,6 +21,20 @@ export default function GalleryLightbox({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const handleNext = useCallback(() => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setTimeout(() => setIsAnimating(false), 300);
+  }, [images.length, isAnimating]);
+
+  const handlePrevious = useCallback(() => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setTimeout(() => setIsAnimating(false), 300);
+  }, [images.length, isAnimating]);
+
   useEffect(() => {
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
@@ -40,7 +54,7 @@ export default function GalleryLightbox({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, currentIndex]);
+  }, [handleNext, handlePrevious, isOpen, onClose]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -54,20 +68,6 @@ export default function GalleryLightbox({
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
-
-  const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-    setTimeout(() => setIsAnimating(false), 300);
-  };
-
-  const handlePrevious = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-    setTimeout(() => setIsAnimating(false), 300);
-  };
 
   if (!isOpen) return null;
 
@@ -147,7 +147,7 @@ export default function GalleryLightbox({
             alt={`Gallery image ${currentIndex + 1}`}
             width={1920}
             height={1080}
-            className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+            className="max-w-full max-h-[80vh] w-auto h-auto object-contain"
             priority
           />
         </div>
@@ -183,7 +183,7 @@ export default function GalleryLightbox({
       </div>
 
       {/* Keyboard Hint */}
-      <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-110 hidden md:flex items-center gap-4 text-white/40 text-xs">
+      {/* <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-110 hidden md:flex items-center gap-4 text-white/40 text-xs">
         <span className="flex items-center gap-1.5">
           <kbd className="px-2 py-1 bg-white/10 rounded text-white/60">←</kbd>
           <kbd className="px-2 py-1 bg-white/10 rounded text-white/60">→</kbd>
@@ -193,7 +193,7 @@ export default function GalleryLightbox({
           <kbd className="px-2 py-1 bg-white/10 rounded text-white/60">ESC</kbd>
           <span>Close</span>
         </span>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -14,27 +14,33 @@ export default function Branches() {
 
   return (
     <section className="w-full mx-auto main-wrapper">
-      <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-5 text-center">
-          <p className="uppercase text-3xl font-poppins text-black">Branches</p>
-          <h2 className="text-5xl font-poppins font-medium text-black">
+      <div className="flex flex-col gap-8 md:gap-10">
+        <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 text-center">
+          <p className="uppercase text-xl sm:text-2xl md:text-2xl lg:text-3xl font-poppins text-black">
+            Branches
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-poppins font-medium text-black">
             AL-JABBAR Carpets
           </h2>
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-6">
           {/* Left Column */}
           <div className="flex-1">
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full space-y-3 md:space-y-4"
+            >
               {leftBranches.map((item, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border border-gray-200 px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
+                  className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
                 >
-                  <AccordionTrigger className="font-poppins font-medium text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-4">
+                  <AccordionTrigger className="font-poppins font-medium text-base md:text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
                     {item.city}
                   </AccordionTrigger>
-                  <AccordionContent className="font-inter text-base text-black/70 pb-4">
+                  <AccordionContent className="font-inter text-sm md:text-base text-black/70 pb-3 md:pb-4">
                     <div className="space-y-4 pt-2">
                       {item.store.map((store, storeIndex) => (
                         <div
@@ -66,17 +72,21 @@ export default function Branches() {
 
           {/* Right Column */}
           <div className="flex-1">
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion
+              type="single"
+              collapsible
+              className="w-full space-y-3 md:space-y-4"
+            >
               {rightBranches.map((item, index) => (
                 <AccordionItem
                   key={index + 4}
                   value={`item-${index + 4}`}
-                  className="border border-gray-200 px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
+                  className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
                 >
-                  <AccordionTrigger className="font-poppins font-medium text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-4">
+                  <AccordionTrigger className="font-poppins font-medium text-base md:text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
                     {item.city}
                   </AccordionTrigger>
-                  <AccordionContent className="font-inter text-base text-black/70 pb-4">
+                  <AccordionContent className="font-inter text-sm md:text-base text-black/70 pb-3 md:pb-4">
                     <div className="space-y-4 pt-2">
                       {item.store.map((store, storeIndex) => (
                         <div

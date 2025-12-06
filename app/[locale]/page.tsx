@@ -14,7 +14,7 @@ export default function Home() {
   const t = useTranslations("home");
 
   return (
-    <main className="space-y-30">
+    <main className="space-y-16 md:space-y-24 lg:space-y-30">
       <HeroSection />
       <OurCollections id="collections" />
       <section className="main-wrapper mx-auto">

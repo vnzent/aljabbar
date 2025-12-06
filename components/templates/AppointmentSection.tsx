@@ -21,15 +21,15 @@ export default function AppointmentSection() {
   return (
     <section className="w-full">
       <div className="main-wrapper mx-auto">
-        <div className="flex flex-col gap-30">
+        <div className="flex flex-col gap-16 md:gap-24 lg:gap-30">
           {/* Header */}
-          <div className="flex flex-col gap-5 text-center">
+          <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 text-center">
             <div className="flex gap-3 items-center justify-center">
-              <h2 className="text-black font-poppins font-medium text-5xl">
+              <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl md:text-4xl lg:text-5xl">
                 Schedule Your Visit
               </h2>
             </div>
-            <p className="font-inter text-lg text-black/70 max-w-2xl mx-auto">
+            <p className="font-inter text-base md:text-lg text-black/70 max-w-2xl mx-auto px-4">
               Choose a convenient date and time to visit our showroom or
               schedule a home visit. Our experts will guide you through our
               premium carpet collection.
@@ -37,11 +37,11 @@ export default function AppointmentSection() {
           </div>
 
           {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16">
             {/* Calendar Section */}
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h3 className="font-poppins font-medium text-2xl text-black">
+            <div className="space-y-5 md:space-y-6">
+              <div className="space-y-2 md:space-y-3">
+                <h3 className="font-poppins font-medium text-xl md:text-2xl text-black">
                   Select Date
                 </h3>
                 <p className="font-inter text-sm text-black/60">
@@ -53,11 +53,11 @@ export default function AppointmentSection() {
                 onDateSelect={handleDateSelect}
                 selectedDate={selectedDate}
               />
-              <div className="bg-primary/5 border border-primary/20 rounded-lg p-8 mt-10">
-                <h4 className="font-poppins font-medium text-xl text-black mb-4">
+              <div className="bg-primary/5 border border-primary/20 rounded-lg p-5 md:p-6 lg:p-8 mt-6 md:mt-8 lg:mt-10">
+                <h4 className="font-poppins font-medium text-lg md:text-xl text-black mb-3 md:mb-4">
                   Important Information
                 </h4>
-                <ul className="space-y-4 font-inter text-black/70">
+                <ul className="space-y-3 md:space-y-4 font-inter text-sm md:text-base text-black/70">
                   <li className="flex items-center gap-2">
                     <span className="text-primary">•</span>
                     <span>

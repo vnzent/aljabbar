@@ -45,17 +45,17 @@ async function ProductDetailContent({
 
   return (
     <>
-      <div className="container mx-auto px-4 pt-60 pb-10">
+      <div className="container mx-auto px-4 pt-32 sm:pt-40 md:pt-48 lg:pt-60 pb-8 md:pb-10">
         <DynamicBreadcrumb
           textColor="text-black"
           separatorColor="text-black"
-          textSize="text-base"
+          textSize="text-sm md:text-base"
           separatorSize="size-2"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-6 md:mt-8">
           {/* Product Images */}
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
               <Image
                 src={product.images[0]?.src || "/placeholder.jpg"}
@@ -67,7 +67,7 @@ async function ProductDetailContent({
             </div>
 
             {product.images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
                 {product.images.slice(1, 5).map((image, index) => (
                   <div
                     key={index}
@@ -86,10 +86,10 @@ async function ProductDetailContent({
           </div>
 
           {/* Product Information */}
-          <div className="space-y-6 flex flex-col justify-center">
+          <div className="space-y-5 md:space-y-6 flex flex-col justify-center">
             {/* Title & Categories */}
             <div>
-              <h1 className="font-poppins font-semibold text-4xl text-black mb-4">
+              <h1 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-3xl lg:text-4xl text-black mb-3 md:mb-4">
                 {product.name}
               </h1>
 
@@ -99,7 +99,7 @@ async function ProductDetailContent({
                     <Link
                       key={cat.id}
                       href={getCategoryLink(cat.slug)}
-                      className="text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-colors duration-500 cursor-pointer"
+                      className="text-base md:text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-colors duration-500 cursor-pointer"
                     >
                       {cat.name}
                     </Link>
@@ -111,15 +111,15 @@ async function ProductDetailContent({
             {/* Short Description */}
             {product.short_description && (
               <div
-                className="prose prose-lg max-w-none text-gray-700"
+                className="prose prose-sm md:prose-base lg:prose-lg max-w-none text-gray-700"
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               />
             )}
 
             {/* Full Description */}
             {product.description && (
-              <div className="border-t pt-6">
-                <h2 className="font-poppins font-semibold text-2xl text-black mb-4">
+              <div className="border-t pt-5 md:pt-6">
+                <h2 className="font-poppins font-semibold text-xl md:text-2xl text-black mb-3 md:mb-4">
                   Description
                 </h2>
                 <div
@@ -130,8 +130,8 @@ async function ProductDetailContent({
             )}
 
             {/* Contact Button */}
-            <div className="border-t pt-6">
-              <Button className="w-fit text-lg">
+            <div className="border-t pt-5 md:pt-6">
+              <Button className="w-full sm:w-fit text-base md:text-lg">
                 Contact Us for This Product
               </Button>
             </div>
