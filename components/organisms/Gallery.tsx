@@ -20,10 +20,10 @@ export default function Gallery() {
       <section className="min-h-screen w-full mx-auto main-wrapper">
         <div className="flex flex-col gap-18">
           <div className="flex flex-col gap-3 items-center">
-            <p className="uppercase font-poppins text-xl font-normal">
+            <p className="uppercase font-poppins text-xl md:text-2xl font-normal">
               Gallery
             </p>
-            <h2 className="font-poppins font-medium text-5xl capitalize">
+            <h2 className="font-poppins font-medium text-3xl md:text-5xl capitalize text-center">
               Explore Our Lookbook
             </h2>
           </div>

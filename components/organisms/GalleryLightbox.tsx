@@ -4,6 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui";
+import { RxCross1 } from "react-icons/rx";
+import {
+  MdArrowBack,
+  MdArrowBackIos,
+  MdArrowForward,
+  MdArrowForwardIos,
+} from "react-icons/md";
 
 interface GalleryLightboxProps {
   images: { src: string }[];
@@ -77,58 +85,66 @@ export default function GalleryLightbox({
       onClick={onClose}
     >
       {/* Top Bar */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-linear-to-b from-black/50 to-transparent z-110 flex items-center justify-between px-6">
+      <div className="absolute top-3 lg:top-5 left-0 right-0 h-16 bg-linear-to-b from-black/50 to-transparent z-110 flex items-center justify-between px-6">
         {/* Counter */}
         <div className="text-white/90 font-poppins text-sm tracking-wider">
-          <span className="text-white font-semibold text-lg">
+          <span className="text-primary font-semibold text-lg lg:text-xl">
             {currentIndex + 1}
           </span>
           <span className="mx-2 text-white/50">/</span>
-          <span className="text-white/70">{images.length}</span>
+          <span className="text-white/70 text-base lg:text-lg">
+            {images.length}
+          </span>
         </div>
 
         {/* Close Button */}
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={onClose}
-          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 group"
+          className="size-10 rounded-full bg-primary flex items-center justify-center transition-all duration-200 group cursor-pointer hover:scale-110"
           aria-label="Close"
         >
-          <X className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" />
-        </button>
+          <RxCross1 className="size-5 md:size-6 text-white cursor-pointer" />
+        </Button>
       </div>
 
       {/* Navigation Buttons */}
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         onClick={(e) => {
           e.stopPropagation();
           handlePrevious();
         }}
         className={cn(
-          "absolute left-4 md:left-8 z-110 w-12 h-12 rounded-full",
-          "bg-white/10 hover:bg-white/20 backdrop-blur-sm",
+          "absolute left-4 md:left-8 z-110 size-8 md:size-12 rounded-full",
+          "bg-primary backdrop-blur-sm",
           "flex items-center justify-center transition-all duration-200",
-          "group hover:scale-110"
+          "group hover:scale-110 cursor-pointer"
         )}
         aria-label="Previous"
       >
-        <ChevronLeft className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
-      </button>
+        <MdArrowBack className="size-5 md:size-6 text-white" />
+      </Button>
 
-      <button
+      <Button
+        variant="ghost"
+        size="icon"
         onClick={(e) => {
           e.stopPropagation();
           handleNext();
         }}
         className={cn(
-          "absolute right-4 md:right-8 z-110 w-12 h-12 rounded-full",
-          "bg-white/10 hover:bg-white/20 backdrop-blur-sm",
+          "absolute right-4 md:right-8 z-110 size-8 md:size-12 rounded-full",
+          "bg-primary backdrop-blur-sm",
           "flex items-center justify-center transition-all duration-200",
-          "group hover:scale-110"
+          "group hover:scale-110 cursor-pointer"
         )}
         aria-label="Next"
       >
-        <ChevronRight className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
-      </button>
+        <MdArrowForward className="size-5 md:size-6 text-white" />
+      </Button>
 
       {/* Image Container */}
       <div
@@ -155,16 +171,17 @@ export default function GalleryLightbox({
 
       {/* Thumbnail Strip */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-black/70 to-transparent z-110">
-        <div className="h-full flex items-center justify-center gap-2 px-4 overflow-x-auto scrollbar-hide">
+        <div className="h-full flex items-center justify-center gap-5 px-4 overflow-x-auto scrollbar-hide">
           {images.map((image, index) => (
-            <button
+            <Button
+              variant="ghost"
               key={index}
               onClick={(e) => {
                 e.stopPropagation();
                 setCurrentIndex(index);
               }}
               className={cn(
-                "relative w-14 h-14 rounded-lg overflow-hidden shrink-0 transition-all duration-200",
+                "relative w-14 h-14 rounded-none overflow-hidden shrink-0 transition-all duration-200 cursor-pointer",
                 index === currentIndex
                   ? "ring-2 ring-white ring-offset-2 ring-offset-black/50 scale-110"
                   : "opacity-50 hover:opacity-80"
@@ -177,7 +194,7 @@ export default function GalleryLightbox({
                 className="object-cover"
                 sizes="56px"
               />
-            </button>
+            </Button>
           ))}
         </div>
       </div>

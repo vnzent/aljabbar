@@ -4,11 +4,11 @@ import HeroSection from "@/components/organisms/HeroSection";
 import IconLine from "@/components/atoms/IconLine";
 import OurCollections from "@/components/templates/OurCollections";
 import OurProducts from "@/components/templates/OurProducts";
-import OurProductsSkeleton from "@/components/molecules/OurProductsSkeleton";
 import UniqueSellingPoints from "@/components/organisms/UniqueSellingPoints";
 import ValueCounter from "@/components/atoms/ValueCounter";
 import { useTranslations } from "next-intl";
 import { Suspense } from "react";
+import CounterSection from "@/components/organisms/CounterSection";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -17,7 +17,7 @@ export default function Home() {
     <main className="space-y-16 md:space-y-24 lg:space-y-30">
       <HeroSection />
       <OurCollections id="collections" />
-      <ValueCounter />
+      <CounterSection withHeading={false} />
       <AboutSection
         paragraphs={[
           <>

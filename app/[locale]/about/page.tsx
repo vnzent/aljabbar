@@ -4,8 +4,6 @@ import Banner from "@/components/templates/Banner";
 import AboutSection from "@/components/organisms/AboutSection";
 import Faq from "@/components/organisms/Faq";
 import DynamicHero from "@/components/templates/DynamicHero";
-import HeaderBetween from "@/components/templates/HeaderBetween";
-import ValueCounter from "@/components/atoms/ValueCounter";
 import OurCollections from "@/components/templates/OurCollections";
 import VisionMision from "@/components/organisms/VisionMision";
 import { aboutParagraphs } from "@/lib/data";
@@ -31,7 +29,7 @@ export default function About() {
       {/* Vision Mision */}
       <VisionMision />
       {/* Counter Section */}
-      <CounterSection />
+      <CounterSection withHeading />
       {/* Logo Seperator */}
       <IconLine />
       {/* Collection */}

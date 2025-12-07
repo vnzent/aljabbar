@@ -11,12 +11,12 @@ import Link from "next/link";
 export default function Faq() {
   return (
     <section className="w-full">
-      <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 lg:gap-20 items-start">
+      <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 lg:gap-20 items-center">
         <div className="flex flex-col gap-5 md:gap-6 lg:gap-7 w-full lg:max-w-md">
-          <h2 className="font-poppins font-semibold text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-black">
+          <h2 className="font-poppins font-semibold text-center lg:text-left text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-black">
             FAQ
           </h2>
-          <div className="flex flex-col gap-3 md:gap-4">
+          <div className="flex flex-col gap-3 md:gap-4 text-center lg:text-left">
             <p className="font-inter font-normal text-sm md:text-base text-black/60 capitalize leading-relaxed">
               We've gathered some of the most frequently asked questions so you
               can get answers faster.

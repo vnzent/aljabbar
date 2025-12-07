@@ -9,17 +9,15 @@ import { useEffect, useTransition } from "react";
 
 interface ProductCardProps {
   product: Product;
-  categorySlug?: string;
 }
 
 export default function ProductCard({
-  product,
-  categorySlug,
+  product
 }: ProductCardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-  const slug = categorySlug || product.categories?.[0]?.slug || "uncategorized";
+  const slug = product.categories?.[0]?.slug || "uncategorized";
 
   const handleCategoryClick = (
     e: React.MouseEvent,
@@ -79,7 +77,7 @@ export default function ProductCard({
 
           {/* Content Container */}
           <div className="py-5">
-            <h3 className="font-poppins font-semibold text-xl text-black line-clamp-2">
+            <h3 className="font-poppins font-medium text-xl text-black line-clamp-1">
               {product.name}
             </h3>
 

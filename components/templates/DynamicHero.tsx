@@ -21,7 +21,7 @@ export default function DynamicHero({
           className="object-cover"
         />
       </div>
-      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full"></div>
+      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
       <div className="h-200 w-full pb-45 flex main-wrapper justify-start items-end mx-auto">
         <div className="flex flex-col gap-5">
           <DynamicBreadcrumb
@@ -32,11 +32,11 @@ export default function DynamicHero({
             hoverText="hover:text-primary"
           />
           <div className="flex flex-col gap-3">
-            <h1 className="text-white font-poppins font-medium text-5xl leading-tight text-[70px]">
+            <h1 className="text-white font-poppins font-medium text-4xl md:text-6xl lg:text-[70px] leading-tight">
               {parseTextWithLineBreaks(heading)}
             </h1>
             {subheading && (
-              <div className="flex gap-5 font-inter font-normal text-white capitalize text-lg">
+              <div className="flex gap-5 font-inter font-normal text-white capitalize text-base md:text-lg lg:text-xl">
                 {subheading}
               </div>
             )}
