@@ -21,20 +21,6 @@ export default function ProductCard({
   const [isPending, startTransition] = useTransition();
   const slug = categorySlug || product.categories?.[0]?.slug || "uncategorized";
 
-  // Debug: Log product categories
-  useEffect(() => {
-    if (product.categories && product.categories.length > 0) {
-      console.log(
-        `ProductCard "${product.name}" categories:`,
-        product.categories.map((c) => ({
-          id: c.id,
-          name: c.name,
-          slug: c.slug,
-        }))
-      );
-    }
-  }, []);
-
   const handleCategoryClick = (
     e: React.MouseEvent,
     clickedCategorySlug: string

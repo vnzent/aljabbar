@@ -19,9 +19,9 @@ export default function AboutSection({
             alt="About Image"
             width={800}
             height={1000}
-            className="object-cover overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl w-full h-[350px] sm:h-[420px] md:h-[500px] lg:h-[700px] xl:h-[800px]"
+            className="object-cover overflow-hidden w-full h-[350px] sm:h-[420px] md:h-[500px] lg:h-[700px] xl:h-[800px]"
           />
-          <div className="hidden lg:block absolute -z-10 -bottom-8 xl:-bottom-12 -right-6 xl:-right-10 bg-primary w-64 xl:w-2xl h-32 xl:h-48 rounded-lg" />
+          <div className="hidden lg:block absolute -z-10 -bottom-8 xl:-bottom-12 -right-6 xl:-right-10 bg-primary w-64 xl:w-2xl h-32 xl:h-48" />
         </div>
 
         {/* Content Container */}

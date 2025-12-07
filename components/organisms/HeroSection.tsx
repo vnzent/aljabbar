@@ -11,14 +11,15 @@ export default function HeroSection() {
           alt="Hero Background"
           fill={true}
           className="object-cover"
+          loading="eager"
         />
       </div>
-      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full"></div>
-      <div className="h-full w-full flex flex-col main-wrapper mx-auto justify-end items-start gap-10 pb-24 md:pb-32 lg:pb-45 pt-24 sm:pt-32">
-        <div className="flex flex-col gap-8 max-w-3xl">
+      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
+      <div className="h-full w-full flex flex-col main-wrapper mx-auto justify-end items-start gap-10 pb-24 md:pb-35 lg:pb-45">
+        <div className="flex flex-col gap-8 max-w-3xl lg:max-w-4xl">
           <div className="flex flex-col gap-3">
             <p className="text-white font-open-sans font-normal text-base sm:text-lg lg:text-2xl uppercase tracking-[0.2em]">
-              Al-Jabbar HousE of Carpets
+              Al-Jabbar House of Carpets
             </p>
             <h1 className="text-white font-poppins font-medium text-4xl sm:text-5xl lg:text-[70px] leading-snug sm:leading-tight">
               Elevate Your Space <br />

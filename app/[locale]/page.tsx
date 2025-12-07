@@ -17,9 +17,7 @@ export default function Home() {
     <main className="space-y-16 md:space-y-24 lg:space-y-30">
       <HeroSection />
       <OurCollections id="collections" />
-      <section className="main-wrapper mx-auto">
-        <ValueCounter />
-      </section>
+      <ValueCounter />
       <AboutSection
         paragraphs={[
           <>

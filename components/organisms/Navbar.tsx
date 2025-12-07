@@ -183,8 +183,7 @@ export default function Navbar() {
                 onClick={() => setIsSearchOpen(true)}
                 className={cn(
                   "transition-all duration-300 pt-1",
-                  shouldBeWhite ? "text-black" : "text-white",
-                  isMobileMenuOpen ? "text-black" : "text-white",
+                  shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
                 )}
                 aria-label="Search"
               >
@@ -196,9 +195,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={cn(
                   "p-2 rounded-lg transition-all duration-300",
-                  shouldBeWhite
-                    ? "text-black hover:bg-gray-100"
-                    : "text-white hover:bg-white/10"
+                  shouldBeWhite ? "text-black" : "text-white"
                 )}
                 aria-label="Menu"
               >

@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Search, X, Loader2, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { BiLoaderAlt, BiSearch } from "react-icons/bi";
+import { LuSparkles } from "react-icons/lu";
+import { RxCross1 } from "react-icons/rx";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { Button } from "../ui";
 
 interface Product {
   id: number;
@@ -54,7 +58,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       searchProducts(searchQuery);
-    }, 300);
+    }, 700);
 
     return () => clearTimeout(timer);
   }, [searchQuery, searchProducts]);
@@ -77,12 +81,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen, onClose]);
 
   // Reset search when modal closes
-  useEffect(() => {
-    if (!isOpen) {
-      setSearchQuery("");
-      setResults([]);
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (!isOpen) {
+  //     setSearchQuery("");
+  //     setResults([]);
+  //   }
+  // }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -107,25 +111,27 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
             <div className="flex items-center gap-4 p-5">
               <div className="relative">
-                <Search className="w-6 h-6 text-primary" />
+                <BiSearch className="size-6 text-primary" />
               </div>
               <input
                 type="text"
                 placeholder="Search for carpets, rugs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 outline-none text-lg font-poppins placeholder:text-gray-400 bg-transparent"
+                className="flex-1 outline-none text-lg font-poppins placeholder:text-gray-500 bg-transparent"
                 autoFocus
               />
               {isLoading && (
-                <Loader2 className="w-5 h-5 animate-spin text-primary" />
+                <BiLoaderAlt className="size-5 animate-spin text-primary" />
               )}
-              <button
+              <Button
+              variant="ghost"
+              size="icon"
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hover:rotate-90 hover:cursor-pointer"
+                className="p-2 transition-all duration-200 hover:rotate-90 hover:cursor-pointer"
               >
-                <X className="w-5 h-5 text-gray-500" />
-              </button>
+                <RxCross1 className="size-5 lg:size-6 text-primary" />
+              </Button>
             </div>
           </div>
 
@@ -138,14 +144,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </div> */}
 
           {/* Divider */}
-          <div className="h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+          <div className="h-px bg-linear-to-r from-transparent via-gray-300 to-transparent" />
 
           {/* Search Results */}
           <div className="max-h-[50vh] overflow-y-auto">
             {!searchQuery ? (
               <div className="p-12 text-center">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-linear-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                  <Sparkles className="w-10 h-10 text-primary/60" />
+                  <LuSparkles className="size-9 text-primary/60" />
                 </div>
                 <h3 className="font-poppins font-semibold text-gray-800 mb-2">
                   Discover Our Collection
@@ -157,14 +163,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             ) : isLoading ? (
               <div className="p-12 text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  <BiLoaderAlt className="size-7 lg:size-8 animate-spin text-primary" />
                 </div>
                 <p className="text-gray-500">Searching...</p>
               </div>
             ) : results.length === 0 ? (
               <div className="p-12 text-center">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-                  <Search className="w-10 h-10 text-gray-300" />
+                  <BiSearch className="size-9 text-gray-300" />
                 </div>
                 <h3 className="font-poppins font-semibold text-gray-800 mb-2">
                   No results found
@@ -183,14 +189,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     }/${product.slug}`}
                     onClick={onClose}
                     className={cn(
-                      "flex items-center gap-4 p-3 rounded-xl transition-all duration-200 group",
+                      "flex items-center gap-4 p-3 transition-all duration-200 group",
                       "hover:bg-linear-to-r hover:from-primary/5 hover:to-transparent",
                       "border border-transparent hover:border-primary/10"
                     )}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {/* Product Image */}
-                    <div className="relative w-16 h-16 shrink-0 bg-gray-100 rounded-xl overflow-hidden group-hover:shadow-lg transition-shadow">
+                    <div className="relative w-16 h-16 shrink-0 bg-gray-100 overflow-hidden group-hover:shadow-lg transition-shadow">
                       {product.images[0] ? (
                         <Image
                           src={product.images[0].src}
@@ -201,7 +207,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Search className="w-6 h-6 text-gray-300" />
+                          <BiSearch className="w-6 h-6 text-gray-300" />
                         </div>
                       )}
                     </div>
@@ -221,7 +227,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </div>
 
                     {/* Arrow */}
-                    <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    <IoIosArrowRoundForward className="size-5 lg:size-6 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </Link>
                 ))}
               </div>
@@ -232,7 +238,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {results.length > 0 && (
             <div className="px-5 py-4 border-t border-gray-100 bg-linear-to-r from-gray-50 to-white">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm lg:text-base font-normal text-gray-600">
                   Found{" "}
                   <span className="font-semibold text-primary">
                     {results.length}
@@ -244,10 +250,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     searchQuery
                   )}`}
                   onClick={onClose}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm lg:text-base font-medium text-primary hover:text-primary/80 transition-colors"
                 >
                   View all results
-                  <ArrowRight className="w-4 h-4" />
+                  <IoIosArrowRoundForward className="sizze-5 lg:size-6" />
                 </Link>
               </div>
             </div>
