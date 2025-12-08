@@ -77,7 +77,7 @@ export default function LanguageDropdown({
         variant="ghost"
         size="icon"
         className={cn(
-          "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-auto px-2",
+          "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-auto px-2 group",
           shouldBeWhite || isMobileMenuOpen
             ? "text-black hover:text-primary"
             : "text-white hover:text-primary"
@@ -89,7 +89,7 @@ export default function LanguageDropdown({
         />
         <span
           className={cn(
-            "text-sm sm:text-base font-medium uppercase hidden sm:inline",
+            "text-sm sm:text-base font-medium uppercase hidden sm:inline group-hover:text-primary",
             shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
           )}
         >
@@ -97,7 +97,7 @@ export default function LanguageDropdown({
         </span>
         <FiChevronDown
           className={cn(
-            "size-4 sm:size-5 transition-transform duration-200 cursor-pointer",
+            "size-4 sm:size-5 transition-transform duration-200 cursor-pointer group-hover:text-primary",
             isOpen && "rotate-180",
             shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
           )}

@@ -279,3 +279,5 @@ export const branches = [
     ]
   }
 ];
+
+export const linkContact = "";

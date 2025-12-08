@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
+import WhatsappButton from "@/components/atoms/WhatsAppButton";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -51,6 +52,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <Navbar />
+          <WhatsappButton />
           {children}
           <Footer />
         </NextIntlClientProvider>

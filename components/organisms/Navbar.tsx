@@ -10,8 +10,9 @@ import { BiSearch } from "react-icons/bi";
 import { IoCallOutline } from "react-icons/io5";
 import { AiOutlineMail } from "react-icons/ai";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import { FiChevronDown } from "react-icons/fi";
 import Image from "next/image";
-import { navMenus, navSocialIcons } from "@/lib/data";
+import { navMenus, navSocialIcons, collectionCategories } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui";
 
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileCollectionsOpen, setIsMobileCollectionsOpen] = useState(false);
   const navRef = useRef(null);
   const pathname = usePathname();
 
@@ -65,7 +67,7 @@ export default function Navbar() {
           shouldBeWhite || isMobileMenuOpen ? "bg-white" : "bg-transparent"
         )}
       >
-        <nav className="container mx-auto px-4 flex flex-col">
+        <nav className="main-wrapper mx-auto flex flex-col">
           {/* Top Bar - Hidden on mobile */}
           <div
             className={cn(
@@ -221,7 +223,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden fixed inset-0 border-t border-black/60 top-16 bg-white transition-all duration-300 h-dvh w-full overflow-hidden",
+            "lg:hidden fixed inset-0 border-t border-black/60 top-16 bg-white transition-all duration-300 h-dvh w-full overflow-y-auto",
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
@@ -235,7 +237,51 @@ export default function Navbar() {
                 if (menu.name === "Collections") {
                   return (
                     <div key={index} className="border-b border-gray-200 pb-4">
-                      <CollectionsDropdown shouldBeWhite={true} />
+                      <button
+                        onClick={() =>
+                          setIsMobileCollectionsOpen(!isMobileCollectionsOpen)
+                        }
+                        className="w-full flex items-center justify-between uppercase font-poppins text-lg font-normal text-black hover:text-primary transition-colors"
+                      >
+                        <span>Collections</span>
+                        <FiChevronDown
+                          className={cn(
+                            "size-5 transition-transform duration-200",
+                            isMobileCollectionsOpen && "rotate-180"
+                          )}
+                        />
+                      </button>
+
+                      {/* Collections Submenu */}
+                      <div
+                        className={cn(
+                          "overflow-hidden transition-all duration-300",
+                          isMobileCollectionsOpen
+                            ? "max-h-[500px] mt-4"
+                            : "max-h-0"
+                        )}
+                      >
+                        <div className="flex flex-col gap-3 pl-4">
+                          {collectionCategories.map((category) => (
+                            <Link
+                              key={category.slug}
+                              href={`/collections/${category.slug}`}
+                              className="flex flex-col py-2 border-l-4 border-primary bg-linear-to-r from-primary/5 to-primary/10 pl-3 transition-all"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setIsMobileCollectionsOpen(false);
+                              }}
+                            >
+                              <span className="text-base font-medium text-gray-900 hover:text-primary transition-colors">
+                                {category.name}
+                              </span>
+                              <span className="text-xs text-gray-500 mt-0.5">
+                                {category.description}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   );
                 }

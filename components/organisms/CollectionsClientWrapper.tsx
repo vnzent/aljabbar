@@ -204,7 +204,7 @@ export default function CollectionsClientWrapper({
       {/* Products Grid */}
       <div className={hasCategories ? "flex-1" : "w-full"}>
         {/* Title Section - Not Sticky */}
-        <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-32">
+        <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-17 lg:top-32">
           <div className="mb-6">
             <h1 className="font-poppins font-bold text-3xl text-black">
               {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
@@ -223,7 +223,7 @@ export default function CollectionsClientWrapper({
             className={cn(
               "mb-6 hidden md:flex items-center justify-end gap-3 transition-all duration-300",
               isHeaderSticky &&
-                "sticky top-16 lg:top-32 z-30 bg-white -mx-4 px-4 py-3"
+                "sticky z-50 bg-white -mx-4 px-4 py-3"
             )}
           >
             <ShowProductsDropdown />
@@ -232,9 +232,7 @@ export default function CollectionsClientWrapper({
         </div>
         <div
           className={cn(
-            "mb-6 flex md:hidden  sticky top-16 items-center justify-end gap-3 transition-all duration-300",
-            isHeaderSticky &&
-              "sticky top-16 lg:top-32 z-30 bg-white -mx-4 px-4 py-3"
+            "mb-6 flex md:hidden sticky top-16 z-10 items-center justify-end gap-3 transition-all duration-300 bg-white -mx-4 px-4 py-3"
           )}
         >
           <ShowProductsDropdown />
