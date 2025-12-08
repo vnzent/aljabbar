@@ -33,12 +33,11 @@ export default async function RelatedProducts({
         Related Products
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
         {relatedProducts.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
-            categorySlug={categorySlug}
           />
         ))}
       </div>

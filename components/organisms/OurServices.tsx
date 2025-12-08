@@ -38,7 +38,16 @@ export default function OurServices() {
               Order Now
             </Button>
           </div>
-          <div className="flex flex-col gap-4 md:gap-5 w-full">
+          <div className="w-full lg:order-4">
+            <Image
+              src="/our-collection-3.jpg"
+              alt="Service 2"
+              width={800}
+              height={500}
+              className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden object-cover"
+            />
+          </div>
+          <div className="flex flex-col gap-4 md:gap-5 w-full lg:order-3">
             <h3 className="font-poppins font-medium text-2xl md:text-3xl text-black">
               Carpet Washing (Premium Care)
             </h3>
@@ -53,16 +62,7 @@ export default function OurServices() {
               Order Now
             </Button>
           </div>
-          <div className="w-full">
-            <Image
-              src="/our-collection-3.jpg"
-              alt="Service 2"
-              width={800}
-              height={500}
-              className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden object-cover"
-            />
-          </div>
-          <div className="w-full">
+          <div className="w-full lg:order-5">
             <Image
               src="/our-collection-2.jpg"
               alt="Service 3"
@@ -71,7 +71,7 @@ export default function OurServices() {
               className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden object-cover"
             />
           </div>
-          <div className="flex flex-col gap-4 md:gap-5 w-full">
+          <div className="flex flex-col gap-4 md:gap-5 w-full lg:order-6">
             <h3 className="font-poppins font-medium text-2xl md:text-3xl text-black">
               Carpet Repairing
             </h3>

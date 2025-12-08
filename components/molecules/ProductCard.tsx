@@ -77,7 +77,7 @@ export default function ProductCard({
 
           {/* Content Container */}
           <div className="py-5">
-            <h3 className="font-poppins font-medium text-xl text-black line-clamp-1">
+            <h3 className="font-poppins font-medium text-lg md:text-xl text-black line-clamp-1">
               {product.name}
             </h3>
 
@@ -87,7 +87,7 @@ export default function ProductCard({
                   <span
                     key={category.id}
                     onClick={(e) => handleCategoryClick(e, category.slug)}
-                    className="inline-block text-lg font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer"
+                    className="inline-block text-sm md:text-lg leading-tight md:leading-loose font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer"
                   >
                     {category.name}
                   </span>

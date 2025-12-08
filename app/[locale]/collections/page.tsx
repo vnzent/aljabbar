@@ -71,7 +71,7 @@ async function ProductsGrid({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -114,7 +114,7 @@ export default async function Collections({
 
   return (
     <>
-      <div className="pt-40 pb-20">
+      <div className="pt-10 sm:pt-15 lg:pt-28 pb-5 sm:pb-10 lg:pb-15">
         <div className="container mx-auto px-4 py-8">
           <div className="py-3">
             <DynamicBreadcrumb

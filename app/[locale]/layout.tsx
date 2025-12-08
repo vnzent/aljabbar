@@ -45,7 +45,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <body
         className={`${poppins.variable} ${inter.variable} ${open_sans.variable} antialiased`}
       >

@@ -77,14 +77,14 @@ export default function Navbar() {
           >
             <div className="flex gap-5 items-center">
               <div className="flex gap-2 items-center">
-                <IoCallOutline className="size-6" />
-                <span className="text-base md:text-lg xl:text-xl font-poppins font-normal">
+                <IoCallOutline className="size-5" />
+                <span className="text-base font-poppins font-normal">
                   Call us today! (021) 7197770
                 </span>
               </div>
               <div className="flex gap-3 items-center">
-                <AiOutlineMail className="size-6" />
-                <span className="text-base md:text-lg xl:text-xl font-poppins font-normal">
+                <AiOutlineMail className="size-5" />
+                <span className="text-base font-poppins font-normal">
                   sales@aljabbarcarpets.com
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function Navbar() {
                     shouldBeWhite ? "text-black" : "text-white"
                   )}
                 >
-                  <social.icon className="size-5 md:size-6 xl:size-7" />
+                  <social.icon className="size-6" />
                 </Link>
               ))}
             </div>
@@ -157,7 +157,10 @@ export default function Navbar() {
               </div>
               {/* Desktop Icon Buttons */}
               <div className="flex gap-5 items-center">
-                <LanguageDropdown shouldBeWhite={shouldBeWhite} />
+                <LanguageDropdown
+                  shouldBeWhite={shouldBeWhite}
+                  isMobileMenuOpen={isMobileMenuOpen}
+                />
                 <Button
                   variant="ghost"
                   size="icon"
@@ -177,13 +180,19 @@ export default function Navbar() {
 
             {/* Mobile Icons & Hamburger */}
             <div className="flex lg:hidden gap-2 items-center z-50">
+              <LanguageDropdown
+                shouldBeWhite={shouldBeWhite}
+                isMobileMenuOpen={isMobileMenuOpen}
+              />
               <Button
                 variant="ghost"
                 size="icon-lg"
                 onClick={() => setIsSearchOpen(true)}
                 className={cn(
-                  "transition-all duration-300 pt-1",
-                  shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
+                  "transition-all duration-300",
+                  shouldBeWhite || isMobileMenuOpen
+                    ? "text-black"
+                    : "text-white"
                 )}
                 aria-label="Search"
               >
@@ -221,16 +230,27 @@ export default function Navbar() {
           <div className="container mx-auto px-4 py-8">
             {/* Mobile Navigation Links */}
             <div className="flex flex-col gap-6 mb-8">
-              {navMenus.map((menu, index) => (
-                <Link
-                  key={index}
-                  href={menu.href}
-                  className="uppercase font-poppins text-xl font-normal text-black hover:text-primary transition-colors border-b border-gray-200 pb-4"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {menu.name}
-                </Link>
-              ))}
+              {navMenus.map((menu, index) => {
+                // Special handling for Collections menu in mobile
+                if (menu.name === "Collections") {
+                  return (
+                    <div key={index} className="border-b border-gray-200 pb-4">
+                      <CollectionsDropdown shouldBeWhite={true} />
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={index}
+                    href={menu.href}
+                    className="uppercase font-poppins text-xl font-normal text-black hover:text-primary transition-colors border-b border-gray-200 pb-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {menu.name}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Mobile Contact Info */}
@@ -254,12 +274,6 @@ export default function Navbar() {
                 </a>
               </div>
             </div>
-
-            {/* Mobile Language Selector */}
-            <div className="mb-8">
-              <LanguageDropdown shouldBeWhite={true} />
-            </div>
-
             {/* Mobile Social Icons */}
             <div className="flex gap-5 items-center">
               {navSocialIcons.map((social, index) => (

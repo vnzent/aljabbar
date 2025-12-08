@@ -12,7 +12,7 @@ export default function DynamicHero({
   image: string;
 }) {
   return (
-    <section className="w-full relative">
+    <section className="w-full relative h-screen lg:h-auto">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
           src={image}
@@ -22,13 +22,13 @@ export default function DynamicHero({
         />
       </div>
       <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
-      <div className="h-200 w-full pb-45 flex main-wrapper justify-start items-end mx-auto">
-        <div className="flex flex-col gap-5">
+      <div className="h-full lg:h-200 w-full pb-45 md:pb-0 md:px-12 lg:px-8 lg:pb-45 flex main-wrapper justify-start items-end md:items-center lg:items-end mx-auto">
+        <div className="flex flex-col gap-3">
           <DynamicBreadcrumb
             textColor="text-white"
             separatorColor="text-white"
-            textSize="text-xl"
-            separatorSize="size-3"
+            textSize="text-base md:text-xl"
+            separatorSize="size-2 md:size-3"
             hoverText="hover:text-primary"
           />
           <div className="flex flex-col gap-3">

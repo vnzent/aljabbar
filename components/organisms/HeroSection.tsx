@@ -15,7 +15,7 @@ export default function HeroSection() {
         />
       </div>
       <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
-      <div className="h-full w-full flex flex-col main-wrapper mx-auto justify-end items-start gap-10 pb-24 md:pb-35 lg:pb-45">
+      <div className="h-full w-full flex flex-col main-wrapper mx-auto justify-end items-start md:justify-center lg:justify-end gap-10 pb-24 md:pb-0 lg:pb-45 md:px-12 lg:px-8">
         <div className="flex flex-col gap-8 max-w-3xl lg:max-w-4xl">
           <div className="flex flex-col gap-3">
             <p className="text-white font-open-sans font-normal text-base sm:text-lg lg:text-2xl uppercase tracking-[0.2em]">

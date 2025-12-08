@@ -10,6 +10,7 @@ import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import Banner from "@/components/templates/Banner";
 import RelatedProducts from "@/components/organisms/RelatedProducts";
 import ProductDetailSkeleton from "@/components/molecules/ProductDetailSkeleton";
+import FixedContactButton from "@/components/molecules/FixedContactButton";
 import { Button } from "@/components/ui/button";
 
 async function ProductDetailContent({
@@ -45,7 +46,7 @@ async function ProductDetailContent({
 
   return (
     <>
-      <div className="container mx-auto px-4 pt-32 sm:pt-40 md:pt-48 lg:pt-60 pb-8 md:pb-10">
+      <div className="container mx-auto px-4 pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
         <DynamicBreadcrumb
           textColor="text-black"
           separatorColor="text-black"
@@ -130,7 +131,7 @@ async function ProductDetailContent({
             )}
 
             {/* Contact Button */}
-            <div className="border-t pt-5 md:pt-6">
+            <div className=" hidden md:block">
               <Button className="w-full sm:w-fit text-base md:text-lg">
                 Contact Us for This Product
               </Button>
@@ -139,17 +140,21 @@ async function ProductDetailContent({
         </div>
       </div>
 
+      {/* Fixed Contact Button for Mobile/Tablet */}
+      <FixedContactButton />
+
       {/* Related Products Section */}
       {product.categories && product.categories.length > 0 && (
         <Suspense
           fallback={
             <div className="container mx-auto px-4 py-16">
               <div className="h-10 w-64 bg-gray-200 rounded mb-8 animate-pulse" />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="space-y-4">
                     <div className="aspect-4/3 bg-gray-200 rounded animate-pulse" />
                     <div className="h-6 bg-gray-200 rounded animate-pulse" />
+                    <div className="h-4 bg-gray-200 w-3/4 animate-pulse" />
                   </div>
                 ))}
               </div>

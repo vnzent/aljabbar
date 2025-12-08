@@ -115,6 +115,7 @@ export default function CollectionsClientWrapper({
 
   return (
     <FilterContext.Provider value={{ handleFilterChange }}>
+      {/* TODO: Tambahin Filter Sidebar Kayak di Shopee untuk mobile */}
       {/* Sidebar Filter - only show if there are categories */}
       {hasCategories && (
         <aside className="hidden lg:block w-64 shrink-0">

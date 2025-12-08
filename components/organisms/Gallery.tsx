@@ -17,8 +17,8 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="min-h-screen w-full mx-auto main-wrapper">
-        <div className="flex flex-col gap-18">
+      <section className="w-full mx-auto main-wrapper">
+        <div className="flex flex-col gap-8 md:gap-12 lg:gap-18">
           <div className="flex flex-col gap-3 items-center">
             <p className="uppercase font-poppins text-xl md:text-2xl font-normal">
               Gallery
@@ -27,15 +27,15 @@ export default function Gallery() {
               Explore Our Lookbook
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {galleryLookBook.map((product, index) => (
               <Card
                 className="cursor-pointer group overflow-hidden"
                 key={index}
                 onClick={() => handleImageClick(index)}
               >
-                <CardContent className="aspect-square flex flex-col p-0">
-                  <div className="relative w-full h-[500px] overflow-hidden">
+                <CardContent className="aspect-square flex flex-col">
+                  <div className="relative w-full h-[200px] md:h-[400px] lg:h-[500px] overflow-hidden">
                     <Image
                       src={product.src}
                       alt={`Gallery ${index + 1}`}

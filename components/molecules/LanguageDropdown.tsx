@@ -7,18 +7,21 @@ import { MdOutlineCheck } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { FiChevronDown } from "react-icons/fi";
 import { Button } from "../ui";
+import "flag-icons/css/flag-icons.min.css";
 
 interface LanguageDropdownProps {
   shouldBeWhite: boolean;
+  isMobileMenuOpen?: boolean;
 }
 
 const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "id", name: "Indonesia", flag: "🇮🇩" },
+  { code: "en", name: "English", flagCode: "us" },
+  { code: "id", name: "Indonesia", flagCode: "id" },
 ];
 
 export default function LanguageDropdown({
   shouldBeWhite,
+  isMobileMenuOpen,
 }: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -74,31 +77,39 @@ export default function LanguageDropdown({
         variant="ghost"
         size="icon"
         className={cn(
-          "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-full",
-          shouldBeWhite
+          "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-auto px-2",
+          shouldBeWhite || isMobileMenuOpen
             ? "text-black hover:text-primary"
             : "text-white hover:text-primary"
         )}
         aria-label="Select language"
       >
-        <span className="text-xl">{currentLanguage.flag}</span>
-        <span className="text-lg font-medium uppercase hidden sm:inline">
+        <span
+          className={`fi fi-${currentLanguage.flagCode} w-6 h-6 rounded-sm`}
+        />
+        <span
+          className={cn(
+            "text-sm sm:text-base font-medium uppercase hidden sm:inline",
+            shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
+          )}
+        >
           {currentLanguage.code}
         </span>
-          <FiChevronDown
-            className={cn(
-              "size-5 transition-transform duration-200 cursor-pointer",
-              isOpen && "rotate-180"
-            )}
-          />
+        <FiChevronDown
+          className={cn(
+            "size-4 sm:size-5 transition-transform duration-200 cursor-pointer",
+            isOpen && "rotate-180",
+            shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
+          )}
+        />
       </Button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-0 lg:top-full right-0 pt-2 z-50">
+        <div className="absolute top-full right-0 mt-2 z-50">
           <div
             className={cn(
-              "w-45 bg-white shadow-2xl border border-gray-100 overflow-hidden",
+              "w-48 bg-white shadow-2xl border border-gray-100 overflow-hidden",
               "animate-in fade-in slide-in-from-top-2 duration-200"
             )}
           >
@@ -116,10 +127,14 @@ export default function LanguageDropdown({
                       : "text-gray-700"
                   )}
                 >
-                  <span className="text-xl">{language.flag}</span>
-                  <span className="flex-1 font-medium">{language.name}</span>
+                  <span
+                    className={`fi fi-${language.flagCode} w-6 h-6 rounded-sm shrink-0`}
+                  />
+                  <span className="flex-1 font-medium text-sm">
+                    {language.name}
+                  </span>
                   {locale === language.code && (
-                    <MdOutlineCheck className="size-4 lg:size-5 text-primary" />
+                    <MdOutlineCheck className="size-5 text-primary shrink-0" />
                   )}
                 </Button>
               ))}
