@@ -6,8 +6,9 @@ import ProductsGridSkeleton from "@/components/molecules/ProductsGridSkeleton";
 import CategoryFilterClient from "@/components/organisms/CategoryFilterClient";
 import SortByDropdown from "@/components/molecules/SortByDropdown";
 import ShowProductsDropdown from "@/components/molecules/ShowProductsDropdown";
-import { X } from "lucide-react";
+import { X, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui";
 
 // Create context for filter state
 const FilterContext = createContext<{
@@ -41,12 +42,36 @@ export default function CollectionsClientWrapper({
   const pathname = usePathname();
   const router = useRouter();
   const [isFiltering, setIsFiltering] = useState(false);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isHeaderSticky, setIsHeaderSticky] = useState(false);
 
   // Watch for all params changes based on mode
   const currentCategories = searchParams.get("categories") || "";
   const currentSubcategories = searchParams.get("subcategories") || "";
   const currentPage = searchParams.get("page") || "1";
   const currentSearch = searchParams.get("search") || "";
+
+  // Handle scroll for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsHeaderSticky(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Prevent body scroll when mobile filter is open
+  useEffect(() => {
+    if (isMobileFilterOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileFilterOpen]);
 
   useEffect(() => {
     // Reset filtering state when new data arrives
@@ -115,8 +140,56 @@ export default function CollectionsClientWrapper({
 
   return (
     <FilterContext.Provider value={{ handleFilterChange }}>
-      {/* TODO: Tambahin Filter Sidebar Kayak di Shopee untuk mobile */}
-      {/* Sidebar Filter - only show if there are categories */}
+      {/* Mobile Filter Sidebar Overlay */}
+      {hasCategories && (
+        <>
+          {/* Backdrop */}
+          <div
+            className={cn(
+              "lg:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300",
+              isMobileFilterOpen
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            )}
+            onClick={() => setIsMobileFilterOpen(false)}
+          />
+
+          {/* Sidebar */}
+          <aside
+            className={cn(
+              "lg:hidden fixed left-0 top-0 bottom-0 w-80 bg-white z-50 transition-transform duration-300 overflow-y-auto",
+              isMobileFilterOpen ? "translate-x-0" : "-translate-x-full"
+            )}
+          >
+            <div className="p-4 border-b border-gray-200 flex items-center justify-between sticky top-0 bg-white z-10">
+              <h2 className="font-poppins font-semibold text-xl text-black">
+                Filters
+              </h2>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMobileFilterOpen(false)}
+                className="text-black"
+              >
+                <X className="size-6" />
+              </Button>
+            </div>
+            <div className="p-4">
+              <CategoryFilterClient
+                categories={categories}
+                activeCategorySlugs={categorySlugs}
+                onFilterChange={() => {
+                  handleFilterChange();
+                  setIsMobileFilterOpen(false);
+                }}
+                mode={mode}
+              />
+            </div>
+          </aside>
+        </>
+      )}
+
+      {/* Desktop Sidebar Filter */}
       {hasCategories && (
         <aside className="hidden lg:block w-64 shrink-0">
           <CategoryFilterClient
@@ -128,11 +201,11 @@ export default function CollectionsClientWrapper({
         </aside>
       )}
 
-      {/* Products Grid - full width when no categories */}
+      {/* Products Grid */}
       <div className={hasCategories ? "flex-1" : "w-full"}>
-        {/* Header with Dropdowns */}
-        <div className="mb-6 flex items-center justify-between gap-4 flex-wrap">
-          <div>
+        {/* Title Section - Not Sticky */}
+        <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-32">
+          <div className="mb-6">
             <h1 className="font-poppins font-bold text-3xl text-black">
               {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
             </h1>
@@ -145,16 +218,32 @@ export default function CollectionsClientWrapper({
             </p>
           </div>
 
-          {/* Dropdowns */}
-          <div className="flex items-center gap-3">
+          {/* Sticky Dropdowns Bar */}
+          <div
+            className={cn(
+              "mb-6 hidden md:flex items-center justify-end gap-3 transition-all duration-300",
+              isHeaderSticky &&
+                "sticky top-16 lg:top-32 z-30 bg-white -mx-4 px-4 py-3"
+            )}
+          >
             <ShowProductsDropdown />
             <SortByDropdown />
           </div>
         </div>
+        <div
+          className={cn(
+            "mb-6 flex md:hidden  sticky top-16 items-center justify-end gap-3 transition-all duration-300",
+            isHeaderSticky &&
+              "sticky top-16 lg:top-32 z-30 bg-white -mx-4 px-4 py-3"
+          )}
+        >
+          <ShowProductsDropdown />
+          <SortByDropdown />
+        </div>
 
         {/* Selected Categories Tags */}
         {selectedCategories.length > 0 && (
-          <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
+          <div className="mb-6 p-4 bg-gray-50 border border-gray-100">
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-medium text-gray-700">
                 Active Filters ({selectedCategories.length})
@@ -171,7 +260,7 @@ export default function CollectionsClientWrapper({
                 <span
                   key={slug}
                   className={cn(
-                    "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm",
+                    "inline-flex items-center gap-1.5 px-3 py-1.5 text-sm",
                     "bg-primary/10 text-primary border border-primary/20",
                     "transition-all duration-200 hover:bg-primary/20"
                   )}
@@ -193,6 +282,22 @@ export default function CollectionsClientWrapper({
         {/* Show skeleton immediately when filtering */}
         {isFiltering ? <ProductsGridSkeleton /> : children}
       </div>
+
+      {/* Fixed Filter Button for Mobile/Tablet */}
+      {hasCategories && (
+        <Button
+          onClick={() => setIsMobileFilterOpen(true)}
+          className="lg:hidden fixed bottom-6 left-6 z-30 shadow-lg flex items-center gap-2 px-4 py-6"
+        >
+          <Filter className="size-5" />
+          <span className="font-medium">Filters</span>
+          {categorySlugs.length > 0 && (
+            <span className="bg-white text-primary size-6 flex items-center justify-center text-xs font-bold">
+              {categorySlugs.length}
+            </span>
+          )}
+        </Button>
+      )}
     </FilterContext.Provider>
   );
 }

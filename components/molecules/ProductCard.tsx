@@ -11,9 +11,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({
-  product
-}: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -71,6 +69,7 @@ export default function ProductCard({
               src={product.images[0]?.src || "/placeholder.jpg"}
               alt={product.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>

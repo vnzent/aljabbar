@@ -1,8 +1,10 @@
 {
-  "home": {
-    "title": "Hello Friends",
-    "description": "Good Night My Lord, I Will Protect with my life",
-    "CTA": "Buy Now"
+  "hero": {
+    "tagline": "Al-Jabbar House of Carpets",
+    "headlineLine1": "Elevate Your Space",
+    "headlineLine2": "With Premium Carpets",
+    "primaryCta": "Shop Now",
+    "secondaryCta": "View Collections"
   },
   "products": {
     "title": "Our Products",

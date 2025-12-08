@@ -1,8 +1,10 @@
 {
-  "home": {
-    "title": "Halo Kawan",
-    "description": "Selamat Malam Tuhanku, Aku Akan Melindungi dengan hidupku",
-    "CTA": "Beli Sekarang"
+  "hero": {
+    "tagline": "Al-Jabbar House of Carpets",
+    "headlineLine1": "Sempurnakan Ruang Anda",
+    "headlineLine2": "Dengan Karpet Premium",
+    "primaryCta": "Belanja Sekarang",
+    "secondaryCta": "Lihat Koleksi"
   },
   "products": {
     "title": "Produk Kami",

@@ -244,7 +244,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     href={menu.href}
-                    className="uppercase font-poppins text-xl font-normal text-black hover:text-primary transition-colors border-b border-gray-200 pb-4"
+                    className="uppercase font-poppins text-lg font-normal text-black hover:text-primary transition-colors border-b border-gray-200 pb-4"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {menu.name}
