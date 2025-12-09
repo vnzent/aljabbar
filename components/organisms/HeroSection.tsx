@@ -30,7 +30,7 @@ export default function HeroSection() {
             </h1>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 font-poppins w-full sm:w-auto">
-            <Button className="text-base w-full sm:w-auto">
+            <Button className="text-base w-full sm:w-auto hover:border-white active:border-primary">
               <Link href="/collections">{t("primaryCta")}</Link>
             </Button>
             <Button

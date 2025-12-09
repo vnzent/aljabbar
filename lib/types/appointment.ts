@@ -4,12 +4,12 @@ export interface TimeSlot {
   startTime: string;
   endTime: string;
   isAvailable: boolean;
-  status: "available" | "booked" | "pending" | "partially-booked";
+  status: "available" | "booked" | "partially-booked";
 }
 
 export interface DateAvailability {
   date: string; // YYYY-MM-DD format
-  status: "available" | "booked" | "pending" | "partially-booked";
+  status: "available" | "booked" | "partially-booked";
   availableSlots: number;
   totalSlots: number;
 }
@@ -37,7 +37,7 @@ export interface Appointment {
   location: string;
   address: string;
   notes?: string;
-  status: "pending" | "confirmed" | "cancelled";
+  status: "confirmed" | "cancelled";
   createdAt: string;
 }
 

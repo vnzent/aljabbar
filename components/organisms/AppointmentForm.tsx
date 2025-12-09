@@ -8,15 +8,21 @@ import { cn } from "@/lib/utils";
 interface AppointmentFormProps {
   selectedDate: string | null;
   onSuccess?: () => void;
+  onRevalidate?: () => void;
 }
 
 export default function AppointmentForm({
   selectedDate,
   onSuccess,
+  onRevalidate,
 }: AppointmentFormProps) {
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
   const [formData, setFormData] = useState<AppointmentFormData>({
     firstName: "",
     email: "",
@@ -41,7 +47,6 @@ export default function AppointmentForm({
     try {
       const response = await fetch(`/api/appointments/timeslots?date=${date}`);
       const result = await response.json();
-
       if (result.success && result.data) {
         setTimeSlots(result.data);
       }
@@ -68,6 +73,31 @@ export default function AppointmentForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    // Get the actual text from the select options
+    const bookingTypeElement = document.getElementById(
+      "bookingType"
+    ) as HTMLSelectElement;
+    const locationElement = document.getElementById(
+      "location"
+    ) as HTMLSelectElement;
+
+    const bookingTypeText =
+      bookingTypeElement?.options[bookingTypeElement.selectedIndex]?.text ||
+      formData.bookingType;
+    const locationText =
+      locationElement?.options[locationElement.selectedIndex]?.text ||
+      formData.location;
+
+    const submitData = {
+      ...formData,
+      bookingType: bookingTypeText,
+      location: locationText,
+      selectedTimeSlot: formData.selectedTimeSlot, // Send slot ID (slot1, slot2, etc)
+    };
+
+    console.log(submitData);
 
     try {
       const response = await fetch("/api/appointments", {
@@ -75,13 +105,16 @@ export default function AppointmentForm({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submitData),
       });
 
       const result = await response.json();
 
       if (result.success) {
-        alert("Appointment booked successfully!");
+        setSubmitStatus({
+          type: "success",
+          message: "Appointment booked successfully! We'll contact you soon.",
+        });
         // Reset form
         setFormData({
           firstName: "",
@@ -94,13 +127,25 @@ export default function AppointmentForm({
           selectedTimeSlot: "",
           notes: "",
         });
+        // Revalidate timeslots and calendar after booking
+        if (selectedDate) {
+          await fetchTimeSlots(selectedDate);
+        }
+        onRevalidate?.();
         onSuccess?.();
       } else {
-        alert(result.message || "Failed to book appointment");
+        setSubmitStatus({
+          type: "error",
+          message:
+            result.message || "Failed to book appointment. Please try again.",
+        });
       }
     } catch (error) {
       console.error("Error submitting appointment:", error);
-      alert("An error occurred. Please try again.");
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again.",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -347,7 +392,7 @@ export default function AppointmentForm({
       <Button
         type="submit"
         disabled={!isFormValid || submitting}
-        className="w-full text-lg font-poppins font-normal uppercase"
+        className="w-full text-lg font-poppins font-normal uppercase border hover:border-primary"
       >
         {submitting ? "Submitting..." : "Book Appointment"}
       </Button>
@@ -356,6 +401,19 @@ export default function AppointmentForm({
         <p className="text-sm text-red-600 text-center">
           Please select a date from the calendar first
         </p>
+      )}
+
+      {/* Status Message */}
+      {submitStatus.type && (
+        <div
+          className={`p-4 border-2 ${
+            submitStatus.type === "success"
+              ? "bg-green-50 border-green-500 text-green-700"
+              : "bg-red-50 border-red-500 text-red-700"
+          }`}
+        >
+          <p className="font-poppins text-sm">{submitStatus.message}</p>
+        </div>
       )}
     </form>
   );

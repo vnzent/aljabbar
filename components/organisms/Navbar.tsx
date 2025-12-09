@@ -152,6 +152,7 @@ export default function Navbar() {
                       <CollectionsDropdown
                         key={index}
                         shouldBeWhite={shouldBeWhite}
+                        isScrolled={isScrolled}
                       />
                     );
                   }
@@ -164,11 +165,21 @@ export default function Navbar() {
                       href={menu.href}
                       className={cn(
                         "uppercase font-poppins text-sm xl:text-base font-normal transition-colors duration-300 hover:text-primary",
-                        isActive
+                        // If not scrolled and active -> white
+                        // If not scrolled and not active -> gray-200
+                        // If scrolled (shouldBeWhite true) -> black
+                        // If active -> primary color
+                        shouldBeWhite && isActive
+                          ? "text-primary hover:text-black"
+                          : !shouldBeWhite && isActive
+                          ? "text-white hover:text-white"
+                          : !shouldBeWhite && !isScrolled && !isActive
+                          ? "text-gray-200 hover:text-white"
+                          : shouldBeWhite && !isActive
+                          ? "text-black hover:text-primary"
+                          : isActive
                           ? "text-primary"
-                          : shouldBeWhite
-                          ? "text-black"
-                          : "text-white"
+                          : ""
                       )}
                     >
                       {menu.name}
@@ -190,7 +201,7 @@ export default function Navbar() {
                     "p-2 transition-all duration-300 hover:cursor-pointer",
                     shouldBeWhite
                       ? "text-black hover:text-primary"
-                      : "text-white hover:text-primary"
+                      : "text-white hover:text-white"
                   )}
                   aria-label="Search"
                 >
@@ -285,17 +296,14 @@ export default function Navbar() {
                             <Link
                               key={category.slug}
                               href={`/collections/${category.slug}`}
-                              className="flex flex-col py-2 border-l-4 border-primary bg-linear-to-r from-primary/5 to-primary/10 pl-3 transition-all"
+                              className="flex flex-col py-2"
                               onClick={() => {
                                 setIsMobileMenuOpen(false);
                                 setIsMobileCollectionsOpen(false);
                               }}
                             >
-                              <span className="text-base font-medium text-gray-900 hover:text-primary transition-colors">
+                              <span className="text-base font-poppins font-base text-gray-900 hover:text-primary transition-colors uppercase">
                                 {category.name}
-                              </span>
-                              <span className="text-xs text-gray-500 mt-0.5">
-                                {category.description}
                               </span>
                             </Link>
                           ))}

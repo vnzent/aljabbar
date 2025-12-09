@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import {
   format,
   startOfMonth,
@@ -19,10 +19,14 @@ interface AppointmentCalendarProps {
   selectedDate: string | null;
 }
 
-export default function AppointmentCalendar({
-  onDateSelect,
-  selectedDate,
-}: AppointmentCalendarProps) {
+export interface AppointmentCalendarRef {
+  refetch: () => void;
+}
+
+const AppointmentCalendar = forwardRef<
+  AppointmentCalendarRef,
+  AppointmentCalendarProps
+>(({ onDateSelect, selectedDate }, ref) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [nextMonth, setNextMonth] = useState(
     new Date(new Date().setMonth(new Date().getMonth() + 1))
@@ -54,7 +58,8 @@ export default function AppointmentCalendar({
       const endDate = format(nextMonthEnd, "yyyy-MM-dd");
 
       const response = await fetch(
-        `/api/appointments/availability?startDate=${startDate}&endDate=${endDate}`
+        `/api/appointments/availability?startDate=${startDate}&endDate=${endDate}&t=${Date.now()}`,
+        { cache: "no-store" }
       );
       const result = await response.json();
 
@@ -63,6 +68,7 @@ export default function AppointmentCalendar({
         result.data.forEach((item: DateAvailability) => {
           availMap.set(item.date, item);
         });
+
         setAvailability(availMap);
       }
     } catch (error) {
@@ -71,6 +77,11 @@ export default function AppointmentCalendar({
       setLoading(false);
     }
   };
+
+  // Expose refetch method to parent
+  useImperativeHandle(ref, () => ({
+    refetch: fetchAvailability,
+  }));
 
   const handlePrevMonth = () => {
     const prev = new Date(currentMonth);
@@ -106,8 +117,6 @@ export default function AppointmentCalendar({
     switch (status) {
       case "booked":
         return "bg-blue-900 text-white cursor-not-allowed";
-      case "pending":
-        return "bg-yellow-100 text-yellow-900 cursor-pointer hover:bg-yellow-200";
       case "partially-booked":
         return "bg-blue-100 text-blue-900 cursor-pointer hover:bg-blue-200";
       case "available":
@@ -236,10 +245,6 @@ export default function AppointmentCalendar({
           <span>Booked</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-yellow-100 border border-yellow-300 rounded" />
-          <span>Pending</span>
-        </div>
-        <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-100 border border-blue-300 rounded relative">
             <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full" />
           </div>
@@ -254,4 +259,8 @@ export default function AppointmentCalendar({
       )}
     </div>
   );
-}
+});
+
+AppointmentCalendar.displayName = "AppointmentCalendar";
+
+export default AppointmentCalendar;

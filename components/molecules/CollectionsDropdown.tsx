@@ -10,10 +10,12 @@ import { Button } from "../ui";
 
 interface CollectionsDropdownProps {
   shouldBeWhite: boolean;
+  isScrolled: boolean;
 }
 
 export default function CollectionsDropdown({
   shouldBeWhite,
+  isScrolled,
 }: CollectionsDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -58,11 +60,15 @@ export default function CollectionsDropdown({
           href="/collections"
           className={cn(
             "uppercase font-poppins text-sm lg:text-base font-normal transition-colors duration-300 group-hover:text-primary",
-            isCollectionsActive
-              ? "text-primary"
-              : shouldBeWhite
+            shouldBeWhite && isCollectionsActive
+              ? "text-primary group-hover:text-black"
+              : !isScrolled && !isCollectionsActive
+              ? "text-gray-200 group-hover:text-white"
+              : shouldBeWhite && !isCollectionsActive
               ? "text-black"
-              : "text-white"
+              : isCollectionsActive
+              ? "text-primary"
+              : ""
           )}
         >
           Collections
@@ -73,11 +79,15 @@ export default function CollectionsDropdown({
           onClick={() => setIsOpen(!isOpen)}
           className={cn(
             "pl-1 transition-all duration-300 group-hover:text-primary cursor-pointer",
-            isCollectionsActive
-              ? "text-primary"
-              : shouldBeWhite
+            shouldBeWhite && isCollectionsActive
+              ? "text-primary group-hover:text-black"
+              : !isScrolled && !isCollectionsActive
+              ? "text-gray-300 group-hover:text-white"
+              : shouldBeWhite && !isCollectionsActive
               ? "text-black"
-              : "text-white",
+              : isCollectionsActive
+              ? "text-primary"
+              : "",
             isOpen && "rotate-180"
           )}
           aria-label="Toggle collections menu"
@@ -101,17 +111,13 @@ export default function CollectionsDropdown({
                 href={`/collections/${category.slug}`}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "block px-4 py-3 transition-all duration-200",
-                  "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
-                  "border-l-4 border-transparent hover:border-primary"
+                  "block px-4 py-5 transition-all duration-200",
+                  "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10"
                 )}
               >
-                <div className="flex flex-col">
-                  <span className="text-base font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                <div className="flex">
+                  <span className="text-base font-poppins font-base text-gray-900 group-hover:text-primary uppercase transition-colors">
                     {category.name}
-                  </span>
-                  <span className="text-xs text-gray-500 mt-0.5">
-                    {category.description}
                   </span>
                 </div>
               </Link>

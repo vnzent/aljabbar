@@ -84,7 +84,7 @@ export default function SortByDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg overflow-hidden z-[9999]">
+        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg overflow-hidden z-9999">
           <div className="">
             {sortOptions.map((option) => (
               <button

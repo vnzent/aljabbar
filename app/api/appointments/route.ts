@@ -3,13 +3,16 @@ import type {
   WPAppointmentResponse,
   AppointmentFormData,
 } from "@/lib/types/appointment";
-import { mockDB } from "@/lib/mockDB";
+
+// WordPress REST API Configuration
+const WP_BASE_URL = process.env.WP_API_URL || "https://your-wordpress-site.com";
+const WP_API_ENDPOINT = "/wp-json/map/v1/appointment";
 
 /**
  * POST /api/appointments
- * Create a new appointment
+ * Create a new appointment via WordPress REST API
  *
- * LOCAL MODE: Using mock data instead of WordPress
+ * Documentation based on provided WordPress API examples
  */
 export async function POST(request: NextRequest) {
   try {
@@ -34,36 +37,59 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if slot is already booked
-    if (mockDB.isSlotBooked(body.selectedDate, body.selectedTimeSlot)) {
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "This time slot is already booked. Please choose another slot.",
-        },
-        { status: 409 }
-      );
-    }
-
-    // Create appointment in local mock database
-    const appointment = mockDB.create({
-      date: body.selectedDate,
-      timeSlot: body.selectedTimeSlot,
-      firstName: body.firstName,
+    // Prepare data for WordPress API
+    const wpData = {
+      name: body.firstName,
       email: body.email,
       phone: body.phone,
-      bookingType: body.bookingType,
+      date: body.selectedDate,
+      time: body.selectedTimeSlot,
+      message: body.notes || "",
+      booking_type: body.bookingType,
       location: body.location,
       address: body.address,
       notes: body.notes || "",
-      status: "pending",
+    };
+
+    // Send to WordPress REST API
+    const wpResponse = await fetch(`${WP_BASE_URL}${WP_API_ENDPOINT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(wpData),
     });
 
+    const wpResult = await wpResponse.json();
+
+    if (!wpResponse.ok || wpResult.status !== "success") {
+      return NextResponse.json(
+        {
+          success: false,
+          message: wpResult.message || "Failed to create appointment",
+        },
+        { status: wpResponse.status || 500 }
+      );
+    }
+
+    // Transform WordPress response to our format
     const result: WPAppointmentResponse = {
       success: true,
-      data: appointment,
-      message: "Appointment created successfully! (Local Mode)",
+      data: {
+        id: wpResult.insert_id,
+        date: body.selectedDate,
+        timeSlot: body.selectedTimeSlot,
+        firstName: body.firstName,
+        email: body.email,
+        phone: body.phone,
+        bookingType: body.bookingType,
+        location: body.location,
+        address: body.address,
+        notes: body.notes,
+        status: "confirmed",
+        createdAt: new Date().toISOString(),
+      },
+      message: "Appointment created successfully!",
     };
 
     return NextResponse.json(result);
@@ -84,9 +110,7 @@ export async function POST(request: NextRequest) {
 
 /**
  * GET /api/appointments
- * Get appointments (optional: filter by date range)
- *
- * LOCAL MODE: Using mock data instead of WordPress
+ * Get appointments from WordPress API
  */
 export async function GET(request: NextRequest) {
   try {
@@ -94,12 +118,19 @@ export async function GET(request: NextRequest) {
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
 
-    let appointments;
+    let url = `${WP_BASE_URL}${WP_API_ENDPOINT}`;
     if (startDate && endDate) {
-      appointments = mockDB.getByDateRange(startDate, endDate);
-    } else {
-      appointments = mockDB.getAll();
+      url += `?startDate=${startDate}&endDate=${endDate}`;
     }
+
+    const wpResponse = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const appointments = await wpResponse.json();
 
     return NextResponse.json({
       success: true,
@@ -110,7 +141,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to fetch appointments",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch appointments",
       },
       { status: 500 }
     );

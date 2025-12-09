@@ -1,14 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import DynamicHero from "@/components/templates/DynamicHero";
-import AppointmentCalendar from "@/components/organisms/AppointmentCalendar";
+import AppointmentCalendar, {
+  AppointmentCalendarRef,
+} from "@/components/organisms/AppointmentCalendar";
 import AppointmentForm from "@/components/organisms/AppointmentForm";
 import IconLine from "@/components/atoms/IconLine";
 import Banner from "@/components/templates/Banner";
 
 export default function AppointmentSection() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const calendarRef = useRef<AppointmentCalendarRef>(null);
 
   const handleDateSelect = (date: string) => {
     setSelectedDate(date);
@@ -16,6 +19,11 @@ export default function AppointmentSection() {
 
   const handleAppointmentSuccess = () => {
     setSelectedDate(null);
+  };
+
+  const handleRevalidate = () => {
+    // Refetch calendar availability
+    calendarRef.current?.refetch();
   };
 
   return (
@@ -50,6 +58,7 @@ export default function AppointmentSection() {
                 </p>
               </div>
               <AppointmentCalendar
+                ref={calendarRef}
                 onDateSelect={handleDateSelect}
                 selectedDate={selectedDate}
               />
@@ -113,6 +122,7 @@ export default function AppointmentSection() {
               <AppointmentForm
                 selectedDate={selectedDate}
                 onSuccess={handleAppointmentSuccess}
+                onRevalidate={handleRevalidate}
               />
             </div>
           </div>
