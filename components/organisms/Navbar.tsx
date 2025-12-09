@@ -28,6 +28,16 @@ export default function Navbar() {
   const isCollectionPage = pathname?.includes("/collections");
   const shouldBeWhite = isScrolled || isCollectionPage;
 
+  // Check if menu is active
+  const isMenuActive = (href: string) => {
+    // Remove locale prefix for comparison
+    const cleanPathname = pathname?.replace(/^\/(en|id)/, "") || "/";
+    const cleanHref = href.replace(/^\/(en|id)/, "");
+
+    if (cleanHref === "/") return cleanPathname === "/";
+    return cleanPathname.startsWith(cleanHref);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -63,35 +73,38 @@ export default function Navbar() {
       <header
         ref={navRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-in-out",
           shouldBeWhite || isMobileMenuOpen ? "bg-white" : "bg-transparent"
         )}
       >
-        <nav className="main-wrapper mx-auto flex flex-col">
-          {/* Top Bar - Hidden on mobile */}
+        <nav className="main-wrapper mx-auto flex flex-col transition-all duration-500 ease-in-out">
+          {/* Top Bar - Hidden on mobile and when scrolled */}
           <div
             className={cn(
-              "hidden lg:flex justify-between border-b py-3 transition-colors duration-300",
+              "hidden lg:flex justify-between border-b transition-all duration-500 ease-in-out overflow-hidden",
               shouldBeWhite
                 ? "text-black border-black/60"
-                : "text-white border-white"
+                : "text-white border-white",
+              isScrolled
+                ? "max-h-0 opacity-0 py-0"
+                : "max-h-20 opacity-100 py-3"
             )}
           >
             <div className="flex gap-5 items-center">
-              <div className="flex gap-2 items-center">
-                <IoCallOutline className="size-5" />
-                <span className="text-base font-poppins font-normal">
+              <div className="flex gap-1 items-center">
+                <IoCallOutline className="size-3" />
+                <span className="text-xs font-poppins font-normal">
                   Call us today! (021) 7197770
                 </span>
               </div>
-              <div className="flex gap-3 items-center">
-                <AiOutlineMail className="size-5" />
-                <span className="text-base font-poppins font-normal">
+              <div className="flex gap-1 items-center">
+                <AiOutlineMail className="size-3" />
+                <span className="text-sm font-poppins font-normal">
                   sales@aljabbarcarpets.com
                 </span>
               </div>
             </div>
-            <div className="flex gap-5 items-center">
+            <div className="flex gap-3 items-center">
               {navSocialIcons.map((social, index) => (
                 <Link
                   key={index}
@@ -101,14 +114,14 @@ export default function Navbar() {
                     shouldBeWhite ? "text-black" : "text-white"
                   )}
                 >
-                  <social.icon className="size-6" />
+                  <social.icon className="size-4" />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Main Navigation */}
-          <div className="flex justify-between items-center py-3 lg:pt-5">
+          <div className="flex justify-between items-center py-3 md:pt-5">
             {/* Logo */}
             <Link href="/" className="z-50">
               <Image
@@ -120,7 +133,7 @@ export default function Navbar() {
                 alt="Al-Jabbar - House of Carpets Logo"
                 width={150}
                 height={50}
-                className="w-32 sm:w-40 md:w-45 lg:w-50 h-auto"
+                className="w-25 sm:w-30 md:w-35 lg:w-40 h-auto"
               />
             </Link>
 
@@ -143,13 +156,19 @@ export default function Navbar() {
                     );
                   }
 
+                  const isActive = isMenuActive(menu.href);
+
                   return (
                     <Link
                       key={index}
                       href={menu.href}
                       className={cn(
-                        "uppercase font-poppins text-base xl:text-lg font-normal transition-colors duration-300 hover:text-primary",
-                        shouldBeWhite ? "text-black" : "text-white"
+                        "uppercase font-poppins text-sm xl:text-base font-normal transition-colors duration-300 hover:text-primary",
+                        isActive
+                          ? "text-primary"
+                          : shouldBeWhite
+                          ? "text-black"
+                          : "text-white"
                       )}
                     >
                       {menu.name}
@@ -175,7 +194,7 @@ export default function Navbar() {
                   )}
                   aria-label="Search"
                 >
-                  <BiSearch className="size-5 lg:size-6" />
+                  <BiSearch className="size-4 lg:size-5" />
                 </Button>
               </div>
             </div>
@@ -286,11 +305,16 @@ export default function Navbar() {
                   );
                 }
 
+                const isActive = isMenuActive(menu.href);
+
                 return (
                   <Link
                     key={index}
                     href={menu.href}
-                    className="uppercase font-poppins text-lg font-normal text-black hover:text-primary transition-colors border-b border-gray-200 pb-4"
+                    className={cn(
+                      "uppercase font-poppins text-lg font-normal hover:text-primary transition-colors border-b border-gray-200 pb-4",
+                      isActive ? "text-primary" : "text-black"
+                    )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {menu.name}

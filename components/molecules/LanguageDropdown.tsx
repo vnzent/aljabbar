@@ -85,11 +85,11 @@ export default function LanguageDropdown({
         aria-label="Select language"
       >
         <span
-          className={`fi fi-${currentLanguage.flagCode} w-6 h-6 rounded-sm`}
+          className={`fi fi-${currentLanguage.flagCode} w-4 h-4`}
         />
         <span
           className={cn(
-            "text-sm sm:text-base font-medium uppercase hidden sm:inline group-hover:text-primary",
+            "text-sm font-medium uppercase hidden sm:inline group-hover:text-primary",
             shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
           )}
         >
@@ -97,7 +97,7 @@ export default function LanguageDropdown({
         </span>
         <FiChevronDown
           className={cn(
-            "size-4 sm:size-5 transition-transform duration-200 cursor-pointer group-hover:text-primary",
+            "size-4 transition-transform duration-200 cursor-pointer group-hover:text-primary",
             isOpen && "rotate-180",
             shouldBeWhite || isMobileMenuOpen ? "text-black" : "text-white"
           )}

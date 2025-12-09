@@ -12,7 +12,7 @@ export default function HeaderBetween({
       <h2 className="font-poppins text-3xl sm:text-4xl font-medium text-black">
         {heading}
       </h2>
-      <p className="font-inter font-normal text-sm sm:text-base text-black/60 capitalize max-w-2xl">
+      <p className="font-inter font-normal text-sm sm:text-base text-black/60 max-w-2xl">
         {parseTextWithLineBreaks(subheading)}
       </p>
     </div>

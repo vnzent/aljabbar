@@ -6,12 +6,17 @@ import Link from "next/link";
 import { Product } from "@/lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useTransition } from "react";
+import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
+  variant?: "3-col" | "4-col"; // 3-col for homepage, 4-col for collection pages
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  variant = "3-col",
+}: ProductCardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -76,7 +81,14 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Content Container */}
           <div className="py-5">
-            <h3 className="font-poppins font-medium text-lg md:text-xl text-black line-clamp-1">
+            <h3
+              className={cn(
+                "font-poppins font-medium text-black line-clamp-1",
+                variant === "3-col"
+                  ? "text-sm md:text-base lg:text-lg"
+                  : "text-xs md:text-sm lg:text-base"
+              )}
+            >
               {product.name}
             </h3>
 
@@ -86,7 +98,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                   <span
                     key={category.id}
                     onClick={(e) => handleCategoryClick(e, category.slug)}
-                    className="inline-block text-sm md:text-lg leading-tight md:leading-loose font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer"
+                    className={cn(
+                      "inline-block font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer",
+                      variant === "3-col"
+                        ? "text-xs md:text-sm lg:text-base leading-tight md:leading-loose"
+                        : "text-xs lg:text-sm leading-tight"
+                    )}
                   >
                     {category.name}
                   </span>

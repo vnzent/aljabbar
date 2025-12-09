@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Accordion,
   AccordionContent,
@@ -49,7 +51,9 @@ export default function Faq() {
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="font-inter text-sm md:text-base text-black/70 leading-relaxed pt-2 text-justify">
-                  {parseTextWithParagraphs(item.answer)}
+                  <div className="[&_a]:pointer-events-auto [&_a]:cursor-pointer [&_a]:relative [&_a]:z-9999">
+                    {parseTextWithParagraphs(item.answer)}
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             ))}

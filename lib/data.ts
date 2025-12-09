@@ -52,13 +52,13 @@ export const count = [
   {
     title: "Expert",
     total: 26,
-    subtitle: "Years Of Expertise",
+    subtitle: "Years of Expertise",
     showPlus: true,
   },
   {
     title: "Showrooms",
     total: 9,
-    subtitle: "Showrooms Across Indonesia",
+    subtitle: "Showrooms Across indonesia",
     showPlus: false,
   },
   {
@@ -113,7 +113,7 @@ export const uniqueSellingPoints = [
 
 export const aboutParagraphs = [
   "Al-Jabbar carpets is a retail carpet business which dates back to its originating date being **March 1994**. From the start we have been dedicated to providing the best quality carpets.",
-  "Al-Jabbar carpets we specializes in **hand-made carpets** which come from different countries such as Iran, Pakistan, Afghanistan and Kashmir, machine-made carpets and mosque rugs from Iran and Turkey and wall to wall carpets from Europe and the United States of America.",
+  "Al-Jabbar carpets we specializes in **Hand-Made Carpets** which come from different countries such as Iran, Pakistan, Afghanistan and Kashmir, machine-made carpets and mosque rugs from Iran and Turkey and wall to wall carpets from Europe and the United States of America.",
   "Our collection can be viewed in any of our showrooms but also, we offer the service of bringing the carpets directly to your house without any charge and match the carpets with your interior.",
   "We have a complete collection ranging from traditional rugs to modern rugs we have it all. We have been dedicated to not only providing the best quality carpets from day one but also truly focus on customer service and we assure you the experience you get in our showrooms will be one of a kind.",
 ];
@@ -170,7 +170,7 @@ export const galleryLookBook = [
 export const faqs = [
   {
     question: "You have more questions?",
-    answer: "Please don’t hesitate to contact us on WhatsApp.",
+    answer: "Please don't hesitate to contact us on [WhatsApp](whatsapp).",
   },
   {
     question: "How does a hand-made carpet differ from a machine-made carpet?",
@@ -180,18 +180,18 @@ export const faqs = [
   {
     question: "How often do I need to clean my carpet?",
     answer:
-      "Just vacuum the carpet monthly once a week. Also, if it gets too dirty Al-Jabbar does provide washing services. Click Our services to find out more.",
+      "Just vacuum the carpet monthly once a week. Also, if it gets too dirty Al-Jabbar does provide washing services. Click our [services](/service) to find out more.",
   },
   {
     question:
       "Does Al-Jabbar provide the service or washing and repairing carpets?",
     answer:
-      "Yes, we definitely do! Please go to Our services to find out more about it.",
+      "Yes, we definitely do! Please go to our [services](/service) page to find out more about it.",
   },
   {
     question: "I want to inquire about carpets who should I contact?",
     answer:
-      "You can go to our Collection where there will be a WhatsApp number which you can contact for any detail on the carpets.",
+      "You can go to our [collections](/collections) page where there will be a WhatsApp number which you can contact for any detail on the carpets.",
   },
 ];
 
@@ -207,12 +207,12 @@ export const branches = [
       {
         name: "Nosherwan Carpets",
         address: "Jl. Kemang Selatan Raya No. 14C Jakarta Selatan",
-        dial: "021-7180486, 7182556"
+        dial: "021-7180486, 7182556",
       },
       {
         name: "Al Kabir Carpet",
         address: "Jl. Benda Raya No. 38 A Jakarta Selatan",
-        dial: "021-7819010"
+        dial: "021-7819010",
       },
     ],
   },
@@ -221,10 +221,11 @@ export const branches = [
     store: [
       {
         name: "Al-Jabbar Carpet",
-        address: "Grand Galaxy City Jl. Boulevard Raya Rukan Blok RGG No 32 Bekasi",
-        dial: ""
-      }
-    ]
+        address:
+          "Grand Galaxy City Jl. Boulevard Raya Rukan Blok RGG No 32 Bekasi",
+        dial: "",
+      },
+    ],
   },
   {
     city: "Surabaya",
@@ -232,14 +233,14 @@ export const branches = [
       {
         name: "Al-Jabbar Carpet",
         address: "Jl. H. Muhammad No. 395 Surabaya",
-        dial: "031-99020388"
+        dial: "031-99020388",
       },
       {
         name: "Al-Jabbar Carpet",
         address: "Jl. Raya Kertajaya No. 182 Gubeng Surabaya",
-        dial: "031-5018623"
-      }
-    ]
+        dial: "031-5018623",
+      },
+    ],
   },
   {
     city: "Banten",
@@ -247,37 +248,44 @@ export const branches = [
       {
         name: "Al Matah Carpets",
         address: "Jl. Serpong Raya No. 94 BSD City Serpong Tangerang",
-        dial: "021-22232554"
-      }
-    ]
+        dial: "021-22232554",
+      },
+    ],
   },
   {
     city: "Garut",
     store: [
       {
         name: "Al Jabbar Carpets",
-        address: "Jl. Ahmad Yani No. 231 Kel. Ciwalen Kec. Garut Kota Garut"
-      }
-    ]
+        address: "Jl. Ahmad Yani No. 231 Kel. Ciwalen Kec. Garut Kota Garut",
+      },
+    ],
   },
   {
     city: "Tasikmalaya",
     store: [
       {
         name: "Al Jabbar Carpets",
-        address: "Jl. Gunung Sabeulah No. 51 Kec. Cihideung Kel. Argasari Tasikmalaya"
-      }
-    ]
+        address:
+          "Jl. Gunung Sabeulah No. 51 Kec. Cihideung Kel. Argasari Tasikmalaya",
+      },
+    ],
   },
   {
     city: "Gorontalo",
     store: [
       {
         name: "Al-Jabbar Carpet",
-        address: "Jl. HB Yassin 786 Kel. Tomulabutao Kec. Dungingi Kota Gorontalo"
-      }
-    ]
-  }
+        address:
+          "Jl. HB Yassin 786 Kel. Tomulabutao Kec. Dungingi Kota Gorontalo",
+      },
+    ],
+  },
 ];
 
-export const linkContact = "";
+export const whatsappContacts = {
+  kebayoranBaru:
+    "https://api.whatsapp.com/send/?phone=6285763894908&text&type=phone_number&app_absent=0",
+  kemang:
+    "https://api.whatsapp.com/send/?phone=6281319849981&text&type=phone_number&app_absent=0",
+};

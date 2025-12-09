@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { FiChevronDown } from "react-icons/fi";
 import { cn } from "@/lib/utils";
@@ -16,15 +17,19 @@ export default function CollectionsDropdown({
 }: CollectionsDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeOutRef = useRef<NodeJS.Timeout | null>(null)
+  const timeOutRef = useRef<NodeJS.Timeout | null>(null);
+  const pathname = usePathname();
+
+  // Check if we're on collections page
+  const isCollectionsActive = pathname?.includes("/collections");
 
   useEffect(() => {
     return () => {
       if (timeOutRef.current) {
         clearTimeout(timeOutRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     if (timeOutRef.current) {
@@ -32,13 +37,13 @@ export default function CollectionsDropdown({
       timeOutRef.current = null;
     }
     setIsOpen(true);
-  }
+  };
 
   const handleMouseLeave = () => {
     timeOutRef.current = setTimeout(() => {
       setIsOpen(false);
-    }, 150)
-  }
+    }, 150);
+  };
 
   return (
     <div
@@ -52,26 +57,32 @@ export default function CollectionsDropdown({
         <Link
           href="/collections"
           className={cn(
-            "uppercase font-poppins text-lg font-normal transition-colors duration-300 group-hover:text-primary",
-            shouldBeWhite ? "text-black" : "text-white"
+            "uppercase font-poppins text-sm lg:text-base font-normal transition-colors duration-300 group-hover:text-primary",
+            isCollectionsActive
+              ? "text-primary"
+              : shouldBeWhite
+              ? "text-black"
+              : "text-white"
           )}
         >
           Collections
         </Link>
         <Button
-        variant="ghost"
-        size="icon-sm"
-        onClick={() => setIsOpen(!isOpen)}
+          variant="ghost"
+          size="icon-sm"
+          onClick={() => setIsOpen(!isOpen)}
           className={cn(
             "pl-1 transition-all duration-300 group-hover:text-primary cursor-pointer",
-            shouldBeWhite
+            isCollectionsActive
+              ? "text-primary"
+              : shouldBeWhite
               ? "text-black"
               : "text-white",
             isOpen && "rotate-180"
           )}
           aria-label="Toggle collections menu"
         >
-          <FiChevronDown className="size-5" />
+          <FiChevronDown className="size-4" />
         </Button>
       </div>
 
@@ -92,7 +103,7 @@ export default function CollectionsDropdown({
                 className={cn(
                   "block px-4 py-3 transition-all duration-200",
                   "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10",
-                  "border-l-4 border-transparent hover:border-primary",
+                  "border-l-4 border-transparent hover:border-primary"
                 )}
               >
                 <div className="flex flex-col">

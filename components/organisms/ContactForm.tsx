@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,63 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    formData;
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      // EmailJS configuration - Replace with your actual values
+      const serviceId =
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const templateId =
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const publicKey =
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.fullName,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "vincent.ptk17@gmail.com", // Your receiving email
+        },
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setSubmitStatus({
+          type: "success",
+          message: "Message sent successfully! We'll get back to you soon.",
+        });
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Failed to send message. Please try again or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -94,9 +147,22 @@ export default function ContactForm() {
           </div>
 
           {/* Submit Button */}
-          <Button type="submit" variant="tertiary">
-            Send a message
+          <Button type="submit" variant="tertiary" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send a message"}
           </Button>
+
+          {/* Status Message */}
+          {submitStatus.type && (
+            <div
+              className={`p-4 border-2 ${
+                submitStatus.type === "success"
+                  ? "bg-green-50 border-green-500 text-green-700"
+                  : "bg-red-50 border-red-500 text-red-700"
+              }`}
+            >
+              <p className="font-poppins text-sm">{submitStatus.message}</p>
+            </div>
+          )}
         </form>
       </div>
     </div>

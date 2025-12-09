@@ -22,27 +22,30 @@ export default function OurCollections({ id }: OurCollectionsProps) {
               collectionCategories.length % 2 !== 0;
             return (
               <div
-                className={`group flex flex-col gap-3 ${
+                className={`flex flex-col gap-3 ${
                   isLastOdd
                     ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none"
                     : ""
                 }`}
                 key={index}
               >
-                <div className="aspect-4/3 relative">
-                  <Image
-                    src={item.src}
-                    alt={item.name}
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
                 <Link
                   href={`/collections/${item.slug}`}
-                  className="font-poppins font-normal text-lg text-black underline underline-offset-2 transition-colors duration-500 hover:text-primary w-fit"
+                  className="group/link flex flex-col gap-3"
                 >
-                  {item.name}
+                  <div className="aspect-4/3 relative overflow-hidden">
+                    <Image
+                      src={item.src}
+                      alt={item.name}
+                      width={800}
+                      height={600}
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover/link:scale-110"
+                    />
+                  </div>
+
+                  <span className="font-poppins font-normal text-lg text-black underline underline-offset-2 transition-colors duration-300 group-hover/link:text-primary w-fit">
+                    {item.name}
+                  </span>
                 </Link>
               </div>
             );

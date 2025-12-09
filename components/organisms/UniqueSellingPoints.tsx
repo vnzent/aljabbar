@@ -27,7 +27,7 @@ export default function UniqueSellingPoints() {
                 {<item.icon className="size-7 text-primary" />}
                 {item.point}
               </CardTitle>
-              <CardDescription className="capitalize font-inter font-normal text-sm sm:text-base text-black/70">
+              <CardDescription className="font-inter font-normal text-sm sm:text-base text-black/70">
                 {item.subpoint}
               </CardDescription>
             </Card>

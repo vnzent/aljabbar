@@ -175,7 +175,7 @@ export default function CategoryFilter({
           {hasChildren ? (
             <button
               onClick={() => toggleExpand(category.id)}
-              className="shrink-0 p-0.5 hover:bg-gray-100 rounded transition-colors"
+              className="shrink-0 p-0.5 hover:cursor-pointer"
             >
               {isExpanded ? (
                 <ChevronDown className="w-4 h-4 text-gray-600" />
@@ -193,9 +193,15 @@ export default function CategoryFilter({
               type="checkbox"
               checked={isSelected}
               onChange={() => handleCategoryToggle(category.slug)}
-              className="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-pointer shrink-0"
+              className="appearance-none w-4 h-4 border-2 border-gray-300 cursor-pointer shrink-0 checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 relative"
             />
-            <span className="text-sm text-gray-700 group-hover:text-primary transition-colors">
+            <span
+              className={`text-sm transition-colors ${
+                isSelected
+                  ? "text-primary font-medium"
+                  : "text-gray-700 group-hover:text-primary"
+              }`}
+            >
               {category.name}
               {category.count !== undefined && category.count > 0 && (
                 <span className="text-xs text-gray-400 ml-1">
@@ -217,7 +223,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <div className="bg-white rounded-lg sticky top-44">
+    <div className="bg-white sticky top-44">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-poppins font-bold text-xl text-black">
           Categories

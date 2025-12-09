@@ -162,7 +162,7 @@ export default function AppointmentForm({
           htmlFor="firstName"
           className="block font-poppins font-medium text-black"
         >
-          First Name*
+          Name*
         </label>
         <input
           type="text"

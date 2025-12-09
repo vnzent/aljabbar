@@ -45,6 +45,7 @@ export default function Branches() {
                         <p className="font-semibold text-black mb-1.5">
                           {store.name}
                         </p>
+                        {/* TODO: Linknya diisi */}
                         <Link
                           href="#"
                           className="text-sm leading-relaxed mb-2 underline underline-offset-3 cursor-pointer hover:text-primary"
