@@ -5,6 +5,7 @@ import AppointmentCalendar, {
   AppointmentCalendarRef,
 } from "@/components/organisms/AppointmentCalendar";
 import AppointmentForm from "@/components/organisms/AppointmentForm";
+import HeaderSection from "../molecules/HeaderSection";
 
 export default function AppointmentSection() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -28,19 +29,7 @@ export default function AppointmentSection() {
       <div className="main-wrapper mx-auto">
         <div className="flex flex-col gap-16 md:gap-24 lg:gap-30">
           {/* Header */}
-          <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 text-center">
-            <div className="flex gap-3 items-center justify-center">
-              <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl md:text-4xl lg:text-5xl">
-                Schedule Your Visit
-              </h2>
-            </div>
-            <p className="font-inter text-base md:text-lg text-text max-w-2xl mx-auto px-4">
-              Choose a convenient date and time to visit our showroom or
-              schedule a home visit. Our experts will guide you through our
-              premium carpet collection.
-            </p>
-          </div>
-
+          <HeaderSection isParagraph heading="Schedule Your Visit" paragraph="Choose a convenient date and time to visit our showroom or schedule a home visit. Our experts will guide you through our premium carpet collection." />
           {/* Main Content */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16">
             {/* Calendar Section */}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import GalleryLightbox from "@/components/organisms/GalleryLightbox";
+import HeaderSection from "../molecules/HeaderSection";
 
 export default function Gallery() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -19,14 +20,7 @@ export default function Gallery() {
     <>
       <section className="w-full mx-auto main-wrapper">
         <div className="flex flex-col gap-8 md:gap-12 lg:gap-18">
-          <div className="flex flex-col gap-3 items-center">
-            <p className="uppercase font-poppins text-xl md:text-2xl font-normal">
-              Gallery
-            </p>
-            <h2 className="font-poppins font-medium text-3xl md:text-5xl capitalize text-center">
-              Explore Our Lookbook
-            </h2>
-          </div>
+          <HeaderSection isSubHeading heading="Gallery" subHeading="Explore Our Lookbook" />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {galleryLookBook.map((product, index) => (
               <Card

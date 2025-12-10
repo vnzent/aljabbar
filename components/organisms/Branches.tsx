@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import HeaderSection from "../molecules/HeaderSection";
 
 export default function Branches() {
   // Split branches: first 4 (Jakarta - Banten) on left, rest on right
@@ -15,14 +16,7 @@ export default function Branches() {
   return (
     <section className="w-full mx-auto main-wrapper">
       <div className="flex flex-col gap-8 md:gap-10">
-        <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 text-center">
-          <p className="uppercase text-xl sm:text-2xl md:text-2xl lg:text-3xl font-poppins text-black">
-            Branches
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-poppins font-medium text-black">
-            AL-JABBAR Carpets
-          </h2>
-        </div>
+        <HeaderSection isSubHeading heading="AL-JABBAR Carpets" subHeading="Branches" />
         {/* Mobile: Single Accordion */}
         <div className="md:hidden">
           <Accordion type="single" collapsible className="w-full space-y-3">

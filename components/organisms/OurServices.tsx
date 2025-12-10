@@ -1,20 +1,11 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import ServicesLayout from "../molecules/ServicesLayout";
+import HeaderSection from "../molecules/HeaderSection";
 
 export default function OurServices() {
   return (
     <section className="w-full mx-auto main-wrapper">
       <div className="flex flex-col gap-16 md:gap-24 lg:gap-30">
-        <div className="flex flex-col gap-3 md:gap-4 lg:gap-5 text-center items-center">
-          <h2 className="font-poppins font-medium text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-black">
-            Our Services
-          </h2>
-          <p className="font-inter text-base md:text-lg text-text capitalize max-w-xl px-4">
-            Decades of serving customers with a diverse collection of rugs have
-            built a strong foundation of trust and reliability.
-          </p>
-        </div>
+      <HeaderSection isParagraph heading="Our Services" paragraph="Decades of serving customers with a diverse collection of rugs have built a strong foundation of trust and reliability." />
         <div className="grid grid-rows-1 gap-y-8 md:gap-y-11 lg:gap-y-15 items-center">
           <ServicesLayout
             heading="Carpet Installation"
