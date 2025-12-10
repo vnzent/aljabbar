@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const perPageOptions = [
@@ -90,13 +90,16 @@ export default function ShowProductsDropdown() {
                 key={option.value}
                 onClick={() => handlePerPageChange(option.value)}
                 className={cn(
-                  "w-full px-5 py-3 text-left text-xs lg:text-sm transition-colors duration-150 cursor-pointer active:bg-primary/20",
+                  "w-full px-5 py-3 text-left text-xs lg:text-sm transition-colors duration-150 cursor-pointer flex items-center justify-between gap-2",
                   selectedPerPage === option.value
-                    ? "bg-primary/30 text-primary font-medium"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-gray-700 hover:bg-primary/5"
                 )}
               >
                 {option.label}
+                {selectedPerPage === option.value && (
+                  <Check className="w-4 h-4 text-primary" />
+                )}
               </button>
             ))}
           </div>

@@ -223,7 +223,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <div className="bg-white sticky top-44">
+    <div className="bg-white sticky top-20">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-poppins font-bold text-xl text-black">
           Categories

@@ -44,6 +44,7 @@ export default function CollectionsClientWrapper({
   const [isFiltering, setIsFiltering] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+  const [hiddenSlugs, setHiddenSlugs] = useState<string[]>([]);
 
   // Watch for all params changes based on mode
   const currentCategories = searchParams.get("categories") || "";
@@ -74,8 +75,9 @@ export default function CollectionsClientWrapper({
   }, [isMobileFilterOpen]);
 
   useEffect(() => {
-    // Reset filtering state when new data arrives
+    // Reset filtering state and hidden slugs when new data arrives
     setIsFiltering(false);
+    setHiddenSlugs([]);
   }, [
     currentCategories,
     currentSubcategories,
@@ -99,7 +101,8 @@ export default function CollectionsClientWrapper({
 
   // Remove a single category
   const removeCategory = (slugToRemove: string) => {
-    handleFilterChange();
+    // Immediately hide the tag
+    setHiddenSlugs((prev) => [...prev, slugToRemove]);
 
     const newSlugs = categorySlugs.filter((slug) => slug !== slugToRemove);
     const params = new URLSearchParams(searchParams.toString());
@@ -117,11 +120,15 @@ export default function CollectionsClientWrapper({
       params.toString() ? `?${params.toString()}` : ""
     }`;
     router.push(targetUrl);
+
+    // Trigger filtering after navigation
+    setTimeout(() => handleFilterChange(), 0);
   };
 
   // Clear all categories
   const clearAllCategories = () => {
-    handleFilterChange();
+    // Immediately hide all tags
+    setHiddenSlugs(categorySlugs);
 
     const params = new URLSearchParams(searchParams.toString());
     const paramName = mode === "parent" ? "subcategories" : "categories";
@@ -132,11 +139,16 @@ export default function CollectionsClientWrapper({
       params.toString() ? `?${params.toString()}` : ""
     }`;
     router.push(targetUrl);
+
+    // Trigger filtering after navigation
+    setTimeout(() => handleFilterChange(), 0);
   };
 
   // Check if there are categories to show in filter
   const hasCategories = categories.length > 0;
-  const selectedCategories = getSelectedCategoryNames();
+  const selectedCategories = getSelectedCategoryNames().filter(
+    ({ slug }) => !hiddenSlugs.includes(slug)
+  );
 
   return (
     <FilterContext.Provider value={{ handleFilterChange }}>
@@ -204,7 +216,7 @@ export default function CollectionsClientWrapper({
       {/* Products Grid */}
       <div className={hasCategories ? "flex-1" : "w-full"}>
         {/* Title Section - Not Sticky */}
-        <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-18">
+        <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-16">
           <div className="mb-6">
             <h1 className="font-poppins font-bold text-3xl text-black">
               {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
@@ -222,8 +234,7 @@ export default function CollectionsClientWrapper({
           <div
             className={cn(
               "mb-6 hidden md:flex items-center justify-end gap-3 transition-all duration-300",
-              isHeaderSticky &&
-                "sticky z-50 bg-white -mx-4 px-4 py-3"
+              isHeaderSticky && "sticky z-50 bg-white -mx-4 px-4 py-3"
             )}
           >
             <ShowProductsDropdown />
@@ -248,7 +259,7 @@ export default function CollectionsClientWrapper({
               </span>
               <button
                 onClick={clearAllCategories}
-                className="text-sm text-primary hover:text-primary/80 font-medium transition-colors hover:cursor-pointer"
+                className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
               >
                 Clear All
               </button>
@@ -266,10 +277,10 @@ export default function CollectionsClientWrapper({
                   <span className="max-w-[150px] truncate">{name}</span>
                   <button
                     onClick={() => removeCategory(slug)}
-                    className="p-0.5 rounded-full hover:bg-primary/20 transition-colors"
+                    className="p-0.5 rounded-full hover:bg-primary/20 transition-colors cursor-pointer z-1 relative"
                     aria-label={`Remove ${name} filter`}
                   >
-                    <X className="w-3.5 h-3.5" />
+                    <X className="w-3.5 h-3.5 pointer-events-none" />
                   </button>
                 </span>
               ))}

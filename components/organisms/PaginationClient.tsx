@@ -109,7 +109,7 @@ export default function PaginationClient({
                       "hover:bg-linear-to-r hover:from-primary/10 hover:to-primary/20",
                       "hover:scale-105 active:scale-95 cursor-pointer",
                       pageNum === currentPage
-                        ? "bg-linear-to-br from-primary to-primary/80 text-white hover:text-primary shadow-lg shadow-primary/30 scale-105"
+                        ? "bg-linear-to-br from-primary to-primary/80 text-white hover:text-primary scale-105"
                         : "border border-gray-200 hover:border-primary/50 text-gray-700 cursor-pointer"
                     )}
                   >

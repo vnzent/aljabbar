@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { whatsappContacts } from "@/lib/data";
 
 function BannerComponent() {
   return (
@@ -35,7 +36,7 @@ function BannerComponent() {
           <div className="flex justify-center sm:justify-start">
             <Button className="w-full sm:w-fit" asChild>
               <Link
-                href="/"
+                href={whatsappContacts.kemang}
                 className="uppercase font-poppins text-white text-lg"
               >
                 WHATSAPP NOW

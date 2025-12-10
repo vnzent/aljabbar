@@ -13,7 +13,7 @@ export default function OurCollections({ id }: OurCollectionsProps) {
       <div className="flex flex-col gap-10 main-wrapper mx-auto">
         <HeaderBetween
           heading="Our Collections"
-          subheading={` Decades of serving customers with a diverse collection of \nrugs have built a strong foundation of trust and reliability.`}
+          subheading={` Decades of serving customers with a diverse collection of rugs have built a strong foundation of trust and reliability.`}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {collectionCategories.map((item, index) => {

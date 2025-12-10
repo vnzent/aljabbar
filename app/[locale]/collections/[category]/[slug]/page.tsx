@@ -46,7 +46,7 @@ async function ProductDetailContent({
 
   return (
     <>
-      <div className="container mx-auto px-4 pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
+      <div className="main-wrapper mx-auto pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
         <DynamicBreadcrumb
           textColor="text-black"
           separatorColor="text-black"
@@ -147,7 +147,7 @@ async function ProductDetailContent({
       {product.categories && product.categories.length > 0 && (
         <Suspense
           fallback={
-            <div className="container mx-auto px-4 py-16">
+            <div className="main-wrapper mx-auto py-16">
               <div className="h-10 w-64 bg-gray-200 rounded mb-8 animate-pulse" />
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {[...Array(4)].map((_, i) => (

@@ -12,7 +12,7 @@ export default function CounterSection({ withHeading = true }: CounterSectionPro
         {withHeading && (
           <HeaderBetween
             heading="Numbers That Tell Our Story"
-            subheading={`Decades of serving customers with a diverse collection of\nrugs have built a strong foundation of trust and reliability.`}
+            subheading={`Decades of serving customers with a diverse collection of rugs have built a strong foundation of trust and reliability.`}
           />
         )}
         <ValueCounter />

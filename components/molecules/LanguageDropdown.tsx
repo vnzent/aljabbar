@@ -121,16 +121,16 @@ export default function LanguageDropdown({
                   onClick={() => switchLocale(language.code)}
                   className={cn(
                     "w-full flex items-center gap-3 px-4 py-6 text-left transition-all duration-200 rounded-none",
-                    "hover:bg-primary/10 active:bg-primary/20 hover:cursor-pointer",
+                    "hover:bg-primary/5 hover:cursor-pointer",
                     locale === language.code
-                      ? "bg-primary/30 text-primary"
+                      ? "bg-primary/10 text-primary"
                       : "text-gray-700"
                   )}
                 >
                   <span
                     className={`fi fi-${language.flagCode} w-6 h-6 rounded-sm shrink-0`}
                   />
-                  <span className="flex-1 font-medium text-sm">
+                  <span className="flex-1 font-medium text-sm text-black">
                     {language.name}
                   </span>
                   {locale === language.code && (

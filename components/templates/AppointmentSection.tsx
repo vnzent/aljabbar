@@ -1,13 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import DynamicHero from "@/components/templates/DynamicHero";
 import AppointmentCalendar, {
   AppointmentCalendarRef,
 } from "@/components/organisms/AppointmentCalendar";
 import AppointmentForm from "@/components/organisms/AppointmentForm";
-import IconLine from "@/components/atoms/IconLine";
-import Banner from "@/components/templates/Banner";
 
 export default function AppointmentSection() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -37,7 +34,7 @@ export default function AppointmentSection() {
                 Schedule Your Visit
               </h2>
             </div>
-            <p className="font-inter text-base md:text-lg text-black/70 max-w-2xl mx-auto px-4">
+            <p className="font-inter text-base md:text-lg text-text max-w-2xl mx-auto px-4">
               Choose a convenient date and time to visit our showroom or
               schedule a home visit. Our experts will guide you through our
               premium carpet collection.

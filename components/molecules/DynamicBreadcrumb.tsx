@@ -34,6 +34,9 @@ export default function DynamicBreadcrumb({
   // Remove locale from pathname (e.g., /en/about -> /about)
   const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
 
+  // Check if current page is collections-related
+  const isCollectionsPage = pathWithoutLocale.startsWith("/collections");
+
   // Split path into segments
   const pathSegments = pathWithoutLocale
     .split("/")
@@ -86,6 +89,14 @@ export default function DynamicBreadcrumb({
   // Don't show breadcrumb on home page
   if (pathSegments.length === 0) return null;
 
+  // Define color classes based on page type
+  const inactiveColor = isCollectionsPage
+    ? "text-gray-500 hover:text-black"
+    : "text-gray-300 hover:text-white";
+  const activeColor = isCollectionsPage
+    ? "text-black hover:text-black"
+    : "text-white hover:text-white";
+
   return (
     <Breadcrumb className="">
       <BreadcrumbList className="flex items-center">
@@ -94,10 +105,9 @@ export default function DynamicBreadcrumb({
             <Link
               href="/"
               className={cn(
-                textColor,
+                inactiveColor,
                 textSize,
-                hoverText,
-                "opacity-60 hover:opacity-100 transition-colors font-poppins"
+                "transition-colors font-poppins"
               )}
             >
               Home
@@ -115,7 +125,11 @@ export default function DynamicBreadcrumb({
             <BreadcrumbItem>
               {item.isLast ? (
                 <BreadcrumbPage
-                  className={cn(textColor, textSize, hoverText, "capitalize font-poppins")}
+                  className={cn(
+                    activeColor,
+                    textSize,
+                    "capitalize font-poppins"
+                  )}
                 >
                   {item.name}
                 </BreadcrumbPage>
@@ -125,10 +139,9 @@ export default function DynamicBreadcrumb({
                     <Link
                       href={item.href}
                       className={cn(
-                        textColor,
+                        inactiveColor,
                         textSize,
-                        hoverText,
-                        "opacity-60 hover:opacity-100 transition-colors font-poppins"
+                        "transition-colors font-poppins"
                       )}
                     >
                       {item.name}

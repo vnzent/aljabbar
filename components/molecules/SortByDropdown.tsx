@@ -91,11 +91,11 @@ export default function SortByDropdown() {
                 key={option.value}
                 onClick={() => handleSortChange(option.value)}
                 className={cn(
-                  "w-full px-4 py-3 text-left text-sm transition-colors duration-150 cursor-pointer active:bg-primary/20",
+                  "w-full px-4 py-3 text-left text-sm transition-colors duration-150 cursor-pointer",
                   "flex items-center justify-between gap-2",
                   selectedSort === option.value
-                    ? "bg-primary/30 text-primary font-medium"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-gray-700 hover:bg-primary/5"
                 )}
               >
                 <span>{option.label}</span>

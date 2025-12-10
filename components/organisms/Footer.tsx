@@ -101,7 +101,13 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-center font-poppins text-sm text-white/60">
-            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved.
+            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved. {" "}
+            <a
+              href="https://sunmedia.co.id/"
+              className="underline underline-offset-3 hover:text-primary transition-all duration-300"
+            >
+              Sunmedia
+            </a>
           </p>
         </div>
       </div>

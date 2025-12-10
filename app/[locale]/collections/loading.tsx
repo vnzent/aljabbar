@@ -4,8 +4,8 @@ import CategoryFilterSkeleton from "@/components/molecules/CategoryFilterSkeleto
 export default function Loading() {
   return (
     <>
-      <div className="pt-10 sm:pt-15 lg:pt-28 pb-5 sm:pb-10 lg:pb-15">
-        <div className="container mx-auto px-4 py-8">
+      <div className="pt-10 sm:pt-15 lg:pt-20 pb-5 sm:pb-10 lg:pb-20">
+        <div className="mx-auto main-wrapper py-8">
           <div className="py-3">
             {/* Breadcrumb skeleton */}
             <div className="flex items-center gap-2 text-base">

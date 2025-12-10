@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <>
-      <div className="container mx-auto px-4 pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
+      <div className="main-wrapper mx-auto pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
         {/* Breadcrumb skeleton */}
         <div className="flex items-center gap-2 text-sm md:text-base">
           <div className="h-4 w-16 bg-gray-200 animate-pulse" />
@@ -47,13 +47,13 @@ export default function Loading() {
 
       {/* Fixed Contact Button Skeleton for Mobile/Tablet */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4">
-        <div className="container mx-auto">
+        <div className="main-wrapper mx-auto">
           <div className="h-11 w-full bg-gray-200 animate-pulse" />
         </div>
       </div>
 
       {/* Related Products Section Skeleton */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="main-wrapper mx-auto py-16">
         <div className="h-10 w-64 bg-gray-200 rounded mb-8 animate-pulse" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[...Array(4)].map((_, i) => (

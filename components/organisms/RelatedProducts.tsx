@@ -28,7 +28,7 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="container mx-auto px-4 py-10 md:py-12 lg:py-16 border-t">
+    <div className="main-wrapper mx-auto py-10 md:py-12 lg:py-16 border-t">
       <h2 className="font-poppins font-bold text-2xl md:text-3xl text-black mb-6 md:mb-8">
         Related Products
       </h2>

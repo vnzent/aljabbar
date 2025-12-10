@@ -87,7 +87,7 @@ export default function Navbar() {
                 : "text-white border-white",
               isScrolled
                 ? "max-h-0 opacity-0 py-0"
-                : "max-h-20 opacity-100 py-3"
+                : "max-h-20 opacity-100 py-1"
             )}
           >
             <div className="flex gap-5 items-center">
@@ -121,7 +121,7 @@ export default function Navbar() {
           </div>
 
           {/* Main Navigation */}
-          <div className="flex justify-between items-center py-3 md:pt-5">
+          <div className="flex justify-between items-center py-3 md:pt-3">
             {/* Logo */}
             <Link href="/" className="z-50">
               <Image

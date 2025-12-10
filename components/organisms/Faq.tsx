@@ -19,11 +19,11 @@ export default function Faq() {
             FAQ
           </h2>
           <div className="flex flex-col gap-3 md:gap-4 text-center lg:text-left">
-            <p className="font-inter font-normal text-sm md:text-base text-black/60 capitalize leading-relaxed">
+            <p className="font-inter font-normal text-sm md:text-base text-text capitalize leading-relaxed">
               We've gathered some of the most frequently asked questions so you
               can get answers faster.
             </p>
-            <p className="text-black/60 font-inter text-sm md:text-base leading-relaxed">
+            <p className="text-text font-inter text-sm md:text-base leading-relaxed">
               If you haven't found the answer, please{" "}
               <Link
                 href="/contact"

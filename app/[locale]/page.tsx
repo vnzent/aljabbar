@@ -15,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <OurCollections id="collections" />
       <CounterSection withHeading={false} />
-
+      {/* TODO: Gambarnya kecilin */}
       <AboutSection
         paragraphs={[
           <>

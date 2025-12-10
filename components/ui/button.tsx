@@ -10,17 +10,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary border border-primary hover:border-white text-white hover:bg-white hover:text-primary rounded-none cursor-pointer duration-500 hover:border-primary active:bg-primary active:text-white",
+          "bg-primary border border-primary hover:border-white text-white hover:bg-white hover:text-primary rounded-none cursor-pointer duration-500 hover:border-primary active:bg-primary active:text-white mt-2",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 transition-all duration-500",
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         secondary:
-          "bg-transparent border border-white rounded-none hover:bg-primary hover:border-transparent text-white cursor-pointer transition-all duration-500",
+          "bg-transparent border border-white rounded-none hover:bg-primary hover:border-transparent text-white cursor-pointer transition-all duration-500 mt-2",
         ghost: "bg-transparent",
         link: "text-primary underline-offset-4 hover:underline",
         tertiary:
-          "bg-white text-black hover:bg-white/90 font-poppins text-lg font-normal py-6 mt-4 w-fit px-12 rounded-none",
+          "bg-white text-black hover:bg-white/90 font-poppins text-lg font-normal py-6 mt-4 w-fit px-12 rounded-none mt-2",
       },
       size: {
         default: "h-9 px-10 py-7",

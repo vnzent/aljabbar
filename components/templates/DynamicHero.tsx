@@ -12,7 +12,7 @@ export default function DynamicHero({
   image: string;
 }) {
   return (
-    <section className="w-full relative h-screen lg:h-auto">
+    <section className="w-full relative h-screen lg:h-[70vh] pt-10">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
           src={image}
@@ -21,22 +21,22 @@ export default function DynamicHero({
           className="object-cover"
         />
       </div>
-      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
-      <div className="h-full lg:h-200 w-full pb-45 md:pb-0 md:px-12 lg:px-8 lg:pb-45 flex main-wrapper justify-start items-end md:items-center lg:items-end mx-auto">
+      <div className="bg-black/30 sm:bg-black/40 absolute -z-9 inset-0 w-full h-full" />
+      <div className="h-full lg:h-full w-full md:px-12 lg:px-8 flex main-wrapper justify-start items-center mx-auto">
         <div className="flex flex-col gap-3">
           <DynamicBreadcrumb
             textColor="text-white"
             separatorColor="text-white"
-            textSize="text-base md:text-xl"
+            textSize="text-base md:text-xl lg:text-base"
             separatorSize="size-2 md:size-3"
             hoverText="hover:text-primary"
           />
           <div className="flex flex-col gap-3">
-            <h1 className="text-white font-poppins font-medium text-4xl md:text-6xl lg:text-[70px] leading-tight">
+            <h1 className="text-white font-poppins font-medium text-4xl md:text-6xl lg:text-5xl leading-tight">
               {parseTextWithLineBreaks(heading)}
             </h1>
             {subheading && (
-              <div className="flex gap-5 font-inter font-normal text-white capitalize text-base md:text-lg lg:text-xl">
+              <div className="flex gap-5 font-inter font-normal text-white capitalize text-base md:text-lg lg:text-base">
                 {subheading}
               </div>
             )}
