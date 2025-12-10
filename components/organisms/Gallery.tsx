@@ -20,7 +20,11 @@ export default function Gallery() {
     <>
       <section className="w-full mx-auto main-wrapper">
         <div className="flex flex-col gap-8 md:gap-12 lg:gap-18">
-          <HeaderSection isSubHeading heading="Gallery" subHeading="Explore Our Lookbook" />
+          <HeaderSection
+            isSubHeading
+            heading="Explore Our Lookbook"
+            subHeading="Gallery"
+          />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {galleryLookBook.map((product, index) => (
               <Card
