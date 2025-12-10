@@ -1,14 +1,32 @@
 {
   "hero": {
     "tagline": "Al-Jabbar House of Carpets",
-    "headlineLine1": "Sempurnakan Ruang Anda",
-    "headlineLine2": "Dengan Karpet Premium",
+    "headLine": "Karpet Mewah dan Permadani Premium untuk Rumah Anda",
     "primaryCta": "Belanja Sekarang",
     "secondaryCta": "Lihat Koleksi"
   },
-  "products": {
-    "title": "Produk Kami",
-    "search": "Cari produk...",
-    "noResults": "Tidak ada produk ditemukan"
+  "search": {
+    "title": "Cari karpet, permadani...",
+    "headLine": "Temukan Koleksi Kami",
+    "subHeadLine": "Cari hand-made carpets, machine-made carpets, dan lainnya...",
+    "searching": "Mencari...",
+    "noResults": "Tidak ada hasil yang ditemukan",
+    "noResultsDetail": "Tidak ada hasil yang ditemukan untuk",
+    "founded1": "Ditemukan",
+    "founded2": "produk",
+    "Cta": "Lihat semua hasil"
+  },
+  "homeAbout": {
+    "header": "Sejak 1994, Menghadirkan Karpet Terbaik untuk Interior Anda",
+    "paragraph1": "Dengan pengalaman lebih dari tiga dekade, Al-Jabbar Carpets menjadi salah satu tempat untuk permadani dan karpet premium paling terpercaya di Indonesia.",
+    "paragraph2": "Setiap koleksi kami dipilih langsung dari artisan dan produsen ternama di Iran, Turki, Pakistan, Afghanistan, Kashmir, Eropa, dan Amerika Serikat."
+  },
+  "about": {
+    "heading": "Tentang Kami",
+    "paragraph1": "Al-Jabbar Carpets telah menjadi nama terpercaya dalam industri karpet sejak tahun 1994. Dengan pengalaman dan keahlian selama puluhan tahun, kami telah membangun reputasi untuk memberikan keunggulan dalam setiap aspek layanan kami.",
+    "paragraph2": "Perjalanan kami dimulai dengan visi sederhana: membawa karpet berkelas dunia ke rumah dan bisnis Indonesia. Hari ini, kami berdiri sebagai salah satu pengecer karpet terkemuka di Indonesia, menawarkan koleksi luas yang mencakup karya tenunan tangan tradisional hingga desain mesin kontemporer.",
+    "paragraph3": "Kami bekerja langsung dengan pengrajin master dan produsen ternama dari Iran, Turki, Pakistan, Afghanistan, Kashmir, dan lainnya. Setiap karya di showroom kami menceritakan kisah warisan, seni, dan dedikasi terhadap kualitas.",
+    "paragraph4": "Baik Anda melengkapi rumah, kantor, hotel, atau tempat ibadah, Al-Jabbar menyediakan konsultasi personal untuk membantu Anda menemukan karpet sempurna yang sesuai dengan visi dan anggaran Anda. Komitmen kami melampaui penjualan—kami menawarkan instalasi profesional, panduan perawatan, dan layanan perbaikan untuk memastikan investasi Anda bertahan untuk generasi mendatang.",
+    "button": "Selengkapnya Tentang Kami"
   }
 }

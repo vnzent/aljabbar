@@ -1,14 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 export default function AboutSection({
-  paragraphs = [],
+  paragraphs,
   isButton = true,
 }: {
   paragraphs?: ReactNode[];
   isButton?: boolean;
 }) {
+  const t = useTranslations("about");
+
+  // Use custom paragraphs if provided, otherwise use translations
+  const displayParagraphs = paragraphs || [
+    t("paragraph1"),
+    t("paragraph2"),
+    t("paragraph3"),
+    t("paragraph4"),
+  ];
   return (
     <section className="w-full relative py-8 md:py-0">
       <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20 items-center justify-between">
@@ -30,13 +42,13 @@ export default function AboutSection({
           <div className="flex gap-3 justify-start items-center">
             <span className="w-8 sm:w-12 md:w-16 lg:w-20 h-0.5 bg-primary" />
             <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl whitespace-nowrap">
-              About Us
+              {t("heading")}
             </h2>
           </div>
 
           {/* Paragraphs */}
           <div className="flex flex-col gap-4 md:gap-6">
-            {paragraphs.map((paragraph, index) => (
+            {displayParagraphs.map((paragraph, index) => (
               <p
                 key={index}
                 className="font-inter font-light text-sm sm:text-base text-black text-justify leading-relaxed"
@@ -50,7 +62,7 @@ export default function AboutSection({
           {isButton && (
             <div className="flex justify-center lg:justify-start mt-2">
               <Button className="text-sm sm:text-base lg:text-lg font-poppins font-normal uppercase w-full sm:w-auto px-8 sm:px-10 lg:px-12">
-                more about us
+                {t("button")}
               </Button>
             </div>
           )}

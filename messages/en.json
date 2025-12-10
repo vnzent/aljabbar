@@ -1,14 +1,32 @@
 {
   "hero": {
     "tagline": "Al-Jabbar House of Carpets",
-    "headlineLine1": "Elevate Your Space",
-    "headlineLine2": "With Premium Carpets",
+    "headLine": "Luxury Carpets & Premium Rugs for Your Home",
     "primaryCta": "Shop Now",
     "secondaryCta": "View Collections"
   },
-  "products": {
-    "title": "Our Products",
-    "search": "Search products...",
-    "noResults": "No products found"
+  "search": {
+    "title": "Search for carpets, rugs...",
+    "headLine": "Discover Our Collection",
+    "subHeadLine": "Search for hand-made carpets, machine-made carpets, and more...",
+    "searching": "Searching...",
+    "noResults": "No results found",
+    "noResultsDetail": "No results found for ",
+    "founded1": "Found",
+    "founded2": "products",
+    "Cta": "View all results"
+  },
+  "homeAbout": {
+    "header": "Since 1994, Curating Indonesia's Finest Premium Carpets",
+    "paragraph1": "With more than three decades of experience, Al-Jabbar Carpets stands among Indonesia's most trusted destinations for premium carpets and permadani.",
+    "paragraph2": "Every piece in our collection is handpicked from world-renowned artisans and manufacturers across Iran, Turkey, Pakistan, Afghanistan, Kashmir, Europe, and the United States."
+  },
+  "about": {
+    "heading": "About Us",
+    "paragraph1": "Al-Jabbar Carpets has been a trusted name in the carpet industry since 1994. With decades of experience and expertise, we have built a reputation for delivering excellence in every aspect of our service.",
+    "paragraph2": "Our journey began with a simple vision: to bring world-class carpets to Indonesian homes and businesses. Today, we stand as one of Indonesia's premier carpet retailers, offering an extensive collection that spans traditional handwoven masterpieces to contemporary machine-made designs.",
+    "paragraph3": "We work directly with master craftsmen and renowned manufacturers from Iran, Turkey, Pakistan, Afghanistan, Kashmir, and beyond. Each piece in our showroom tells a story of heritage, artistry, and dedication to quality.",
+    "paragraph4": "Whether you're furnishing a home, office, hotel, or place of worship, Al-Jabbar provides personalized consultation to help you find the perfect carpet that matches your vision and budget. Our commitment extends beyond the sale—we offer professional installation, maintenance guidance, and repair services to ensure your investment lasts for generations.",
+    "button": "More About Us"
   }
 }

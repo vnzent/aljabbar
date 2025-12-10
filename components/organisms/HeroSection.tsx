@@ -17,7 +17,7 @@ export default function HeroSection() {
           loading="eager"
         />
       </div>
-      <div className="bg-black/30 sm:bg-black/20 absolute -z-9 inset-0 w-full h-full" />
+      <div className="bg-black/30 sm:bg-black/40 absolute -z-9 inset-0 w-full h-full" />
       <div className="h-full w-full flex flex-col main-wrapper mx-auto justify-end items-start md:justify-center lg:justify-end gap-10 pb-24 md:pb-0 lg:pb-45 md:px-12 lg:px-8">
         <div className="flex flex-col gap-8 max-w-3xl lg:max-w-4xl">
           <div className="flex flex-col gap-3">
@@ -25,8 +25,7 @@ export default function HeroSection() {
               {t("tagline")}
             </p>
             <h1 className="text-white font-poppins font-medium text-4xl sm:text-5xl lg:text-[65px] leading-snug sm:leading-tight">
-              {t("headlineLine1")} <br />
-              {t("headlineLine2")}
+              {t("headLine")} 
             </h1>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 font-poppins w-full sm:w-auto">

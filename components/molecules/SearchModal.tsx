@@ -10,6 +10,7 @@ import { LuSparkles } from "react-icons/lu";
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Button } from "../ui";
+import { useTranslations } from "next-intl";
 
 interface Product {
   id: number;
@@ -31,6 +32,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const locale = params.locale as string;
+  const t = useTranslations("search");
 
   // Fetch search results
   const searchProducts = useCallback(async (query: string) => {
@@ -115,7 +117,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               </div>
               <input
                 type="text"
-                placeholder="Search for carpets, rugs..."
+                placeholder={t("title")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 outline-none text-lg font-poppins placeholder:text-gray-500 bg-transparent"
@@ -125,8 +127,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 <BiLoaderAlt className="size-5 animate-spin text-primary" />
               )}
               <Button
-              variant="ghost"
-              size="icon"
+                variant="ghost"
+                size="icon"
                 onClick={onClose}
                 className="p-2 transition-all duration-200 hover:rotate-90 hover:cursor-pointer"
               >
@@ -154,18 +156,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <LuSparkles className="size-9 text-primary/60" />
                 </div>
                 <h3 className="font-poppins font-semibold text-gray-800 mb-2">
-                  Discover Our Collection
+                  {t("headLine")}
                 </h3>
-                <p className="text-gray-500 text-sm">
-                  Search for hand-made carpets, machine-made rugs, and more...
-                </p>
+                <p className="text-gray-500 text-sm">{t("subHeadLine")}</p>
               </div>
             ) : isLoading ? (
               <div className="p-12 text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <BiLoaderAlt className="size-7 lg:size-8 animate-spin text-primary" />
                 </div>
-                <p className="text-gray-500">Searching...</p>
+                <p className="text-gray-500">{t("searching")}</p>
               </div>
             ) : results.length === 0 ? (
               <div className="p-12 text-center">
@@ -239,11 +239,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <div className="px-5 py-4 border-t border-gray-100 bg-linear-to-r from-gray-50 to-white">
               <div className="flex items-center justify-between">
                 <p className="text-sm lg:text-base font-normal text-gray-600">
-                  Found{" "}
+                  {t("founded1")}{" "}
                   <span className="font-semibold text-primary">
                     {results.length}
                   </span>{" "}
-                  product{results.length !== 1 ? "s" : ""}
+                  {t("founded2")}
+                  {locale === "en" && results.length !== 1 ? "s" : ""}
                 </p>
                 <Link
                   href={`/${locale}/collections?search=${encodeURIComponent(
@@ -252,7 +253,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   onClick={onClose}
                   className="inline-flex items-center gap-1.5 text-sm lg:text-base font-medium text-primary hover:text-primary/80 transition-colors"
                 >
-                  View all results
+                  {t("Cta")}
                   <IoIosArrowRoundForward className="sizze-5 lg:size-6" />
                 </Link>
               </div>

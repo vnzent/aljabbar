@@ -15,23 +15,7 @@ export default function Home() {
       <HeroSection />
       <OurCollections id="collections" />
       <CounterSection withHeading={false} />
-      {/* TODO: Gambarnya kecilin */}
-      <AboutSection
-        paragraphs={[
-          <>
-            Al-Jabbar carpets is a retail carpet business which dates back to
-            its originating date being March 1994. From the start we have been
-            dedicated to providing the best quality carpets.
-          </>,
-          <>
-            Al-Jabbar carpets we specializes in Hand-Made Carpets which come
-            from different countries such as Iran, Pakistan, Afghanistan and
-            Kashmir, Machine-Made Carpets and Mosque Rugs from Iran and Turkey
-            and wall to wall carpets from Europe and the United States of
-            America.
-          </>,
-        ]}
-      />
+      <AboutSection />
       <IconLine />
       <UniqueSellingPoints />
       <OurProducts />
