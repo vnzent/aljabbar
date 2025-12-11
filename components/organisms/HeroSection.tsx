@@ -10,7 +10,7 @@ export default function HeroSection() {
     <section className="relative w-full h-svh">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
-          src="/hero-bg.png"
+          src="/hero-bg.webp"
           alt="Hero Background"
           fill={true}
           className="object-cover"
