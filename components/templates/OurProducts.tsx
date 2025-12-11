@@ -2,29 +2,45 @@ import Link from "next/link";
 import ProductsList from "@/components/organisms/ProductsList";
 import { Suspense } from "react";
 import OurProductsSkeleton from "@/components/molecules/OurProductsSkeleton";
+import SectionWrapper from "../organisms/SectionWrapper";
+import TextHeading from "../atoms/TextHeading";
+import { GoChevronRight } from "react-icons/go";
+
+export function ViewAllLink({
+  variant = "desktop",
+}: {
+  variant?: "mobile" | "desktop";
+}) {
+  return (
+    <Link
+      href="/collections"
+      className={`${
+        variant === "mobile"
+          ? "flex md:hidden w-full mt-6"
+          : "hidden md:flex w-fit"
+      } group uppercase gap-2 justify-center border-b hover:border-primary border-black items-center  font-inter text-base font-normal text-black relative`}
+    >
+      <span className="transition-colors duration-500 group-hover:text-primary">
+        View All
+      </span>
+      <GoChevronRight className="text-lg group-hover:text-primary transition-colors duration-500" />
+    </Link>
+  );
+}
 
 export default async function OurProducts() {
   return (
-    <section className="min-h-screen w-full mx-auto main-wrapper">
-      <div className="flex flex-col gap-10 lg:gap-18">
+    <section className=" w-full mx-auto main-wrapper">
+      <SectionWrapper>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-center sm:text-left">
-          <h2 className="font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl capitalize">
-            Our Products
-          </h2>
-          <Link
-            href="/collections"
-            className="group uppercase font-inter text-base sm:text-lg font-normal text-black relative w-fit mx-auto sm:mx-0"
-          >
-            <span className="transition-colors duration-500 group-hover:text-primary underline underline-offset-3">
-              View All
-            </span>
-            {/* <span className="absolute left-0 bottom-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full" /> */}
-          </Link>
+          <TextHeading>Our Products</TextHeading>
+          <ViewAllLink />
         </div>
         <Suspense fallback={<OurProductsSkeleton />}>
           <ProductsList />
         </Suspense>
-      </div>
+      </SectionWrapper>
+      <ViewAllLink variant="mobile" />
     </section>
   );
 }

@@ -4,20 +4,20 @@ import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import DynamicHero from "@/components/templates/DynamicHero";
 import IconLine from "@/components/atoms/IconLine";
 import OurServices from "@/components/organisms/OurServices";
-import Image from "next/image";
+import PageWrapper from "@/components/organisms/PageWrapper";
 
 export default function Service() {
   return (
-    <main className="space-y-16 md:space-y-24 lg:space-y-30">
+    <PageWrapper>
       <DynamicHero
-        heading={`Crafting Comfort &\nElegance Since 1998`}
+        heading={`Our Services`}
         subheading="A legacy of craftsmanship and refined interior taste."
-        image="/hero-bg.png"
+        image="/service.jpeg"
       />
       <OurServices />
       <IconLine />
       <ContactSection />
       <Banner />
-    </main>
+    </PageWrapper>
   );
 }

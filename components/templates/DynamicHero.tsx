@@ -12,18 +12,19 @@ export default function DynamicHero({
   image: string;
 }) {
   return (
-    <section className="w-full relative h-screen lg:h-[70vh] pt-10">
+    <section className="w-full relative h-svh lg:h-[70vh] pt-10">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
           src={image}
           alt="Hero Background"
           fill={true}
           className="object-cover"
+          priority={true}
         />
       </div>
       <div className="bg-black/30 sm:bg-black/40 absolute -z-9 inset-0 w-full h-full" />
       <div className="h-full lg:h-full w-full md:px-12 lg:px-8 flex main-wrapper justify-start items-center mx-auto">
-        <div className="flex flex-col gap-3">
+        <div className="flex max-w-180 flex-col gap-3">
           <DynamicBreadcrumb
             textColor="text-white"
             separatorColor="text-white"

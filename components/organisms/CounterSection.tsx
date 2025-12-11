@@ -1,14 +1,17 @@
 import HeaderBetween from "@/components/templates/HeaderBetween";
 import ValueCounter from "@/components/atoms/ValueCounter";
+import SectionWrapper from "./SectionWrapper";
 
 interface CounterSectionProps {
   withHeading: boolean;
 }
 
-export default function CounterSection({ withHeading = true }: CounterSectionProps) {
+export default function CounterSection({
+  withHeading = true,
+}: CounterSectionProps) {
   return (
     <section className="w-full main-wrapper mx-auto">
-      <div className="flex flex-col gap-8 md:gap-10">
+      <SectionWrapper>
         {withHeading && (
           <HeaderBetween
             heading="Numbers That Tell Our Story"
@@ -16,7 +19,7 @@ export default function CounterSection({ withHeading = true }: CounterSectionPro
           />
         )}
         <ValueCounter />
-      </div>
+      </SectionWrapper>
     </section>
   );
 }

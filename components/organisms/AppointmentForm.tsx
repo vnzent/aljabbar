@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import type { AppointmentFormData, TimeSlot } from "@/lib/types/appointment";
 import { cn } from "@/lib/utils";
@@ -161,7 +162,7 @@ export default function AppointmentForm({
     formData.selectedTimeSlot;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
       {/* Time Slots */}
       {selectedDate && (
         <div className="space-y-3">
@@ -202,206 +203,128 @@ export default function AppointmentForm({
       )}
 
       {/* First Name */}
-      <div className="space-y-2">
-        <label
-          htmlFor="firstName"
-          className="block font-poppins font-medium text-black"
-        >
-          Name*
-        </label>
-        <input
-          type="text"
+      <Field id="firstName" label="Name*">
+        <Input
           id="firstName"
           name="firstName"
           value={formData.firstName}
-          onChange={handleInputChange}
+          onChange={handleInputChange as any}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
         />
-      </div>
+      </Field>
       <div className="grid grid-cols-2 gap-5">
         {/* Email */}
-        <div className="space-y-2">
-          <label
-            htmlFor="email"
-            className="block font-poppins font-medium text-black"
-          >
-            Email*
-          </label>
-          <input
+        <Field id="email" label="Email*">
+          <Input
             type="email"
             id="email"
             name="email"
             value={formData.email}
-            onChange={handleInputChange}
+            onChange={handleInputChange as any}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
           />
-        </div>
+        </Field>
 
         {/* Phone */}
-        <div className="space-y-2">
-          <label
-            htmlFor="phone"
-            className="block font-poppins font-medium text-black"
-          >
-            Phone*
-          </label>
-          <input
+        <Field id="phone" label="Phone*">
+          <Input
             type="tel"
             id="phone"
             name="phone"
             value={formData.phone}
-            onChange={handleInputChange}
+            onChange={handleInputChange as any}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
           />
-        </div>
+        </Field>
       </div>
 
       {/* Booking Type */}
-      <div className="grid grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <label
-            htmlFor="bookingType"
-            className="block font-poppins font-medium text-black"
+      <div className="grid grid-cols-2 gap-2 md:gap-5">
+        <Field id="bookingType" label="Booking Type*">
+          <SelectField
+            id="bookingType"
+            name="bookingType"
+            value={formData.bookingType}
+            onChange={handleInputChange as any}
+            required
           >
-            Booking Type*
-          </label>
-          <div className="relative">
-            <select
-              id="bookingType"
-              name="bookingType"
-              value={formData.bookingType}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
-            >
-              <option value="">Choose Booking</option>
-              <option value="consultation">Consultation</option>
-              <option value="viewing">Carpet Viewing</option>
-              <option value="home-visit">Home Visit</option>
-              <option value="repair">Repair Service</option>
-              <option value="cleaning">Cleaning Service</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <svg
-                className="h-5 w-5 text-black"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+            <option value="">Choose Booking</option>
+            <option value="consultation">Consultation</option>
+            <option value="viewing">Carpet Viewing</option>
+            <option value="home-visit">Home Visit</option>
+            <option value="repair">Repair Service</option>
+            <option value="cleaning">Cleaning Service</option>
+          </SelectField>
+        </Field>
 
         {/* Location */}
-        <div className="space-y-2">
-          <label
-            htmlFor="location"
-            className="block font-poppins font-medium text-black"
+        <Field id="location" label="Location*">
+          <SelectField
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleInputChange as any}
+            required
           >
-            Location*
-          </label>
-          <div className="relative">
-            <select
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
-            >
-              <option value="">Choose Place</option>
-              <option value="kemang">Al-Jabbar Kemang</option>
-              <option value="nosherwan">Nosherwan Carpets</option>
-              <option value="benda">Al Kabir Carpet</option>
-              <option value="bekasi">Al-Jabbar Bekasi</option>
-              <option value="surabaya-muhammad">
-                Al-Jabbar Surabaya (H. Muhammad)
-              </option>
-              <option value="surabaya-kertajaya">
-                Al-Jabbar Surabaya (Kertajaya)
-              </option>
-              <option value="banten">Al Matah Carpets</option>
-              <option value="garut">Al Jabbar Garut</option>
-              <option value="tasikmalaya">Al Jabbar Tasikmalaya</option>
-              <option value="gorontalo">Al-Jabbar Gorontalo</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <svg
-                className="h-5 w-5 text-black"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+            <option value="">Choose Place</option>
+            <option value="kemang">Al-Jabbar Kemang</option>
+            <option value="nosherwan">Nosherwan Carpets</option>
+            <option value="benda">Al Kabir Carpet</option>
+            <option value="bekasi">Al-Jabbar Bekasi</option>
+            <option value="surabaya-muhammad">
+              Al-Jabbar Surabaya (H. Muhammad)
+            </option>
+            <option value="surabaya-kertajaya">
+              Al-Jabbar Surabaya (Kertajaya)
+            </option>
+            <option value="banten">Al Matah Carpets</option>
+            <option value="garut">Al Jabbar Garut</option>
+            <option value="tasikmalaya">Al Jabbar Tasikmalaya</option>
+            <option value="gorontalo">Al-Jabbar Gorontalo</option>
+          </SelectField>
+        </Field>
       </div>
 
       {/* Address */}
-      <div className="space-y-2">
-        <label
-          htmlFor="address"
-          className="block font-poppins font-medium text-black"
-        >
-          Address*
-        </label>
-        <textarea
+      <Field id="address" label="Address*">
+        <Textarea
           id="address"
           name="address"
           value={formData.address}
-          onChange={handleInputChange}
+          onChange={handleInputChange as any}
           required
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter resize-none"
         />
-      </div>
+      </Field>
 
       {/* Notes */}
-      <div className="space-y-2">
-        <label
-          htmlFor="notes"
-          className="block font-poppins font-medium text-black"
-        >
-          Additional Notes
-        </label>
-        <textarea
+      <Field id="notes" label="Additional Notes">
+        <Textarea
           id="notes"
           name="notes"
           value={formData.notes}
-          onChange={handleInputChange}
+          onChange={handleInputChange as any}
           rows={3}
           placeholder="Any special requests or information..."
-          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter resize-none"
         />
-      </div>
+      </Field>
 
       {/* Submit Button */}
-      <Button
-        type="submit"
-        disabled={!isFormValid || submitting}
-        className="w-full text-lg font-poppins font-normal uppercase border hover:border-primary"
-      >
-        {submitting ? "Submitting..." : "Book Appointment"}
-      </Button>
+      <div className="space-y-3">
+        <Button
+          type="submit"
+          disabled={!isFormValid || submitting}
+          className="w-full text-lg font-poppins font-normal uppercase border hover:border-primary"
+        >
+          {submitting ? "Submitting..." : "Book Appointment"}
+        </Button>
 
-      {!selectedDate && (
-        <p className="text-sm text-red-600 text-center">
-          Please select a date from the calendar first
-        </p>
-      )}
+        {!selectedDate && (
+          <p className="text-sm text-red-600 text-center">
+            Please select a date from the calendar first
+          </p>
+        )}
+      </div>
 
       {/* Status Message */}
       {submitStatus.type && (
@@ -416,5 +339,145 @@ export default function AppointmentForm({
         </div>
       )}
     </form>
+  );
+}
+
+function Field({
+  id,
+  label,
+  children,
+}: {
+  id?: string;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="space-y-1.5 md:space-y-2">
+      <label htmlFor={id} className="block font-poppins font-medium text-black">
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+function Input({
+  id,
+  type = "text",
+  name,
+  value,
+  onChange,
+  required,
+  placeholder,
+  className,
+}: {
+  id?: string;
+  type?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+  placeholder?: string;
+  className?: string;
+}) {
+  return (
+    <input
+      type={type}
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      placeholder={placeholder}
+      className={
+        className ||
+        "w-full px-2 py-2 md:px-4 md:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
+      }
+    />
+  );
+}
+
+function SelectField({
+  id,
+  name,
+  value,
+  onChange,
+  required,
+  children,
+  className,
+}: {
+  id?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  required?: boolean;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className="relative">
+      <select
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
+        className={
+          className ||
+          "w-full px-2 py-2 md:px-4 md:py-3 pr-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
+        }
+      >
+        {children}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 md:pr-3">
+        <svg
+          className="h-5 w-5 text-black"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Textarea({
+  id,
+  name,
+  value,
+  onChange,
+  required,
+  rows,
+  placeholder,
+  className,
+}: {
+  id?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  required?: boolean;
+  rows?: number;
+  placeholder?: string;
+  className?: string;
+}) {
+  return (
+    <textarea
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      rows={rows}
+      placeholder={placeholder}
+      className={
+        className ||
+        "w-full px-2 py-2 md:px-4 md:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter resize-none"
+      }
+    />
   );
 }

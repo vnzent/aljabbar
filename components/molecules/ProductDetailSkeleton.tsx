@@ -1,7 +1,7 @@
 export default function ProductDetailSkeleton() {
   return (
     <>
-      <div className="main-wrapper mx-auto pt-20 sm:pt-25 md:pt-30 pb-8 lg:pt-38 lg:pb-8">
+      <div className="main-wrapper mx-auto pt-20 sm:pt-25 md:pt-30 lg:pt-32 lg:pb-8  pb-8">
         {/* Breadcrumb skeleton */}
         <div className="flex items-center gap-2 text-sm md:text-base">
           <div className="h-4 w-16 bg-gray-200 animate-pulse" />
@@ -13,7 +13,7 @@ export default function ProductDetailSkeleton() {
           <div className="h-4 w-40 bg-gray-200 animate-pulse" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-6 md:mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-4 md:mt-6">
           {/* Product Images */}
           <div className="space-y-3 md:space-y-4">
             {/* Main image skeleton */}

@@ -80,29 +80,29 @@ export default function ProductCard({
           </div>
 
           {/* Content Container */}
-          <div className="py-5">
+          <div className="py-3 space-y-0.5 md:space-y-0">
             <h3
               className={cn(
-                "font-poppins font-medium text-black line-clamp-1",
+                "font-poppins font-normal text-black line-clamp-1",
                 variant === "3-col"
-                  ? "text-sm md:text-base lg:text-lg"
-                  : "text-xs md:text-sm lg:text-base"
+                  ? "text-xs md:text-base lg:text-lg"
+                  : "text-xs md:text-sm "
               )}
             >
               {product.name}
             </h3>
 
             {product.categories && product.categories.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 md:gap-2">
                 {product.categories.slice(0, 2).map((category) => (
                   <span
                     key={category.id}
                     onClick={(e) => handleCategoryClick(e, category.slug)}
                     className={cn(
-                      "inline-block font-normal text-black/60 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer",
+                      "inline-block  text-gray-700 hover:text-primary underline underline-offset-2 transition-all duration-300 cursor-pointer",
                       variant === "3-col"
-                        ? "text-xs md:text-sm lg:text-base leading-tight md:leading-loose"
-                        : "text-xs lg:text-sm leading-tight"
+                        ? "text-[11px] md:text-sm lg:text-sm leading-tight md:leading-loose"
+                        : "text-[11px] md:text-xs leading-tight"
                     )}
                   >
                     {category.name}

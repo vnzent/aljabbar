@@ -83,8 +83,8 @@ export default function Navbar() {
             className={cn(
               "hidden lg:flex justify-between border-b transition-all duration-500 ease-in-out overflow-hidden",
               shouldBeWhite
-                ? "text-black border-black/60"
-                : "text-white border-white",
+                ? "text-black border-black/20"
+                : "text-white border-white/60",
               isScrolled
                 ? "max-h-0 opacity-0 py-0"
                 : "max-h-20 opacity-100 py-1"
@@ -133,7 +133,7 @@ export default function Navbar() {
                 alt="Al-Jabbar - House of Carpets Logo"
                 width={150}
                 height={50}
-                className="w-25 sm:w-30 md:w-35 lg:w-40 h-auto"
+                className="w-36  lg:w-40 h-auto"
               />
             </Link>
 
@@ -144,7 +144,7 @@ export default function Navbar() {
                 shouldBeWhite ? "text-black" : "text-white"
               )}
             >
-              <div className="flex gap-4 xl:gap-6">
+              <div className="flex  items-center gap-4 xl:gap-6">
                 {navMenus.map((menu, index) => {
                   // Special handling for Collections menu
                   if (menu.name === "Collections") {
@@ -164,7 +164,7 @@ export default function Navbar() {
                       key={index}
                       href={menu.href}
                       className={cn(
-                        "uppercase font-poppins text-sm xl:text-base font-normal transition-colors duration-300 hover:text-primary",
+                        "uppercase font-poppins text-sm  font-normal transition-colors duration-300 hover:text-primary",
                         // If not scrolled and active -> white
                         // If not scrolled and not active -> gray-200
                         // If scrolled (shouldBeWhite true) -> black
@@ -189,10 +189,10 @@ export default function Navbar() {
               </div>
               {/* Desktop Icon Buttons */}
               <div className="flex gap-5 items-center">
-                <LanguageDropdown
+                {/* <LanguageDropdown
                   shouldBeWhite={shouldBeWhite}
                   isMobileMenuOpen={isMobileMenuOpen}
-                />
+                /> */}
                 <Button
                   variant="ghost"
                   size="icon"
@@ -211,11 +211,11 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Icons & Hamburger */}
-            <div className="flex lg:hidden gap-2 items-center z-50">
-              <LanguageDropdown
+            <div className="flex lg:hidden items-center z-50">
+              {/* <LanguageDropdown
                 shouldBeWhite={shouldBeWhite}
                 isMobileMenuOpen={isMobileMenuOpen}
-              />
+              /> */}
               <Button
                 variant="ghost"
                 size="icon-lg"
@@ -228,20 +228,20 @@ export default function Navbar() {
                 )}
                 aria-label="Search"
               >
-                <BiSearch className="size-6" />
+                <BiSearch className="size-5" />
               </Button>
               <Button
                 variant="ghost"
                 size="icon-lg"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={cn(
-                  "p-2 rounded-lg transition-all duration-300",
+                  "rounded-lg transition-all duration-300",
                   shouldBeWhite ? "text-black" : "text-white"
                 )}
                 aria-label="Menu"
               >
                 {isMobileMenuOpen ? (
-                  <RxCross1 className="size-6 text-black" />
+                  <RxCross1 className="size-5 text-black" />
                 ) : (
                   <RxHamburgerMenu className="size-6" />
                 )}
@@ -253,25 +253,32 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden fixed inset-0 border-t border-black/60 top-16 bg-white transition-all duration-300 h-dvh w-full overflow-y-auto",
+            "lg:hidden fixed inset-0 border-t border-gray-200 top-16 bg-white transition-all duration-300 h-dvh w-full overflow-y-auto",
             isMobileMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto p-4">
             {/* Mobile Navigation Links */}
             <div className="flex flex-col gap-6 mb-8">
               {navMenus.map((menu, index) => {
+                const isLast = index === navMenus.length - 1;
                 // Special handling for Collections menu in mobile
                 if (menu.name === "Collections") {
                   return (
-                    <div key={index} className="border-b border-gray-200 pb-4">
+                    <div
+                      key={index}
+                      className={cn(!isLast && "border-b border-gray-200")}
+                    >
                       <button
                         onClick={() =>
                           setIsMobileCollectionsOpen(!isMobileCollectionsOpen)
                         }
-                        className="w-full flex items-center justify-between uppercase font-poppins text-lg font-normal text-black hover:text-primary transition-colors"
+                        className={cn(
+                          "w-full pb-4 flex items-center justify-between uppercase font-poppins text-lg font-normal text-black hover:text-primary transition-colors",
+                          isMobileCollectionsOpen && "border-b border-gray-200"
+                        )}
                       >
                         <span>Collections</span>
                         <FiChevronDown
@@ -286,23 +293,21 @@ export default function Navbar() {
                       <div
                         className={cn(
                           "overflow-hidden transition-all duration-300",
-                          isMobileCollectionsOpen
-                            ? "max-h-[500px] mt-4"
-                            : "max-h-0"
+                          isMobileCollectionsOpen ? "max-h-[500px]" : "max-h-0"
                         )}
                       >
-                        <div className="flex flex-col gap-3 pl-4">
+                        <div className="flex flex-col pl-3">
                           {collectionCategories.map((category) => (
                             <Link
                               key={category.slug}
                               href={`/collections/${category.slug}`}
-                              className="flex flex-col py-2"
+                              className="flex flex-col py-4 border-b border-gray-100"
                               onClick={() => {
                                 setIsMobileMenuOpen(false);
                                 setIsMobileCollectionsOpen(false);
                               }}
                             >
-                              <span className="text-base font-poppins font-base text-gray-900 hover:text-primary transition-colors uppercase">
+                              <span className="text-sm font-poppins font-base text-gray-900 hover:text-primary transition-colors uppercase">
                                 {category.name}
                               </span>
                             </Link>
@@ -320,7 +325,8 @@ export default function Navbar() {
                     key={index}
                     href={menu.href}
                     className={cn(
-                      "uppercase font-poppins text-lg font-normal hover:text-primary transition-colors border-b border-gray-200 pb-4",
+                      "uppercase font-poppins text-base font-normal hover:text-primary transition-colors pb-4",
+                      "border-b border-gray-200",
                       isActive ? "text-primary" : "text-black"
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -334,19 +340,19 @@ export default function Navbar() {
             {/* Mobile Contact Info */}
             <div className="flex flex-col gap-4 mb-8 pb-8 border-b border-gray-200">
               <div className="flex gap-3 items-center">
-                <IoCallOutline className="size-6 text-primary" />
+                <IoCallOutline className="size-5  text-black" />
                 <a
                   href="tel:02171977770"
-                  className="text-base font-poppins font-normal text-black"
+                  className="text-sm font-poppins font-normal text-black"
                 >
                   (021) 7197770
                 </a>
               </div>
               <div className="flex gap-3 items-center">
-                <AiOutlineMail className="size-5 text-primary" />
+                <AiOutlineMail className="size-5 text-black" />
                 <a
                   href="mailto:sales@aljabbarcarpets.com"
-                  className="text-base font-poppins font-normal text-black"
+                  className="text-sm font-poppins font-normal text-black"
                 >
                   sales@aljabbarcarpets.com
                 </a>
@@ -360,7 +366,7 @@ export default function Navbar() {
                   href={social.href}
                   className="transition-colors duration-300 hover:text-primary text-black"
                 >
-                  <social.icon className="size-7" />
+                  <social.icon className="size-5" />
                 </Link>
               ))}
             </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { ChevronDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Dropdown from "./Dropdown";
 
 interface SortOption {
   value: string;
@@ -21,33 +21,20 @@ export default function SortByDropdown() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState("title-asc");
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sortParam = searchParams.get("orderby") || "title-asc";
     setSelectedSort(sortParam);
   }, [searchParams]);
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    }
+  // Dropdown handles outside clicks itself
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSortChange = (value: string) => {
+  const handleSortChange = (value: string | number) => {
+    const str = String(value);
     const params = new URLSearchParams(searchParams.toString());
 
-    params.set("orderby", value);
+    params.set("orderby", str);
 
     // Reset to page 1 when sorting changes
     params.delete("page");
@@ -56,57 +43,15 @@ export default function SortByDropdown() {
       params.toString() ? `?${params.toString()}` : ""
     }`;
     router.push(url);
-    setIsOpen(false);
+    setSelectedSort(str);
   };
 
-  const selectedLabel =
-    sortOptions.find((opt) => opt.value === selectedSort)?.label ||
-    "Sort by A - Z";
-
   return (
-    <div ref={dropdownRef} className="relative inline-block">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          "flex items-center justify-between gap-3 px-4 py-2.5 min-w-[200px]",
-          "border border-gray-300 bg-white",
-          "hover:border-primary/50 hover:cursor-pointer transition-colors duration-200",
-          "text-sm font-medium text-gray-700"
-        )}
-      >
-        <span>{selectedLabel}</span>
-        <ChevronDown
-          className={cn(
-            "w-4 h-4 transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
-        />
-      </button>
-
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg overflow-hidden z-9999">
-          <div className="">
-            {sortOptions.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => handleSortChange(option.value)}
-                className={cn(
-                  "w-full px-4 py-3 text-left text-sm transition-colors duration-150 cursor-pointer",
-                  "flex items-center justify-between gap-2",
-                  selectedSort === option.value
-                    ? "bg-primary/10 text-primary font-medium"
-                    : "text-gray-700 hover:bg-primary/5"
-                )}
-              >
-                <span>{option.label}</span>
-                {selectedSort === option.value && (
-                  <Check className="w-4 h-4 text-primary" />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+    <Dropdown
+      options={sortOptions}
+      selectedValue={selectedSort}
+      onSelect={handleSortChange}
+      align="right"
+    />
   );
 }

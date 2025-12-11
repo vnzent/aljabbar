@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
+import SectionWrapper from "./SectionWrapper";
+import { Link } from "@/i18n/navigation";
 
 export default function AboutSection({
   paragraphs,
@@ -22,7 +24,7 @@ export default function AboutSection({
     t("paragraph4"),
   ];
   return (
-    <section className="w-full relative py-8 md:py-0">
+    <section className="w-full relative ">
       <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20 items-center justify-between">
         {/* Image Container */}
         <div className="relative shrink-0 w-full max-w-full aspect-4/3 lg:aspect-auto lg:max-w-[650px] xl:max-w-5/12">
@@ -37,7 +39,7 @@ export default function AboutSection({
         </div>
 
         {/* Content Container */}
-        <div className="flex flex-col gap-6 md:gap-8  w-full px-0">
+        <SectionWrapper>
           {/* Heading */}
           <div className="flex gap-3 justify-start items-center">
             <span className="w-8 sm:w-12 md:w-16 lg:w-20 h-0.5 bg-primary" />
@@ -47,11 +49,11 @@ export default function AboutSection({
           </div>
 
           {/* Paragraphs */}
-          <div className="flex flex-col gap-4 md:gap-6">
+          <div className="space-y-4">
             {displayParagraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className="font-inter font-light text-sm sm:text-base text-black text-justify leading-relaxed"
+                className="font-inter font-normal text-sm sm:text-base text-text text-justify "
               >
                 {paragraph}
               </p>
@@ -61,12 +63,13 @@ export default function AboutSection({
           {/* Button */}
           {isButton && (
             <div className="flex justify-center lg:justify-start mt-2">
-              <Button className="text-sm sm:text-base lg:text-lg font-poppins font-normal uppercase w-full sm:w-auto px-8 sm:px-10 lg:px-12">
-                {t("button")}
+              <Button className="w-full uppercasehero sm:w-fit" asChild>
+                {/* Prefill WhatsApp message */}
+                <Link href={"/about-us"}> {t("button")}</Link>
               </Button>
             </div>
           )}
-        </div>
+        </SectionWrapper>
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import GalleryLightbox from "@/components/organisms/GalleryLightbox";
 import HeaderSection from "../molecules/HeaderSection";
+import SectionWrapper from "./SectionWrapper";
 
 export default function Gallery() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Gallery() {
   return (
     <>
       <section className="w-full mx-auto main-wrapper">
-        <div className="flex flex-col gap-8 md:gap-12 lg:gap-18">
+        <SectionWrapper>
           <HeaderSection
             isSubHeading
             heading="Explore Our Lookbook"
@@ -48,7 +49,7 @@ export default function Gallery() {
               </Card>
             ))}
           </div>
-        </div>
+        </SectionWrapper>
       </section>
 
       {/* Lightbox Modal */}

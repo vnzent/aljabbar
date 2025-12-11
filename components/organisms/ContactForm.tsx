@@ -24,12 +24,9 @@ export default function ContactForm() {
 
     try {
       // EmailJS configuration - Replace with your actual values
-      const serviceId =
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
-      const templateId =
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
-      const publicKey =
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
       // Send email using EmailJS
       const response = await emailjs.send(
@@ -80,20 +77,20 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-2xl bg-primary p-12">
-      <div className="flex flex-col gap-8">
+    <div className="w-full max-w-2xl bg-primary p-6 sm:p-8 md:p-12">
+      <div className="flex flex-col gap-4 md:gap-8">
         {/* Header */}
         <div className="flex flex-col gap-3">
-          <h2 className="font-poppins text-4xl font-medium text-white">
+          <h2 className="font-poppins text-3xl sm:text-4xl font-medium text-white">
             Get in Touch
           </h2>
-          <p className="font-poppins text-lg text-white/90">
+          <p className="font-poppins text-base sm:text-lg text-white/90">
             We are glad to invite you to our carpet showroom
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2 md:gap-6">
           {/* Full Name */}
           <div className="flex flex-col gap-2">
             <input
@@ -103,7 +100,7 @@ export default function ContactForm() {
               value={formData.fullName}
               onChange={handleChange}
               required
-              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-lg"
+              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
             />
           </div>
 
@@ -116,7 +113,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-lg"
+              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
             />
           </div>
 
@@ -129,7 +126,7 @@ export default function ContactForm() {
               value={formData.subject}
               onChange={handleChange}
               required
-              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-lg"
+              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
             />
           </div>
 
@@ -142,12 +139,17 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               rows={5}
-              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-lg resize-none"
+              className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg resize-none"
             />
           </div>
 
           {/* Submit Button */}
-          <Button type="submit" variant="tertiary" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            variant="tertiary"
+            disabled={isSubmitting}
+            className="w-full md:w-auto uppercase "
+          >
             {isSubmitting ? "Sending..." : "Send a message"}
           </Button>
 

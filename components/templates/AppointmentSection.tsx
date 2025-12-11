@@ -6,6 +6,7 @@ import AppointmentCalendar, {
 } from "@/components/organisms/AppointmentCalendar";
 import AppointmentForm from "@/components/organisms/AppointmentForm";
 import HeaderSection from "../molecules/HeaderSection";
+import SectionWrapper from "../organisms/SectionWrapper";
 
 export default function AppointmentSection() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -27,9 +28,13 @@ export default function AppointmentSection() {
   return (
     <section className="w-full">
       <div className="main-wrapper mx-auto">
-        <div className="flex flex-col gap-16 md:gap-24 lg:gap-30">
+        <SectionWrapper>
           {/* Header */}
-          <HeaderSection isParagraph heading="Schedule Your Visit" paragraph="Choose a convenient date and time to visit our showroom or schedule a home visit. Our experts will guide you through our premium carpet collection." />
+          {/* <HeaderSection
+            isParagraph
+            heading="Schedule Your Visit"
+            paragraph="Choose a convenient date and time to visit our showroom or schedule a home visit. Our experts will guide you through our premium carpet collection."
+          /> */}
           {/* Main Content */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16">
             {/* Calendar Section */}
@@ -112,7 +117,7 @@ export default function AppointmentSection() {
               />
             </div>
           </div>
-        </div>
+        </SectionWrapper>
       </div>
     </section>
   );

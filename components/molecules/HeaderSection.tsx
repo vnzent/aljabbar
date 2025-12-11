@@ -1,3 +1,5 @@
+import TextHeading from "../atoms/TextHeading";
+
 interface HeaderSectionProps {
   heading?: string;
   subHeading?: string;
@@ -14,17 +16,15 @@ export default function HeaderSection({
   isParagraph = false,
 }: HeaderSectionProps) {
   return (
-    <div className="flex flex-col gap-3 items-center text-center">
+    <div className="flex flex-col gap-1 md:gap-2 items-center text-center">
       {isSubHeading && (
-        <p className="uppercase font-poppins text-base sm:text-xl font-normal tracking-[0.3em]">
+        <p className="uppercase font-poppins text-sm md:text-base text-primary tracking-[0.3em]">
           {subHeading}
         </p>
       )}
-      <h2 className="font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl">
-        {heading}
-      </h2>
+      <TextHeading>{heading}</TextHeading>
       {isParagraph && (
-        <p className="font-inter text-base md:text-lg text-text max-w-2xl mx-auto px-4">
+        <p className="font-inter text-center font-normal text-sm md:text-lg text-text max-w-2xl mx-auto px-4">
           {paragraph}
         </p>
       )}

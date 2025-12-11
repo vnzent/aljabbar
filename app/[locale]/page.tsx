@@ -5,8 +5,6 @@ import IconLine from "@/components/atoms/IconLine";
 import OurCollections from "@/components/templates/OurCollections";
 import OurProducts from "@/components/templates/OurProducts";
 import UniqueSellingPoints from "@/components/organisms/UniqueSellingPoints";
-import ValueCounter from "@/components/atoms/ValueCounter";
-import { Suspense } from "react";
 import CounterSection from "@/components/organisms/CounterSection";
 
 export default function Home() {

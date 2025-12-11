@@ -7,6 +7,7 @@ import CollectionsClientWrapper from "@/components/organisms/CollectionsClientWr
 import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
+import ProductWrapper from "@/components/organisms/ProductWrapper";
 
 // Allow partial pre-rendering for instant navigation
 export const dynamic = "auto";
@@ -59,7 +60,7 @@ async function ProductsGrid({
 
   if (products.length === 0) {
     return (
-      <div className="py-16 text-center">
+      <div className="py-14 text-center">
         <h2 className="text-2xl font-bold text-gray-600">No products found</h2>
         <p className="text-gray-500 mt-2">
           Try adjusting your search or filters
@@ -70,7 +71,7 @@ async function ProductsGrid({
 
   return (
     <>
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} variant="4-col" />
         ))}
@@ -113,38 +114,26 @@ export default async function Collections({
 
   return (
     <>
-      <div className="pt-10 sm:pt-15 lg:pt-20 pb-5 sm:pb-10 lg:pb-20">
-        <div className="main-wrapper mx-auto py-8">
-          <div className="py-3">
-            <DynamicBreadcrumb
-              textColor="text-black"
-              separatorColor="text-black"
-              textSize="text-base"
-              separatorSize="size-2"
-            />
-          </div>
-          <div className="flex gap-8">
-            <CollectionsClientWrapper
+      <ProductWrapper>
+        <CollectionsClientWrapper
+          categorySlugs={categorySlugs}
+          categories={allCategories}
+        >
+          <Suspense
+            key={page + search + categories + orderby + per_page}
+            fallback={<ProductsGridSkeleton />}
+          >
+            <ProductsGrid
+              page={page}
+              search={search}
+              categoryIds={categoryIds}
               categorySlugs={categorySlugs}
-              categories={allCategories}
-            >
-              <Suspense
-                key={page + search + categories + orderby + per_page}
-                fallback={<ProductsGridSkeleton />}
-              >
-                <ProductsGrid
-                  page={page}
-                  search={search}
-                  categoryIds={categoryIds}
-                  categorySlugs={categorySlugs}
-                  orderby={orderby}
-                  perPage={per_page}
-                />
-              </Suspense>
-            </CollectionsClientWrapper>
-          </div>
-        </div>
-      </div>
+              orderby={orderby}
+              perPage={per_page}
+            />
+          </Suspense>
+        </CollectionsClientWrapper>
+      </ProductWrapper>
       <Banner />
     </>
   );
