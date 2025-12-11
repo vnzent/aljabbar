@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     // Validate required fields
     if (
-      !body.firstName ||
+      !body.name ||
       !body.email ||
       !body.phone ||
       !body.bookingType ||
@@ -39,16 +39,16 @@ export async function POST(request: NextRequest) {
 
     // Prepare data for WordPress API
     const wpData = {
-      name: body.firstName,
+      name: body.name,
       email: body.email,
       phone: body.phone,
       date: body.selectedDate,
       time: body.selectedTimeSlot,
-      message: body.notes || "",
+      message: body.note || "",
       booking_type: body.bookingType,
       location: body.location,
       address: body.address,
-      notes: body.notes || "",
+      notes: body.note || "",
     };
 
     // Send to WordPress REST API
@@ -79,13 +79,13 @@ export async function POST(request: NextRequest) {
         id: wpResult.insert_id,
         date: body.selectedDate,
         timeSlot: body.selectedTimeSlot,
-        firstName: body.firstName,
+        firstName: body.name,
         email: body.email,
         phone: body.phone,
         bookingType: body.bookingType,
         location: body.location,
         address: body.address,
-        notes: body.notes,
+        notes: body.note,
         status: "confirmed",
         createdAt: new Date().toISOString(),
       },
