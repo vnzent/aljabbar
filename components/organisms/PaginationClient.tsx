@@ -81,15 +81,15 @@ export default function PaginationClient({
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
               className={cn(
-                "group flex items-center gap-2 px-4 py-2.5 font-medium transition-all duration-200",
+                "group flex text-sm items-center gap-2 px-3 py-1.5 font-normal transition-all duration-200",
                 "border border-gray-200 hover:border-primary/50",
                 "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10 cursor-pointer",
                 currentPage <= 1 &&
                   "opacity-50 cursor-not-allowed hover:border-gray-200 hover:bg-transparent"
               )}
             >
-              <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
-              <span className="hidden sm:inline">Previous</span>
+              <ChevronLeft className=" w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
+              <span className="hidden sm:inline">Prev</span>
             </button>
           </PaginationItem>
 
@@ -105,7 +105,7 @@ export default function PaginationClient({
                   <button
                     onClick={() => handlePageChange(pageNum)}
                     className={cn(
-                      "min-w-10 h-10 font-medium transition-all duration-200",
+                      "min-w-8 h-8 font-normal text-sm transition-all duration-200",
                       "hover:bg-linear-to-r hover:from-primary/10 hover:to-primary/20",
                       "hover:scale-105 active:scale-95 cursor-pointer",
                       pageNum === currentPage
@@ -126,7 +126,7 @@ export default function PaginationClient({
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= totalPages}
               className={cn(
-                "group flex items-center gap-2 px-4 py-2.5 font-medium transition-all duration-200",
+                "group flex text-sm items-center gap-2 px-3 py-1.5 font-normal transition-all duration-200",
                 "border border-gray-200 hover:border-primary/50",
                 "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10 cursor-pointer",
                 currentPage >= totalPages &&
@@ -134,7 +134,7 @@ export default function PaginationClient({
               )}
             >
               <span className="hidden sm:inline">Next</span>
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
             </button>
           </PaginationItem>
         </PaginationContent>

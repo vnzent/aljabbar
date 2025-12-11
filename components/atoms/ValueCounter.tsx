@@ -7,7 +7,7 @@ export default function ValueCounter() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {count.map((item, index) => (
         <Card
-          className="w-full bg-primary flex flex-col justify-between py-6 sm:py-8 px-6 sm:px-8 lg:px-10 mx-auto gap-8"
+          className="w-full bg-primary flex flex-col justify-between p-6 mx-auto gap-15"
           key={index}
         >
           <CardTitle>
@@ -29,7 +29,7 @@ export default function ValueCounter() {
               suffix={item.showPlus ? "+" : ""}
               className="count-up-text font-poppins font-medium text-2xl sm:text-3xl lg:text-4xl text-white"
             />
-            <span className="font-inter text-base sm:text-lg text-white/80 font-normal">
+            <span className="font-inter text-base font-normal text-gray-50 ">
               {item.subtitle}
             </span>
           </CardContent>

@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 import { BiLoaderAlt, BiSearch } from "react-icons/bi";
 import { LuSparkles } from "react-icons/lu";
 import { RxCross1 } from "react-icons/rx";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import { Button } from "../ui";
 import { useTranslations } from "next-intl";
+import { GoChevronRight } from "react-icons/go";
 
 interface Product {
   id: number;
@@ -111,16 +111,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             {/* Decorative gradient bar */}
             {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-primary/70 to-primary" /> */}
 
-            <div className="flex items-center gap-4 p-5">
+            <div className="flex items-center gap-3 p-3 md:gap-4 md:p-5">
               <div className="relative">
-                <BiSearch className="size-6 text-primary" />
+                <BiSearch className="size-5 md:size-6 text-primary" />
               </div>
               <input
                 type="text"
                 placeholder={t("title")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 outline-none text-lg font-poppins placeholder:text-gray-500 bg-transparent"
+                className="flex-1 outline-none text-base md:text-lg font-poppins placeholder:text-gray-500 bg-transparent"
                 autoFocus
               />
               {isLoading && (
@@ -132,47 +132,41 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 onClick={onClose}
                 className="p-2 transition-all duration-200 hover:rotate-90 hover:cursor-pointer"
               >
-                <RxCross1 className="size-5 lg:size-6 text-primary" />
+                <RxCross1 className="size-4 lg:size-5 text-primary" />
               </Button>
             </div>
           </div>
 
-          {/* Keyboard shortcut hint */}
-          {/* <div className="px-5 pb-3 flex items-center gap-2 text-xs text-gray-400">
-            <kbd className="px-2 py-1 bg-gray-100 rounded text-gray-500 font-mono">
-              ESC
-            </kbd>
-            <span>to close</span>
-          </div> */}
-
           {/* Divider */}
-          <div className="h-px bg-linear-to-r from-transparent via-gray-300 to-transparent" />
+          <div className="h-px  bg-gray-200 " />
 
           {/* Search Results */}
           <div className="max-h-[50vh] overflow-y-auto">
             {!searchQuery ? (
-              <div className="p-12 text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-linear-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                  <LuSparkles className="size-9 text-primary/60" />
+              <div className="p-8 md:p-12 text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 md:mb-4 rounded-full bg-linear-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                  <LuSparkles className="size-7 md:size-9 text-primary/60" />
                 </div>
-                <h3 className="font-poppins font-semibold text-gray-800 mb-2">
+                <h3 className="font-poppins font-semibold text-gray-800 mb-1 md:mb-2 text-base md:text-lg">
                   {t("headLine")}
                 </h3>
-                <p className="text-gray-500 text-sm">{t("subHeadLine")}</p>
+                <p className="text-gray-500 text-sm md:text-sm">
+                  {t("subHeadLine")}
+                </p>
               </div>
             ) : isLoading ? (
-              <div className="p-12 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="p-8 md:p-12 text-center">
+                <div className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <BiLoaderAlt className="size-7 lg:size-8 animate-spin text-primary" />
                 </div>
-                <p className="text-gray-500">{t("searching")}</p>
+                <p className="text-gray-500 text-sm">{t("searching")}</p>
               </div>
             ) : results.length === 0 ? (
-              <div className="p-12 text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-                  <BiSearch className="size-9 text-gray-300" />
+              <div className="p-8 md:p-12 text-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 md:mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                  <BiSearch className="size-7 md:size-9 text-gray-300" />
                 </div>
-                <h3 className="font-poppins font-semibold text-gray-800 mb-2">
+                <h3 className="font-poppins font-semibold text-gray-800 mb-1 md:mb-2 text-base md:text-lg">
                   No results found
                 </h3>
                 <p className="text-gray-500 text-sm">
@@ -180,7 +174,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </p>
               </div>
             ) : (
-              <div className="p-3">
+              <div className="p-2 md:p-3">
                 {results.map((product, index) => (
                   <Link
                     key={product.id}
@@ -189,14 +183,14 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     }/${product.slug}`}
                     onClick={onClose}
                     className={cn(
-                      "flex items-center gap-4 p-3 transition-all duration-200 group",
+                      "flex items-center gap-3 md:gap-4 p-2 md:p-3 transition-all duration-200 group",
                       "hover:bg-linear-to-r hover:from-primary/5 hover:to-transparent",
                       "border border-transparent hover:border-primary/10"
                     )}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {/* Product Image */}
-                    <div className="relative w-16 h-16 shrink-0 bg-gray-100 overflow-hidden group-hover:shadow-lg transition-shadow">
+                    <div className="relative w-12 h-12 md:w-16 md:h-16 shrink-0 bg-gray-100 overflow-hidden group-hover:shadow-lg transition-shadow">
                       {product.images[0] ? (
                         <Image
                           src={product.images[0].src}
@@ -207,19 +201,19 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <BiSearch className="w-6 h-6 text-gray-300" />
+                          <BiSearch className="w-5 h-5 text-gray-300" />
                         </div>
                       )}
                     </div>
 
                     {/* Product Info */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-poppins font-medium text-gray-900 line-clamp-1 group-hover:text-primary transition-colors">
+                    <div className="flex-1 min-w-0 ">
+                      <h3 className="font-poppins font-medium text-gray-900 line-clamp-1 group-hover:text-primary transition-colors text-sm md:text-base">
                         {product.name}
                       </h3>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-2 mt-0">
                         {product.categories.length > 0 && (
-                          <span className="inline-flex items-center py-0.5 text-base font-normal text-black/60">
+                          <span className="inline-flex items-center py-0.5 text-sm md:text-base font-normal text-black/60">
                             {product.categories[0].name}
                           </span>
                         )}
@@ -227,7 +221,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </div>
 
                     {/* Arrow */}
-                    <IoIosArrowRoundForward className="size-5 lg:size-6 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    <GoChevronRight className="size-5 lg:size-6 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </Link>
                 ))}
               </div>
@@ -254,7 +248,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   className="inline-flex items-center gap-1.5 text-sm lg:text-base font-medium text-primary hover:text-primary/80 transition-colors"
                 >
                   {t("Cta")}
-                  <IoIosArrowRoundForward className="sizze-5 lg:size-6" />
+                  <GoChevronRight className="size-5 lg:size-6" />
                 </Link>
               </div>
             </div>

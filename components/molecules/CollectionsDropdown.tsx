@@ -59,7 +59,7 @@ export default function CollectionsDropdown({
         <Link
           href="/collections"
           className={cn(
-            "uppercase font-poppins text-sm lg:text-base font-normal transition-colors duration-300 group-hover:text-primary",
+            "uppercase font-poppins text-sm  font-normal transition-colors duration-300 group-hover:text-primary",
             shouldBeWhite && isCollectionsActive
               ? "text-primary group-hover:text-black"
               : !isScrolled && !isCollectionsActive
@@ -100,7 +100,7 @@ export default function CollectionsDropdown({
       {isOpen && (
         <div
           className={cn(
-            "absolute top-full left-0 mt-2 w-72 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200",
+            "absolute top-full left-0 mt-2 w-72 shadow z-50 animate-in fade-in slide-in-from-top-2 duration-200",
             "bg-white border border-gray-100"
           )}
         >
@@ -111,12 +111,12 @@ export default function CollectionsDropdown({
                 href={`/collections/${category.slug}`}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "block px-4 py-5 transition-all duration-200",
+                  "block px-3 py-4 transition-all duration-200",
                   "hover:bg-linear-to-r hover:from-primary/5 hover:to-primary/10"
                 )}
               >
                 <div className="flex">
-                  <span className="text-base font-poppins font-base text-gray-900 group-hover:text-primary uppercase transition-colors">
+                  <span className="text-sm font-poppins font-base text-text group-hover:text-primary uppercase transition-colors">
                     {category.name}
                   </span>
                 </div>

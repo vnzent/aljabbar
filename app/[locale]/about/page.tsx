@@ -10,14 +10,15 @@ import { aboutParagraphs } from "@/lib/data";
 import { parseTextWithBold } from "@/lib/textParser";
 import CounterSection from "@/components/organisms/CounterSection";
 import Branches from "@/components/organisms/Branches";
+import PageWrapper from "@/components/organisms/PageWrapper";
 
 export default function About() {
   return (
-    <main className="flex flex-col gap-16 md:gap-24 lg:gap-30">
+    <PageWrapper>
       <DynamicHero
-        heading={`Crafting Comfort &\nElegance Since 1998`}
-        subheading="A legacy of craftsmanship and refined interior taste."
-        image="/hero-bg.png"
+        heading={`About Al-Jabbar Carpets`}
+        subheading="Al-Jabbar Carpets has been established since 1994 as a trusted curator of premium carpets sourced directly from their countries of origin."
+        image="/about-us.jpeg"
       />
       {/* About us */}
       <AboutSection
@@ -38,6 +39,6 @@ export default function About() {
       <Branches />
       <Faq />
       <Banner />
-    </main>
+    </PageWrapper>
   );
 }

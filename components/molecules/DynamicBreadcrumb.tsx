@@ -91,15 +91,15 @@ export default function DynamicBreadcrumb({
 
   // Define color classes based on page type
   const inactiveColor = isCollectionsPage
-    ? "text-gray-500 hover:text-black"
-    : "text-gray-300 hover:text-white";
+    ? "text-gray-600 hover:text-black"
+    : "text-gray-200 hover:text-white";
   const activeColor = isCollectionsPage
     ? "text-black hover:text-black"
     : "text-white hover:text-white";
 
   return (
     <Breadcrumb className="">
-      <BreadcrumbList className="flex items-center">
+      <BreadcrumbList className="flex gap-1 md:gap-2 items-center">
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link
@@ -121,7 +121,7 @@ export default function DynamicBreadcrumb({
         </BreadcrumbSeparator>
 
         {breadcrumbItems.map((item, index) => (
-          <div key={item.href} className="flex items-center gap-2">
+          <div key={item.href} className="flex items-center gap-1 md:gap-2">
             <BreadcrumbItem>
               {item.isLast ? (
                 <BreadcrumbPage

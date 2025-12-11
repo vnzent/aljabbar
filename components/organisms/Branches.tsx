@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import HeaderSection from "../molecules/HeaderSection";
+import SectionWrapper from "./SectionWrapper";
 
 export default function Branches() {
   // Split branches: first 4 (Jakarta - Banten) on left, rest on right
@@ -15,8 +16,12 @@ export default function Branches() {
 
   return (
     <section className="w-full mx-auto main-wrapper">
-      <div className="flex flex-col gap-8 md:gap-10">
-        <HeaderSection isSubHeading heading="AL-JABBAR Carpets" subHeading="Branches" />
+      <SectionWrapper>
+        <HeaderSection
+          isSubHeading
+          heading="AL-JABBAR Carpets"
+          subHeading="Branches"
+        />
         {/* Mobile: Single Accordion */}
         <div className="md:hidden">
           <Accordion type="single" collapsible className="w-full space-y-3">
@@ -26,7 +31,7 @@ export default function Branches() {
                 value={`item-${index}`}
                 className="border border-gray-200 px-4 bg-white hover:border-primary/50 transition-colors overflow-hidden"
               >
-                <AccordionTrigger className="font-poppins font-medium text-base text-black hover:text-primary hover:no-underline cursor-pointer py-3">
+                <AccordionTrigger className="font-poppins font-normal text-sm text-black hover:text-primary hover:no-underline cursor-pointer py-3">
                   {item.city}
                 </AccordionTrigger>
                 <AccordionContent className="font-inter text-sm text-black/70 pb-3">
@@ -75,7 +80,7 @@ export default function Branches() {
                   value={`item-${index}`}
                   className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
                 >
-                  <AccordionTrigger className="font-poppins font-medium text-base md:text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
+                  <AccordionTrigger className="font-poppins font-normal text-base  text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
                     {item.city}
                   </AccordionTrigger>
                   <AccordionContent className="font-inter text-sm md:text-base text-black/70 pb-3 md:pb-4">
@@ -85,7 +90,7 @@ export default function Branches() {
                           key={storeIndex}
                           className="pl-4 border-l-2 border-primary/20 py-2"
                         >
-                          <p className="font-semibold text-black mb-1.5">
+                          <p className="font-normal text-base text-black mb-1.5">
                             {store.name}
                           </p>
                           <Link
@@ -121,7 +126,7 @@ export default function Branches() {
                   value={`item-${index + 4}`}
                   className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
                 >
-                  <AccordionTrigger className="font-poppins font-medium text-base md:text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
+                  <AccordionTrigger className="font-poppins font-normal text-base  text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
                     {item.city}
                   </AccordionTrigger>
                   <AccordionContent className="font-inter text-sm md:text-base text-black/70 pb-3 md:pb-4">
@@ -131,7 +136,7 @@ export default function Branches() {
                           key={storeIndex}
                           className="pl-4 border-l-2 border-primary/20 py-2"
                         >
-                          <p className="font-semibold text-black mb-1.5">
+                          <p className="font-normal text-base text-black mb-1.5">
                             {store.name}
                           </p>
                           <Link
@@ -154,7 +159,7 @@ export default function Branches() {
             </Accordion>
           </div>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 }

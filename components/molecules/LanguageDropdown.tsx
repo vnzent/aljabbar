@@ -79,18 +79,20 @@ export default function LanguageDropdown({
         className={cn(
           "flex justify-start gap-1.5 items-center transition-all duration-300 hover:cursor-pointer w-auto px-2 group",
           shouldBeWhite || isMobileMenuOpen
-            ? "text-black group-hover:text-primary"
+            ? "text-text group-hover:text-primary"
             : "text-white group-hover:text-white"
         )}
         aria-label="Select language"
       >
         <span
-          className={`fi fi-${currentLanguage.flagCode} w-4 h-4`}
+          className={`fi fi-${currentLanguage.flagCode} w-4 h-4 md:w-3 md:h-3`}
         />
         <span
           className={cn(
-            "text-sm font-medium uppercase hidden sm:inline",
-            shouldBeWhite || isMobileMenuOpen ? "text-black group-hover:text-primary" : "text-white group-hover:text-white"
+            "text-sm font-normal uppercase hidden sm:inline",
+            shouldBeWhite || isMobileMenuOpen
+              ? "text-text group-hover:text-primary"
+              : "text-white group-hover:text-white"
           )}
         >
           {currentLanguage.code}
@@ -99,7 +101,9 @@ export default function LanguageDropdown({
           className={cn(
             "size-4 transition-transform duration-200 cursor-pointer",
             isOpen && "rotate-180",
-            shouldBeWhite || isMobileMenuOpen ? "text-black group-hover:text-primary" : "text-white group-hover:text-white"
+            shouldBeWhite || isMobileMenuOpen
+              ? "text-text group-hover:text-primary"
+              : "text-white group-hover:text-white"
           )}
         />
       </Button>

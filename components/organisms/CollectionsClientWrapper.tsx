@@ -217,11 +217,11 @@ export default function CollectionsClientWrapper({
       <div className={hasCategories ? "flex-1" : "w-full"}>
         {/* Title Section - Not Sticky */}
         <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-16">
-          <div className="mb-6">
-            <h1 className="font-poppins font-bold text-3xl text-black">
+          <div className="mb-3 md:mb-6">
+            <h3 className="font-poppins font-semibold text-lg text-black">
               {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
-            </h1>
-            <p className="text-gray-600 mt-2">
+            </h3>
+            <p className="text-gray-600 text-sm mt-0 md:mt-1">
               {categorySlugs.length > 0
                 ? `Showing products from ${categorySlugs.length} selected ${
                     categorySlugs.length === 1 ? "category" : "categories"
@@ -233,8 +233,8 @@ export default function CollectionsClientWrapper({
           {/* Sticky Dropdowns Bar */}
           <div
             className={cn(
-              "mb-6 hidden md:flex items-center justify-end gap-3 transition-all duration-300",
-              isHeaderSticky && "sticky z-50 bg-white -mx-4 px-4 py-3"
+              "mb-2 hidden md:flex items-center justify-end gap-3 transition-all duration-300",
+              isHeaderSticky && "sticky z-50 bg-white -mx-4 px-4 py-0"
             )}
           >
             <ShowProductsDropdown />
@@ -243,7 +243,7 @@ export default function CollectionsClientWrapper({
         </div>
         <div
           className={cn(
-            "mb-6 flex md:hidden sticky top-14 z-10 items-center justify-end gap-3 transition-all duration-300 bg-white -mx-4 px-4 py-3"
+            "mb-3 md:mb-6 flex w-full bg-white md:hidden sticky top-16 z-10 items-center justify-end gap-3 transition-all duration-300   py-2"
           )}
         >
           <ShowProductsDropdown />
@@ -259,7 +259,7 @@ export default function CollectionsClientWrapper({
               </span>
               <button
                 onClick={clearAllCategories}
-                className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                className="text-sm text-primary hover:underline hover:cursor-pointer"
               >
                 Clear All
               </button>
@@ -269,7 +269,7 @@ export default function CollectionsClientWrapper({
                 <span
                   key={slug}
                   className={cn(
-                    "inline-flex items-center gap-1.5 px-3 py-1.5 text-sm",
+                    "inline-flex items-center gap-1.5 px-3 py-1 text-sm",
                     "bg-primary/10 text-primary border border-primary/20",
                     "transition-all duration-200 hover:bg-primary/20"
                   )}

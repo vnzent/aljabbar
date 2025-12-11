@@ -9,7 +9,7 @@ export default function IconLine() {
         alt="Aljabbar Icon"
         width={100}
         height={100}
-        className="object-cover overflow-hidden aspect-square w-10"
+        className="object-cover overflow-hidden aspect-square w-15 md:w-10"
       />
       <span className="bg-primary/20 h-0.5 w-full sm:flex-1" />
     </div>

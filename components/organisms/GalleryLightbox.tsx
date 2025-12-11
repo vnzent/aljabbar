@@ -81,11 +81,11 @@ export default function GalleryLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-100 bg-black/95 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200"
+      className="fixed h-screen inset-0 z-100 bg-black/40 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200"
       onClick={onClose}
     >
       {/* Top Bar */}
-      <div className="absolute top-3 lg:top-5 left-0 right-0 h-16 bg-linear-to-b from-black/50 to-transparent z-110 flex items-center justify-between px-6">
+      <div className="absolute top-0  left-0 right-0 h-16 bg-linear-to-b from-black/50 to-transparent z-110 flex items-center justify-between px-6">
         {/* Counter */}
         <div className="text-white/90 font-poppins text-sm tracking-wider">
           <span className="text-primary font-semibold text-lg lg:text-xl">

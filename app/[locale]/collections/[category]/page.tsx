@@ -7,6 +7,7 @@ import CollectionsClientWrapper from "@/components/organisms/CollectionsClientWr
 import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
+import ProductWrapper from "@/components/organisms/ProductWrapper";
 
 // Allow dynamic rendering for search params but cache category data
 export const dynamic = "auto";
@@ -105,7 +106,7 @@ async function ProductsGrid({
 
   return (
     <>
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} variant="4-col" />
         ))}
@@ -176,43 +177,30 @@ export default async function CategoryPage({
 
   return (
     <>
-      <div className="pt-10 sm:pt-15 lg:pt-20 pb-5 sm:pb-10 lg:pb-20">
-        <div className="main-wrapper mx-auto py-8">
-          <div className="py-3">
-            <DynamicBreadcrumb
-              textColor="text-black"
-              separatorColor="text-black"
-              textSize="text-base"
-              separatorSize="size-2"
-            />
-          </div>
-          <div className="flex gap-8">
-            <CollectionsClientWrapper
+      <ProductWrapper>
+        <CollectionsClientWrapper
+          categorySlugs={selectedSubcategorySlugs}
+          categories={children}
+          mode="parent"
+        >
+          <Suspense
+            key={`${page}-${subcategories}-${orderby}-${per_page}`}
+            fallback={<ProductsGridSkeleton />}
+          >
+            <ProductsGrid
+              page={page}
+              search={search}
+              categoryIds={categoryIdsToFilter}
               categorySlugs={selectedSubcategorySlugs}
-              categories={children}
-              mode="parent"
-            >
-              <Suspense
-                key={`${page}-${subcategories}-${orderby}-${per_page}`}
-                fallback={<ProductsGridSkeleton />}
-              >
-                <ProductsGrid
-                  page={page}
-                  search={search}
-                  categoryIds={categoryIdsToFilter}
-                  categorySlugs={selectedSubcategorySlugs}
-                  orderby={orderby}
-                  perPage={per_page}
-                />
-              </Suspense>
-            </CollectionsClientWrapper>
-          </div>
-        </div>
-
-        <Suspense fallback={null}>
-          <Banner />
-        </Suspense>
-      </div>
+              orderby={orderby}
+              perPage={per_page}
+            />
+          </Suspense>
+        </CollectionsClientWrapper>
+      </ProductWrapper>
+      <Suspense fallback={null}>
+        <Banner />
+      </Suspense>
     </>
   );
 }

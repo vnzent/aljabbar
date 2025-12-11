@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Accordion,
@@ -47,10 +47,10 @@ export default function Faq() {
                 value={`item-${index}`}
                 className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
               >
-                <AccordionTrigger className="font-poppins font-medium text-base md:text-lg text-black hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
+                <AccordionTrigger className="font-poppins font-nromal  text-base text-text hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="font-inter text-sm md:text-base text-black/70 leading-relaxed pt-2 text-justify">
+                <AccordionContent className="font-inter text-sm  text-text leading-relaxed pt-2 text-justify">
                   <div className="[&_a]:pointer-events-auto [&_a]:cursor-pointer [&_a]:relative [&_a]:z-9999">
                     {parseTextWithParagraphs(item.answer)}
                   </div>

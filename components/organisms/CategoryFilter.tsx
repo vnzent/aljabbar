@@ -168,7 +168,7 @@ export default function CategoryFilter({
     return (
       <div key={category.id} className="space-y-1">
         <div
-          className="flex items-center gap-2 group"
+          className="flex items-center  group"
           style={{ paddingLeft: `${level * 16}px` }}
         >
           {/* Expand/Collapse Button */}
@@ -178,9 +178,9 @@ export default function CategoryFilter({
               className="shrink-0 p-0.5 hover:cursor-pointer"
             >
               {isExpanded ? (
-                <ChevronDown className="w-4 h-4 text-gray-600" />
+                <ChevronDown className="w-4 h-4 text-gray-800" />
               ) : (
-                <ChevronRight className="w-4 h-4 text-gray-600" />
+                <ChevronRight className="w-4 h-4 text-gray-800" />
               )}
             </button>
           ) : (
@@ -193,7 +193,7 @@ export default function CategoryFilter({
               type="checkbox"
               checked={isSelected}
               onChange={() => handleCategoryToggle(category.slug)}
-              className="appearance-none w-4 h-4 border-2 border-gray-300 cursor-pointer shrink-0 checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 relative"
+              className="appearance-none w-4 h-4 border border-gray-800 cursor-pointer shrink-0 checked:bg-primary checked:border-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 relative"
             />
             <span
               className={`text-sm transition-colors ${
@@ -224,8 +224,8 @@ export default function CategoryFilter({
 
   return (
     <div className="bg-white sticky top-20">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="font-poppins font-bold text-xl text-black">
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="font-poppins font-semibold text-lg text-black">
           Categories
         </h3>
         {selectedCategories.length > 0 && (

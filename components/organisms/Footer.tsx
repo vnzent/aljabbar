@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#282828] py-16">
+    <footer className="w-full bg-[#282828] pt-16">
       <div className="mx-auto main-wrapper">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Logo & Description - 4 columns */}
@@ -83,7 +83,7 @@ export default function Footer() {
             <h3 className="font-poppins font-semibold text-base text-white mb-1">
               Visit Us
             </h3>
-            <div className="w-full h-48 rounded-lg overflow-hidden">
+            <div className="w-full h-48  overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2058844425815!2d106.81361831476876!3d-6.267027795469316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f187bbe4da75%3A0xd945aa908862d0e1!2sAl-Jabbar%20House%20Of%20Carpets%20%26%20Gallery!5e0!3m2!1sen!2sid!4v1733059200000!5m2!1sen!2sid"
                 width="100%"
@@ -99,13 +99,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10">
+        <div className="mt-12 py-6 border-t border-white/10">
           <p className="text-center font-poppins text-sm text-white/60">
-            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved. {" "}
+            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved.{" "}
             <a
               href="https://sunmedia.co.id/"
               className="underline underline-offset-3 hover:text-primary transition-all duration-300"
             >
+              {" "}
               Sunmedia
             </a>
           </p>
