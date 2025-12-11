@@ -1,16 +1,21 @@
+"use client";
+
 import { uniqueSellingPoints } from "@/lib/data";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import HeaderSection from "../molecules/HeaderSection";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
 export default function UniqueSellingPoints() {
+  const t = useTranslations("uniqueSellingPoints");
+
   return (
     <section className="w-full mx-auto main-wrapper">
       <SectionWrapper>
         <HeaderSection
           isSubHeading
-          heading="Why Choose Us"
-          subHeading="Why Choose Us"
+          heading={t("heading")}
+          subHeading={t("heading")}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {uniqueSellingPoints.map((item, index) => (
@@ -22,10 +27,10 @@ export default function UniqueSellingPoints() {
                 {
                   <item.icon className="size-7 text-primary group-hover:text-white" />
                 }
-                {item.point}
+                {t(`${item.translationKey}.title`)}
               </CardTitle>
               <CardDescription className="font-inter font-light text-sm sm:text-base text-text group-hover:text-white">
-                {item.subpoint}
+                {t(`${item.translationKey}.description`)}
               </CardDescription>
             </Card>
           ))}

@@ -15,6 +15,7 @@ import Image from "next/image";
 import { navMenus, navSocialIcons, collectionCategories } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -23,6 +24,8 @@ export default function Navbar() {
   const [isMobileCollectionsOpen, setIsMobileCollectionsOpen] = useState(false);
   const navRef = useRef(null);
   const pathname = usePathname();
+  const t = useTranslations("navbar");
+  const tN = useTranslations("collectionCategories");
 
   // Check if we're on collections or product detail page
   const isCollectionPage = pathname?.includes("/collections");
@@ -94,7 +97,7 @@ export default function Navbar() {
               <div className="flex gap-1 items-center">
                 <IoCallOutline className="size-3" />
                 <span className="text-xs font-poppins font-normal">
-                  Call us today! (021) 7197770
+                  {t("contact")} (021) 7197770
                 </span>
               </div>
               <div className="flex gap-1 items-center">
@@ -189,10 +192,10 @@ export default function Navbar() {
               </div>
               {/* Desktop Icon Buttons */}
               <div className="flex gap-5 items-center">
-                {/* <LanguageDropdown
+                <LanguageDropdown
                   shouldBeWhite={shouldBeWhite}
                   isMobileMenuOpen={isMobileMenuOpen}
-                /> */}
+                />
                 <Button
                   variant="ghost"
                   size="icon"
@@ -212,10 +215,10 @@ export default function Navbar() {
 
             {/* Mobile Icons & Hamburger */}
             <div className="flex lg:hidden items-center z-50">
-              {/* <LanguageDropdown
+              <LanguageDropdown
                 shouldBeWhite={shouldBeWhite}
                 isMobileMenuOpen={isMobileMenuOpen}
-              /> */}
+              />
               <Button
                 variant="ghost"
                 size="icon-lg"
@@ -308,7 +311,7 @@ export default function Navbar() {
                               }}
                             >
                               <span className="text-sm font-poppins font-base text-gray-900 hover:text-primary transition-colors uppercase">
-                                {category.name}
+                                {tN(category.translationKey)}
                               </span>
                             </Link>
                           ))}

@@ -7,6 +7,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 import { collectionCategories } from "@/lib/data";
 import { Button } from "../ui";
+import { useTranslations } from "next-intl";
 
 interface CollectionsDropdownProps {
   shouldBeWhite: boolean;
@@ -21,6 +22,7 @@ export default function CollectionsDropdown({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeOutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const t = useTranslations("collectionCategories")
 
   // Check if we're on collections page
   const isCollectionsActive = pathname?.includes("/collections");
@@ -117,7 +119,7 @@ export default function CollectionsDropdown({
               >
                 <div className="flex">
                   <span className="text-sm font-poppins font-base text-text group-hover:text-primary uppercase transition-colors">
-                    {category.name}
+                    {t(category.translationKey)}
                   </span>
                 </div>
               </Link>

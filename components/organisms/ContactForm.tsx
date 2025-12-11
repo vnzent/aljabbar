@@ -3,13 +3,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import emailjs from "@emailjs/browser";
+import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
+  const t = useTranslations("contactSection")
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
-    subject: "",
-    message: "",
+    time: "",
+    note: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -33,10 +35,10 @@ export default function ContactForm() {
         serviceId,
         templateId,
         {
-          from_name: formData.fullName,
+          from_name: formData.name,
           from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
+          time: formData.time,
+          note: formData.note,
           to_email: "vincent.ptk17@gmail.com", // Your receiving email
         },
         publicKey
@@ -45,14 +47,14 @@ export default function ContactForm() {
       if (response.status === 200) {
         setSubmitStatus({
           type: "success",
-          message: "Message sent successfully! We'll get back to you soon.",
+          message: t("contactForm.submittedText"),
         });
         // Reset form
         setFormData({
-          fullName: "",
+          name: "",
           email: "",
-          subject: "",
-          message: "",
+          time: "",
+          note: "",
         });
       }
     } catch (error) {
@@ -60,7 +62,7 @@ export default function ContactForm() {
       setSubmitStatus({
         type: "error",
         message:
-          "Failed to send message. Please try again or contact us directly.",
+          t("contactForm.failed"),
       });
     } finally {
       setIsSubmitting(false);
@@ -82,10 +84,10 @@ export default function ContactForm() {
         {/* Header */}
         <div className="flex flex-col gap-3">
           <h2 className="font-poppins text-3xl sm:text-4xl font-medium text-white">
-            Get in Touch
+            {t("contactForm.header")}
           </h2>
           <p className="font-poppins text-base sm:text-lg text-white/90">
-            We are glad to invite you to our carpet showroom
+            {t("contactForm.subHeader")}
           </p>
         </div>
 
@@ -95,9 +97,9 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              name="fullName"
-              placeholder="Full Name"
-              value={formData.fullName}
+              name={t("contactForm.input1")}
+              placeholder={t("contactForm.input1")}
+              value={formData.name}
               onChange={handleChange}
               required
               className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
@@ -108,8 +110,8 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="email"
-              name="email"
-              placeholder="Email"
+              name={t("contactForm.input2")}
+              placeholder={t("contactForm.input2")}
               value={formData.email}
               onChange={handleChange}
               required
@@ -121,9 +123,9 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              name="subject"
-              placeholder="Subject"
-              value={formData.subject}
+              name={t("contactForm.input3")}
+              placeholder={t("contactForm.input3")}
+              value={formData.time}
               onChange={handleChange}
               required
               className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
@@ -133,9 +135,9 @@ export default function ContactForm() {
           {/* Message */}
           <div className="flex flex-col gap-2">
             <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
+              name={t("contactForm.input4")}
+              placeholder={t("contactForm.input4")}
+              value={formData.note}
               onChange={handleChange}
               required
               rows={5}
@@ -150,7 +152,7 @@ export default function ContactForm() {
             disabled={isSubmitting}
             className="w-full md:w-auto uppercase "
           >
-            {isSubmitting ? "Sending..." : "Send a message"}
+            {isSubmitting ? t("contactForm.isSubmitting") : t("contactForm.Cta")}
           </Button>
 
           {/* Status Message */}

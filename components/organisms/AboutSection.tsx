@@ -10,26 +10,33 @@ import { Link } from "@/i18n/navigation";
 export default function AboutSection({
   paragraphs,
   isButton = true,
+  translationKey = "homeAbout",
 }: {
   paragraphs?: ReactNode[];
   isButton?: boolean;
+  translationKey?: string;
 }) {
-  const t = useTranslations("about");
+  const t = useTranslations(translationKey);
 
   // Use custom paragraphs if provided, otherwise use translations
-  const displayParagraphs = paragraphs || [
-    t("paragraph1"),
-    t("paragraph2"),
-    t("paragraph3"),
-    t("paragraph4"),
-  ];
+  const displayParagraphs =
+    paragraphs ||
+    (() => {
+      const paragraphsFromTranslations = [];
+      let index = 1;
+      while (t.has(`paragraph${index}`)) {
+        paragraphsFromTranslations.push(t(`paragraph${index}`));
+        index++;
+      }
+      return paragraphsFromTranslations;
+    })();
   return (
     <section className="w-full relative ">
       <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20 items-center justify-between">
         {/* Image Container */}
         <div className="relative shrink-0 w-full max-w-full aspect-4/3 lg:aspect-auto lg:max-w-[650px] xl:max-w-5/12">
           <Image
-            src="/about.png"
+            src="/about.webp"
             alt="About Image"
             width={800}
             height={1000}
@@ -42,8 +49,7 @@ export default function AboutSection({
         <SectionWrapper>
           {/* Heading */}
           <div className="flex gap-3 justify-start items-center">
-            <span className="w-8 sm:w-12 md:w-16 lg:w-20 h-0.5 bg-primary" />
-            <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl whitespace-nowrap">
+            <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl">
               {t("heading")}
             </h2>
           </div>

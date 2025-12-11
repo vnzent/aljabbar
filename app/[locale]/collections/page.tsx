@@ -4,10 +4,11 @@ import ProductsGridSkeleton from "@/components/molecules/ProductsGridSkeleton";
 import ProductCard from "@/components/molecules/ProductCard";
 import PaginationClient from "@/components/organisms/PaginationClient";
 import CollectionsClientWrapper from "@/components/organisms/CollectionsClientWrapper";
-import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
 import ProductWrapper from "@/components/organisms/ProductWrapper";
+import { useTranslations } from "next-intl";
+
 
 // Allow partial pre-rendering for instant navigation
 export const dynamic = "auto";
@@ -50,6 +51,7 @@ async function ProductsGrid({
   orderby: string;
   perPage: string;
 }) {
+  const t = useTranslations("collections")
   const { products, pagination } = await fetchProducts({
     page: parseInt(page),
     perPage: parseInt(perPage),
@@ -61,9 +63,9 @@ async function ProductsGrid({
   if (products.length === 0) {
     return (
       <div className="py-14 text-center">
-        <h2 className="text-2xl font-bold text-gray-600">No products found</h2>
+        <h2 className="text-2xl font-bold text-gray-600">{t("noFound")}</h2>
         <p className="text-gray-500 mt-2">
-          Try adjusting your search or filters
+          {t("adjustFilters")}
         </p>
       </div>
     );

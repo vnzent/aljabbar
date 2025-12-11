@@ -3,13 +3,15 @@ import Banner from "@/components/templates/Banner";
 import InfoSection from "@/components/organisms/InfoSection";
 import DynamicHero from "@/components/templates/DynamicHero";
 import PageWrapper from "@/components/organisms/PageWrapper";
+import { useTranslations } from "next-intl";
 
 export default function Contact() {
+  const t = useTranslations("contactPage")
   return (
     <PageWrapper>
       <DynamicHero
-        heading={`Schedule Your Visit`}
-        subheading="Choose a convenient date and time to visit our showroom or schedule a home visit. Our experts will guide you through our premium carpet collection."
+        heading={t("title")}
+        subheading={t("subTitle")}
         image="/contact.jpeg"
       />
       <AppointmentSection />

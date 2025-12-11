@@ -16,7 +16,7 @@ export function ViewAllLink({
       href="/collections"
       className={`${
         variant === "mobile"
-          ? "flex md:hidden w-full mt-6"
+          ? "flex md:hidden w-fit mt-6"
           : "hidden md:flex w-fit"
       } group uppercase gap-2 justify-center border-b hover:border-primary border-black items-center  font-inter text-base font-normal text-black relative`}
     >
@@ -40,7 +40,9 @@ export default async function OurProducts() {
           <ProductsList />
         </Suspense>
       </SectionWrapper>
-      <ViewAllLink variant="mobile" />
+      <div className="flex justify-center md:hidden">
+        <ViewAllLink variant="mobile" />
+      </div>
     </section>
   );
 }

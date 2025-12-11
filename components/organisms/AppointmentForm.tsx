@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import type { AppointmentFormData, TimeSlot } from "@/lib/types/appointment";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface AppointmentFormProps {
   selectedDate: string | null;
@@ -20,12 +21,13 @@ export default function AppointmentForm({
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const t = useTranslations("appointment");
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
   const [formData, setFormData] = useState<AppointmentFormData>({
-    firstName: "",
+    name: "",
     email: "",
     phone: "",
     bookingType: "",
@@ -33,7 +35,7 @@ export default function AppointmentForm({
     address: "",
     selectedDate: "",
     selectedTimeSlot: "",
-    notes: "",
+    note: "",
   });
 
   useEffect(() => {
@@ -114,11 +116,11 @@ export default function AppointmentForm({
       if (result.success) {
         setSubmitStatus({
           type: "success",
-          message: "Appointment booked successfully! We'll contact you soon.",
+          message: t("form.successfullyBooked"),
         });
         // Reset form
         setFormData({
-          firstName: "",
+          name: "",
           email: "",
           phone: "",
           bookingType: "",
@@ -126,7 +128,7 @@ export default function AppointmentForm({
           address: "",
           selectedDate: "",
           selectedTimeSlot: "",
-          notes: "",
+          note: "",
         });
         // Revalidate timeslots and calendar after booking
         if (selectedDate) {
@@ -137,15 +139,14 @@ export default function AppointmentForm({
       } else {
         setSubmitStatus({
           type: "error",
-          message:
-            result.message || "Failed to book appointment. Please try again.",
+          message: result.message || t("form.failed"),
         });
       }
     } catch (error) {
       console.error("Error submitting appointment:", error);
       setSubmitStatus({
         type: "error",
-        message: "An error occurred. Please try again.",
+        message: t("form.failed"),
       });
     } finally {
       setSubmitting(false);
@@ -153,7 +154,7 @@ export default function AppointmentForm({
   };
 
   const isFormValid =
-    formData.firstName &&
+    formData.name &&
     formData.email &&
     formData.phone &&
     formData.bookingType &&
@@ -167,10 +168,10 @@ export default function AppointmentForm({
       {selectedDate && (
         <div className="space-y-3">
           <label className="block font-poppins font-medium text-black">
-            Time Slots*
+            {t("form.time")}
           </label>
           {loadingSlots ? (
-            <p className="text-sm text-gray-500">Loading available slots...</p>
+            <p className="text-sm text-gray-500">{t("form.loading")}</p>
           ) : timeSlots.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {timeSlots.map((slot) => (
@@ -195,30 +196,28 @@ export default function AppointmentForm({
               ))}
             </div>
           ) : (
-            <p className="text-sm text-gray-500">
-              No available slots for this date
-            </p>
+            <p className="text-sm text-gray-500">{t("form.unavailable")}</p>
           )}
         </div>
       )}
 
       {/* First Name */}
-      <Field id="firstName" label="Name*">
+      <Field id="firstName" label={t("form.input1")}>
         <Input
           id="firstName"
-          name="firstName"
-          value={formData.firstName}
+          name={t("form.input1")}
+          value={formData.name}
           onChange={handleInputChange as any}
           required
         />
       </Field>
       <div className="grid grid-cols-2 gap-5">
         {/* Email */}
-        <Field id="email" label="Email*">
+        <Field id="email" label={t("form.input2")}>
           <Input
             type="email"
             id="email"
-            name="email"
+            name={t("form.input2")}
             value={formData.email}
             onChange={handleInputChange as any}
             required
@@ -226,11 +225,11 @@ export default function AppointmentForm({
         </Field>
 
         {/* Phone */}
-        <Field id="phone" label="Phone*">
+        <Field id="phone" label={t("form.input3")}>
           <Input
             type="tel"
             id="phone"
-            name="phone"
+            name={t("form.input3")}
             value={formData.phone}
             onChange={handleInputChange as any}
             required
@@ -240,28 +239,28 @@ export default function AppointmentForm({
 
       {/* Booking Type */}
       <div className="grid grid-cols-2 gap-2 md:gap-5">
-        <Field id="bookingType" label="Booking Type*">
+        <Field id="bookingType" label={t("form.input4.name")}>
           <SelectField
             id="bookingType"
-            name="bookingType"
+            name={t("form.input4.name")}
             value={formData.bookingType}
             onChange={handleInputChange as any}
             required
           >
-            <option value="">Choose Booking</option>
-            <option value="consultation">Consultation</option>
-            <option value="viewing">Carpet Viewing</option>
-            <option value="home-visit">Home Visit</option>
-            <option value="repair">Repair Service</option>
-            <option value="cleaning">Cleaning Service</option>
+            <option value="">{t("form.input4.option1")}</option>
+              <option value="consultation">{t("form.input4.option2")}</option>
+              <option value="viewing">{t("form.input4.option3")}</option>
+              <option value="home-visit">{t("form.input4.option4")}</option>
+              <option value="repair">{t("form.input4.option5")}</option>
+              <option value="cleaning">{t("form.input4.option6")}</option>
           </SelectField>
         </Field>
 
         {/* Location */}
-        <Field id="location" label="Location*">
+        <Field id="location" label={t("form.input5")}>
           <SelectField
             id="location"
-            name="location"
+            name={t("form.input5")}
             value={formData.location}
             onChange={handleInputChange as any}
             required
@@ -289,7 +288,7 @@ export default function AppointmentForm({
       <Field id="address" label="Address*">
         <Textarea
           id="address"
-          name="address"
+          name={t("form.input6")}
           value={formData.address}
           onChange={handleInputChange as any}
           required
@@ -298,14 +297,14 @@ export default function AppointmentForm({
       </Field>
 
       {/* Notes */}
-      <Field id="notes" label="Additional Notes">
+      <Field id="notes" label={t("form.input7.name")}>
         <Textarea
           id="notes"
-          name="notes"
-          value={formData.notes}
+          name={t("form.input7.name")}
+          value={formData.note}
           onChange={handleInputChange as any}
           rows={3}
-          placeholder="Any special requests or information..."
+          placeholder={t("form.input7.placeholder")}
         />
       </Field>
 
@@ -316,12 +315,12 @@ export default function AppointmentForm({
           disabled={!isFormValid || submitting}
           className="w-full text-lg font-poppins font-normal uppercase border hover:border-primary"
         >
-          {submitting ? "Submitting..." : "Book Appointment"}
+          {submitting ? t("form.isSubmitting") : t("form.Cta")}
         </Button>
 
         {!selectedDate && (
           <p className="text-sm text-red-600 text-center">
-            Please select a date from the calendar first
+            {t("form.notSelected")}
           </p>
         )}
       </div>

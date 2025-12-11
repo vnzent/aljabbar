@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { whatsappContacts } from "@/lib/data";
+import { useTranslations } from "next-intl";
 
 function BannerComponent() {
   const _prefillMessage = encodeURIComponent(
@@ -15,12 +16,13 @@ function BannerComponent() {
   } else {
     kemangHref = `${kemangHref}?text=${_prefillMessage}`;
   }
+  const t = useTranslations("bannerCTA");
   return (
     <section className="w-full relative">
       <div className="bg-black/30 absolute inset-0">
         <div className="absolute -z-10 h-full overflow-hidden w-full">
           <Image
-            src="/banner2.jpg"
+            src="/banner2.webp"
             alt="Banner"
             width={1280}
             height={700}
@@ -35,19 +37,18 @@ function BannerComponent() {
           </p>
           <div className="flex flex-col gap-3 max-w-lg text-left">
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-poppins font-medium leading-tight">
-              Need Assistance Choosing
-              <br className="hidden sm:block" /> the Right Carpet?
+              {t("heading1")}
+              <br className="hidden sm:block" /> {t("heading2")}
             </h3>
             <span className="bg-[#D9D9D9] w-full h-px max-w-lg" />
             <p className="text-sm sm:text-base font-poppins font-normal text-black/80">
-              Our team is available 9 AM – 9 PM daily to guide you through
-              styles, materials, and interior matching.
+              {t("subHeading")}
             </p>
           </div>
           <div className="flex mt-4 justify-center sm:justify-start">
             <Button className="w-full sm:w-fit" asChild>
               {/* Prefill WhatsApp message */}
-              <Link href={kemangHref}>WHATSAPP NOW</Link>
+              <Link href={kemangHref}>{t("Cta")}</Link>
             </Button>
           </div>
         </div>

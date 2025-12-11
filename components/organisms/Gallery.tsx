@@ -23,8 +23,9 @@ export default function Gallery() {
         <SectionWrapper>
           <HeaderSection
             isSubHeading
-            heading="Explore Our Lookbook"
-            subHeading="Gallery"
+            heading="heading"
+            subHeading="subHeading"
+            translationKey="gallery"
           />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
             {galleryLookBook.map((product, index) => (

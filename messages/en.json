@@ -1,4 +1,7 @@
 {
+  "navbar": {
+    "contact": "Call us today!"
+  },
   "hero": {
     "tagline": "Al-Jabbar House of Carpets",
     "headLine": "Luxury Carpets & Premium Rugs for Your Home",
@@ -13,20 +16,217 @@
     "noResults": "No results found",
     "noResultsDetail": "No results found for ",
     "founded1": "Found",
-    "founded2": "products",
+    "founded2": "product",
     "Cta": "View all results"
   },
-  "homeAbout": {
-    "header": "Since 1994, Curating Indonesia's Finest Premium Carpets",
-    "paragraph1": "With more than three decades of experience, Al-Jabbar Carpets stands among Indonesia's most trusted destinations for premium carpets and permadani.",
-    "paragraph2": "Every piece in our collection is handpicked from world-renowned artisans and manufacturers across Iran, Turkey, Pakistan, Afghanistan, Kashmir, Europe, and the United States."
+  "collectionHome": {
+    "heading": "Our Collections",
+    "subHeading": "Trusted through decades of serving customers with premium rugs."
   },
-  "about": {
-    "heading": "About Us",
-    "paragraph1": "Al-Jabbar Carpets has been a trusted name in the carpet industry since 1994. With decades of experience and expertise, we have built a reputation for delivering excellence in every aspect of our service.",
-    "paragraph2": "Our journey began with a simple vision: to bring world-class carpets to Indonesian homes and businesses. Today, we stand as one of Indonesia's premier carpet retailers, offering an extensive collection that spans traditional handwoven masterpieces to contemporary machine-made designs.",
-    "paragraph3": "We work directly with master craftsmen and renowned manufacturers from Iran, Turkey, Pakistan, Afghanistan, Kashmir, and beyond. Each piece in our showroom tells a story of heritage, artistry, and dedication to quality.",
-    "paragraph4": "Whether you're furnishing a home, office, hotel, or place of worship, Al-Jabbar provides personalized consultation to help you find the perfect carpet that matches your vision and budget. Our commitment extends beyond the sale—we offer professional installation, maintenance guidance, and repair services to ensure your investment lasts for generations.",
-    "button": "More About Us"
+  "collectionCategories": {
+    "category1": "Handmade Carpets",
+    "category2": "Machine-made Carpets",
+    "category3": "Mosque Carpets"
+  },
+  "homeAbout": {
+    "heading": "Since 1994, Curating Indonesia's Finest Premium Carpets",
+    "paragraph1": "With more than three decades of experience, Al-Jabbar Carpets stands among Indonesia's most trusted destinations for premium carpets and permadani.",
+    "paragraph2": "Every piece in our collection is handpicked from world-renowned artisans and manufacturers across Iran, Turkey, Pakistan, Afghanistan, Kashmir, Europe, and the United States.",
+    "button": "About Us"
+  },
+  "uniqueSellingPoints": {
+    "heading": "Why Choose Us",
+    "point1": {
+      "title": "26+ Years of Expertise",
+      "description": "A generational legacy in crafting and curating premium carpets."
+    },
+    "point2": {
+      "title": "9 Showrooms Across Indonesia",
+      "description": "Providing a seamless shopping experience wherever you are."
+    },
+    "point3": {
+      "title": "10,000+ Rugs Curated",
+      "description": "A diverse and carefully selected collection for every interior style."
+    },
+    "point4": {
+      "title": "5,090+ Happy Customers",
+      "description": "A proven track record of quality and satisfaction."
+    },
+    "point5": {
+      "title": "Premium Quality",
+      "description": "We offer only the finest materials and designs to elevate your living space."
+    },
+    "point6": {
+      "title": "Approachable & Trusted",
+      "description": "Fast, friendly assistance and decades of reliability you can count on."
+    }
+  },
+  "bannerCTA": {
+    "heading1": "Need Assistance Choosing",
+    "heading2": "the Right Carpet?",
+    "subHeading": "Our team is available 9 AM – 9 PM daily to guide you through styles, materials, and interior matching.",
+    "Cta": "WhatsApp Now"
+  },
+  "visionMision": {
+    "visionName": "Vision",
+    "misionName": "Mision",
+    "vision": "To become a global market leader in premium carpets.",
+    "mision": "To bring high-quality carpets into the homes, offices, and places of worship of our."
+  },
+  "aboutUs": {
+    "title": "About Al-Jabbar Carpets",
+    "subTitle": "Al-Jabbar Carpets has been established since 1994 as a trusted curator of premium carpets sourced directly from their countries of origin.",
+    "heading": "Since 1994, Curating Indonesia’s Finest Premium Carpets",
+    "paragraph1": "Al-Jabbar Carpets has been established since 1994 as a trusted curator of premium carpets sourced directly from their countries of origin.",
+    "paragraph2": "Our collection includes hand-made carpets from Iran, Pakistan, Afghanistan, and Kashmir; machine-made rugs from Turkey and Iran; as well as mosque carpets, sajadah, and wall-to-wall carpets from Europe and the United States.",
+    "paragraph3": "We believe a carpet is the centerpiece that brings life, warmth, and character into a room.",
+    "paragraph4": "That is why every piece we curate meets a strict standard of quality, authentic craftsmanship, and timeless design.",
+    "paragraph5": "In addition to our showrooms, we also offer a complimentary Home Trial Service, we bring selected carpets to your home and help you find the one that fits your interior perfectly."
+  },
+  "counterSection": {
+    "heading": "The Numbers That Define Us",
+    "subHeading": "A snapshot of our legacy through key performance milestones."
+  },
+  "gallery": {
+    "subHeading": "Gallery",
+    "heading": "Explore Our Lookbook"
+  },
+  "branches": {
+    "heading": "AL-JABBAR CARPETS BRANCHES",
+    "subHeading": "Branches"
+  },
+  "faqs": {
+    "subTitle": "We've gathered some of the most frequently asked questions so you can get answers faster.",
+    "miniText": "If you haven't found the answer, please [contact us](/contact) directly.",
+    "one": {
+      "question": "You have more questions?",
+      "answer": "Please don't hesitate to contact us on [WhatsApp](whatsapp)."
+    },
+    "two": {
+      "question": "How does a hand-made carpet differ from a machine-made carpet?",
+      "answer": "There are numerous differences but some of the main ones are: \n\nHandmade carpets are one-off unique whereas machine made carpets are available in bulk. \n\nHand-made carpets material has original wool or silk and sometimes a mix of both depending on the carpet but a machine-made carpets material is synthetic. \n\nHand-made carpets are made by hand therefore guaranteeing exquisite detail and are labor-intensive whereas machine made carpets are made by machines and are capital-intensive."
+    },
+    "three": {
+      "question": "How often do I need to clean my carpet?",
+      "answer": "Just vacuum the carpet monthly once a week. Also, if it gets too dirty Al-Jabbar does provide washing services. Click our [services](/service) to find out more."
+    },
+    "four": {
+      "question": "Does Al-Jabbar provide the service or washing and repairing carpets?",
+      "answer": "Yes, we definitely do! Please go to our [services](/service) page to find out more about it."
+    },
+    "five": {
+      "question": "I want to inquire about carpets who should I contact?",
+      "answer": "You can go to our [collections](/collections) page where there will be a WhatsApp number which you can contact for any detail on the carpets."
+    }
+  },
+  "ourServices": {
+    "title": "Our Services",
+    "subTitle": "Premium services dedicated to maintaining and  preserving your carpets quality.",
+    "subHeading1": "This is the service we provide for shaft roll and wall to wall carpets. We measure it according to your place and install the carpet and there is no charge for this considering you have bought from Al-Jabbar Carpets.",
+    "subHeading2": "When we send the carpet for washing to laundry due to the chemicals used and no proper care given the carpet loses its beautiful natural color. At Al-Jabbar we have trained specialized people that wash the carpets. Understanding this issue Al-Jabbar provides the service of carpet washing",
+    "subHeading3": "At Al-Jabbar Carpets we also repair your carpets. Please contact us for further inquiry/information at our WhatsApp number."
+  },
+  "contactSection": {
+    "title": "We'd Love to Hear From You",
+    "subTitle": "We are glad to invite you to our carpet showroom, or please leave a message in this form and we also have a whatsapp contact to connect with us anytime",
+    "phone": "Phone number",
+    "contactForm": {
+      "header": "Get in Touch",
+      "subHeader": "We are glad to invite you to our carpet showroom",
+      "input1": "Name",
+      "input2": "Phone",
+      "input3": "Email",
+      "input4": "Notes / Specific Carpet Interest",
+      "input5": "Preferred Visit Time",
+      "Cta": "Send a Message",
+      "isSubmitting": "Sending...",
+      "successfullySubmitted": "Message sent successfully! We'll get back to you soon.",
+      "failed": "Failed to send message. Please try again or contact us directly."
+    }
+  },
+  "contactPage": {
+    "title": "Schedule Your Visit",
+    "subTitle": "Choose a convenient date and time to visit our showroom or schedule a home visit. Our experts will guide you through our premium carpet collection.",
+    "map": {
+      "title": "We'd Love to Hear From You",
+      "subTitle": "We are glad to invite you to our carpet showroom, or please leave a message in this form and we also have a whatsapp contact to connect with us anytime",
+      "open": {
+        "header": "We are open",
+        "detail": "Monday - Friday 9 AM - 9 PM"
+      },
+      "phone": "Phone number",
+      "find": "Find us on"
+    }
+  },
+  "appointment": {
+    "calendar": {
+      "title": "Select Date",
+      "subTitle": "Choose an available date for your appointment. Dates in dark blue are fully booked.",
+      "status1": "Available",
+      "status2": "Booked",
+      "status3": "Partially Booked",
+      "loading": "Loading availability"
+    },
+    "information": {
+      "title": "Important Information",
+      "point1": "Appointments must be booked at least 24 hours in advance",
+      "point2": "You will receive a confirmation email once your booking is approved",
+      "point3": "For urgent inquiries, please call us directly at (021) 7197770",
+      "point4": "Home visit service is available within Jakarta and surrounding areas"
+    },
+    "form": {
+      "title": "Appointment Details",
+      "subTitle": "Fill in your details and select a preferred time slot.",
+      "selected": "Selected Date : ",
+      "notSelected": "Please select a date from the calendar first",
+      "time": "Visiting Hours",
+      "loading": "Loading available slots...",
+      "unavailable": "No available slots for this date",
+      "input1": "Name",
+      "input2": "Email",
+      "input3": "Phone",
+      "input4": {
+        "name": "Booking Type",
+        "option1": "Choose Booking",
+        "option2": "Consultation",
+        "option3": "Carpet Viewing",
+        "option4": "Home Visit",
+        "option5": "Repair Service",
+        "option6": "Cleaning Service"
+      },
+      "input5": "Location",
+      "input6": "Address",
+      "input7": {
+        "name": "Notes / Specific Carpet Interest",
+        "placeholder": "Any special requests or information..."
+      },
+      "Cta": "Book Appointment",
+      "isSubmitting": "Submitting...",
+      "successfullyBooked": "Appointment booked successfully! We'll contact you soon.",
+      "failed": "Failed to book appointment. Please try again."
+    }
+  },
+  "collections": {
+    "category": "Categories",
+    "noFound": "No products found",
+    "adjustFilters": "Try adjusting your search or filters",
+    "allProducts": "All Products",
+    "filteredProducts": "Filtered Products",
+    "subTitle": "Browse our complete collection",
+    "showing": "Showing products from ",
+    "clear": "Clear All",
+    "activeFilters": "Active Filters",
+    "categoryPage": {
+      "noFound": "Category Not Found",
+      "descriptionNoFound": "The category you're looking for doesn't exist."
+    },
+    "detailPage": {
+      "description": "Description",
+      "Cta": "Order Now",
+      "relatedTitle": "Related Products"
+    }
+  },
+  "footer": {
+    "description": "Al-Jabbar carpets is a retail carpet business which dates back to its originating date being March 1994. From the start we have been dedicated to providing the best quality carpets."
   }
 }

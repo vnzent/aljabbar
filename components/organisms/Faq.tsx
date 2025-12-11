@@ -8,9 +8,10 @@ import {
 } from "@/components/ui/accordion";
 import { faqs } from "@/lib/data";
 import { parseTextWithParagraphs } from "@/lib/textParser";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Faq() {
+  const t = useTranslations("faqs");
   return (
     <section className="w-full">
       <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-10 md:gap-12 lg:gap-20 items-center">
@@ -19,19 +20,11 @@ export default function Faq() {
             FAQ
           </h2>
           <div className="flex flex-col gap-3 md:gap-4 text-center lg:text-left">
-            <p className="font-inter font-normal text-sm md:text-base text-text capitalize leading-relaxed">
-              We've gathered some of the most frequently asked questions so you
-              can get answers faster.
+            <p className="font-inter font-normal text-sm md:text-base text-text leading-relaxed">
+              {t("subTitle")}
             </p>
             <p className="text-text font-inter text-sm md:text-base leading-relaxed">
-              If you haven't found the answer, please{" "}
-              <Link
-                href="/contact"
-                className="text-primary font-medium hover:underline underline-offset-2"
-              >
-                contact us
-              </Link>{" "}
-              directly.
+              {parseTextWithParagraphs(t("miniText"))}
             </p>
           </div>
         </div>
@@ -48,11 +41,13 @@ export default function Faq() {
                 className="border border-gray-200 px-4 md:px-5 lg:px-6 bg-white hover:border-primary/50 transition-colors overflow-hidden"
               >
                 <AccordionTrigger className="font-poppins font-nromal  text-base text-text hover:text-primary hover:no-underline cursor-pointer py-3 md:py-4">
-                  {item.question}
+                  {t(`${item.translationKey}.question`)}
                 </AccordionTrigger>
                 <AccordionContent className="font-inter text-sm  text-text leading-relaxed pt-2 text-justify">
                   <div className="[&_a]:pointer-events-auto [&_a]:cursor-pointer [&_a]:relative [&_a]:z-9999">
-                    {parseTextWithParagraphs(item.answer)}
+                    {parseTextWithParagraphs(
+                      t(`${item.translationKey}.answer`)
+                    )}
                   </div>
                 </AccordionContent>
               </AccordionItem>

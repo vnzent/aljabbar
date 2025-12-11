@@ -1,7 +1,9 @@
 import Map from "@/components/organisms/Map";
 import ContactIntro from "./ContactIntro";
+import { useTranslations } from "next-intl";
 
 export default function InfoSection() {
+  const t = useTranslations("contactPage");
   return (
     <div className="main-wrapper mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16 items-start">
       <ContactIntro variant="info" />

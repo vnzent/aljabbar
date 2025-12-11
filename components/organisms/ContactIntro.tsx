@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import TextHeading from "../atoms/TextHeading";
 import { IoCallOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 function ContactItem({
   title,
@@ -32,24 +33,21 @@ export default function ContactIntro({
   const headerGap =
     variant === "info" ? "gap-3 md:gap-4 lg:gap-5" : "gap-5 md:gap-6 lg:gap-8";
 
+    const t = useTranslations("contactSection")
+    const tC = useTranslations("contactPage")
   const gridClasses =
     variant === "info"
       ? "grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-8 w-full max-w-2xl mx-auto lg:mx-0 lg:max-w-none md:pl-12 lg:pl-0"
       : "grid grid-cols-1 sm:grid-cols-2 gap-y-6 md:gap-x-10 md:gap-y-8 w-full max-w-2xl mx-auto lg:mx-0 lg:max-w-none md:pl-12 lg:pl-0";
 
   return (
-    <div className="flex flex-col gap-8 md:gap-10 lg:gap-18 items-start justify-center md:items-center lg:items-center">
+    <div className="flex flex-col gap-8 md:gap-10 lg:gap-18 items-start justify-center md:items-start ">
       <div
         className={`flex items-center md:items-start text-center md:text-start flex-col ${headerGap}`}
       >
-        <TextHeading>
-          We'd Love to Hear <br />
-          From You
-        </TextHeading>
+        <TextHeading>{t("title")}</TextHeading>
         <p className="font-poppins font-normal text-sm md:text-base text-text max-w-xl text-center lg:text-justify">
-          We are glad to invite you to our carpet showroom, or please leave a
-          message in this form and we also have a whatsapp contact to connect
-          with us anytime
+          {t("subTitle")}
         </p>
       </div>
 
@@ -63,8 +61,8 @@ export default function ContactIntro({
           </Link>
         </ContactItem>
 
-        <ContactItem title="Phone number">
-          <div className="flex flex-col gap-1">
+        <ContactItem title={t("phone")}>
+          <div className="flex gap-2 justify-center md:flex-col md:gap-1">
             <a
               href="tel:0217197770"
               className="flex hover:text-primary duration-300 items-center gap-2"
@@ -87,11 +85,11 @@ export default function ContactIntro({
 
         {variant === "info" && (
           <>
-            <ContactItem title="We are open">
-              Monday – Friday 9 AM – 9 PM
+            <ContactItem title={tC("map.open.header")}>
+              {tC("map.open.detail")}
             </ContactItem>
 
-            <ContactItem title="Find us on">
+            <ContactItem title={tC("map.find")}>
               <div className="flex mt-2 gap-3 md:gap-4 items-center justify-center sm:justify-start lg:justify-start">
                 {navSocialIcons.map((icon, index) => (
                   <Link

@@ -6,25 +6,23 @@ import Faq from "@/components/organisms/Faq";
 import DynamicHero from "@/components/templates/DynamicHero";
 import OurCollections from "@/components/templates/OurCollections";
 import VisionMision from "@/components/organisms/VisionMision";
-import { aboutParagraphs } from "@/lib/data";
-import { parseTextWithBold } from "@/lib/textParser";
 import CounterSection from "@/components/organisms/CounterSection";
 import Branches from "@/components/organisms/Branches";
 import PageWrapper from "@/components/organisms/PageWrapper";
+import { useTranslations } from "next-intl";
 
 export default function About() {
+  const t = useTranslations("aboutUs")
   return (
     <PageWrapper>
       <DynamicHero
-        heading={`About Al-Jabbar Carpets`}
-        subheading="Al-Jabbar Carpets has been established since 1994 as a trusted curator of premium carpets sourced directly from their countries of origin."
+        heading={t("title")}
+        subheading={t("subTitle")}
         image="/about-us.jpeg"
       />
       {/* About us */}
       <AboutSection
-        paragraphs={aboutParagraphs.map((paragraph) =>
-          parseTextWithBold(paragraph)
-        )}
+        translationKey="aboutUs"
         isButton={false}
       />
       {/* Vision Mision */}

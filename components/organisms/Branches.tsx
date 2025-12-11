@@ -19,8 +19,9 @@ export default function Branches() {
       <SectionWrapper>
         <HeaderSection
           isSubHeading
-          heading="AL-JABBAR Carpets"
-          subHeading="Branches"
+          heading="heading"
+          subHeading="subHeading"
+          translationKey="branches"
         />
         {/* Mobile: Single Accordion */}
         <div className="md:hidden">

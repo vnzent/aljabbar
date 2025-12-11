@@ -167,10 +167,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <BiSearch className="size-7 md:size-9 text-gray-300" />
                 </div>
                 <h3 className="font-poppins font-semibold text-gray-800 mb-1 md:mb-2 text-base md:text-lg">
-                  No results found
+                  {t("noResults")}
                 </h3>
                 <p className="text-gray-500 text-sm">
-                  No products found for "{searchQuery}"
+                  {t("noResultsDetail")} "{searchQuery}"
                 </p>
               </div>
             ) : (

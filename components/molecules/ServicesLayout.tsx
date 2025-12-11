@@ -7,14 +7,14 @@ import { whatsappContacts } from "@/lib/data";
 interface ServicesLayoutProps {
   variant?: "normal" | "reverse";
   heading?: string;
-  subheading?: string;
+  subHeading?: string;
   imgSrc?: string;
 }
 
 export default function ServicesLayout({
   variant = "normal",
   heading,
-  subheading,
+  subHeading,
   imgSrc = "/placeholder.jpg",
 }: ServicesLayoutProps) {
   const _prefill = encodeURIComponent(
@@ -52,7 +52,7 @@ export default function ServicesLayout({
           {heading}
         </h3>
         <p className="font-poppins font-normal text-sm md:text-base text-text max-w-xl text-start">
-          {subheading}
+          {subHeading}
         </p>
         <Button className="w-full mt-4 uppercase sm:w-fit" asChild>
           <Link href={orderLink}>Order Now</Link>

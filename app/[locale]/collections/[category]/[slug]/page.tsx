@@ -13,6 +13,7 @@ import ProductDetailSkeleton from "@/components/molecules/ProductDetailSkeleton"
 import FixedContactButton from "@/components/molecules/FixedContactButton";
 import { Button } from "@/components/ui/button";
 import PageWrapper from "@/components/organisms/PageWrapper";
+import { getTranslations } from "next-intl/server";
 
 async function ProductDetailContent({
   slug,
@@ -22,6 +23,7 @@ async function ProductDetailContent({
   category: string;
 }) {
   const product = await fetchProductBySlug(slug);
+  const t = await getTranslations("collections");
   const allCategories = await fetchProductCategories();
 
   if (!product) {
@@ -132,7 +134,7 @@ async function ProductDetailContent({
               {/* Contact Button */}
               <div className=" hidden md:block">
                 <Button className="w-full sm:w-fit text-base md:text-lg">
-                  Contact Us for This Product
+                  {t("detailPage.Cta")}
                 </Button>
               </div>
             </div>
