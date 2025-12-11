@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function VisionMision() {
+  const t = useTranslations("visionMision")
   return (
     <section className="w-full relative ">
       <div className="bg-black/50 absolute inset-0">
@@ -18,25 +20,23 @@ export default function VisionMision() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-10 md:w-full lg:w-[70vw] items-center text-center md:text-left">
           <div className="flex flex-col gap-5 md:gap-6 lg:gap-7 flex-1">
             <h3 className="font-poppins text-2xl sm:text-3xl md:text-2xl lg:text-3xl text-white font-medium">
-              Vision
+              {t("visionName")}
             </h3>
             <div className="flex flex-col gap-3 md:gap-4 lg:gap-5">
               <span className="bg-white h-0.5 w-32 md:w-36 lg:w-40 self-center-safe md:self-baseline" />
               <p className="font-poppins text-base sm:text-lg md:text-base text-white capitalize">
-                To implement market development and be a global market leader in
-                carpets.
+                {t("vision")}
               </p>
             </div>
           </div>
           <div className="flex flex-col gap-5 md:gap-6 lg:gap-7 flex-1">
             <h3 className="font-poppins text-2xl sm:text-3xl md:text-2xl lg:text-3xl text-white font-medium">
-              Mision
+              {t("misionName")}
             </h3>
             <div className="flex flex-col gap-3 md:gap-4 lg:gap-5">
               <span className="bg-white h-0.5 w-32 md:w-36 lg:w-40 self-center-safe md:self-baseline" />
               <p className="font-poppins text-base sm:text-lg md:text-base text-white capitalize">
-                To infuse Al-Jabbar carpets to be incorporated in our customers
-                lifestyle, whether their home, office or place of worship.
+                {t("mision")}
               </p>
             </div>
           </div>

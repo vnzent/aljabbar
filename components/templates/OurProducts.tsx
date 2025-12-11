@@ -16,7 +16,7 @@ export default async function OurProducts() {
             className="group uppercase font-inter text-base sm:text-lg font-normal text-black relative w-fit mx-auto sm:mx-0"
           >
             <span className="transition-colors duration-500 group-hover:text-primary underline underline-offset-3">
-              View All
+              View All Collections
             </span>
             {/* <span className="absolute left-0 bottom-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full" /> */}
           </Link>

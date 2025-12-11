@@ -2,8 +2,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { whatsappContacts } from "@/lib/data";
+import { useTranslations } from "next-intl";
 
 function BannerComponent() {
+  const t = useTranslations("bannerCTA");
   return (
     <section className="w-full relative">
       <div className="bg-black/30 absolute inset-0">
@@ -24,13 +26,12 @@ function BannerComponent() {
           </p>
           <div className="flex flex-col gap-3 max-w-lg text-left">
             <h3 className="text-2xl sm:text-2xl lg:text-3xl font-poppins font-normal leading-tight">
-              Need Assistance Choosing
-              <br className="hidden sm:block" /> the Right Carpet?
+              {t("heading1")}
+              <br className="hidden sm:block" /> {t("heading2")}
             </h3>
             <span className="bg-[#D9D9D9] w-full h-0.5 max-w-lg" />
             <p className="text-sm sm:text-base font-poppins font-normal text-black/80">
-              Our team is available 9 AM – 9 PM daily to guide you through
-              styles, materials, and interior matching.
+              {t("subHeading")}
             </p>
           </div>
           <div className="flex justify-center sm:justify-start">
@@ -39,7 +40,7 @@ function BannerComponent() {
                 href={whatsappContacts.kemang}
                 className="uppercase font-poppins text-white text-lg"
               >
-                WHATSAPP NOW
+                {t("Cta")}
               </Link>
             </Button>
           </div>

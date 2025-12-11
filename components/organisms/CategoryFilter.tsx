@@ -4,6 +4,7 @@ import { Category } from "@/lib/types";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useEffect, useMemo, useTransition } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface CategoryFilterProps {
   categories: Category[];
@@ -25,6 +26,7 @@ export default function CategoryFilter({
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const t = useTranslations("collections")
   const [isPending, startTransition] = useTransition();
   const [selectedCategories, setSelectedCategories] =
     useState<string[]>(activeCategorySlugs);
@@ -226,14 +228,14 @@ export default function CategoryFilter({
     <div className="bg-white sticky top-20">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-poppins font-bold text-xl text-black">
-          Categories
+          {t("category")}
         </h3>
         {selectedCategories.length > 0 && (
           <button
             onClick={clearFilters}
             className="text-sm text-primary hover:underline hover:cursor-pointer"
           >
-            Clear All
+            {t("clear")}
           </button>
         )}
       </div>

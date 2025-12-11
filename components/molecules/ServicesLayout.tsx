@@ -5,14 +5,14 @@ import { cn } from "@/lib/utils";
 interface ServicesLayoutProps {
   variant?: "normal" | "reverse";
   heading?: string;
-  subheading?: string;
+  subHeading?: string;
   imgSrc?: string;
 }
 
 export default function ServicesLayout({
   variant = "normal",
   heading,
-  subheading,
+  subHeading,
   imgSrc = "/placeholder.jpg",
 }:ServicesLayoutProps ) {
 
@@ -32,8 +32,9 @@ export default function ServicesLayout({
             {heading}
           </h3>
           <p className="font-poppins font-normal text-sm md:text-base text-text max-w-xl text-center lg:text-justify">
-            {subheading}
+            {subHeading}
           </p>
+          {/* TODO: Tambahin Link */}
           <Button className="w-full mt-2 sm:w-fit font-poppins text-base md:text-lg text-white uppercase">
             Order Now
           </Button>

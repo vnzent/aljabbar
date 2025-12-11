@@ -8,19 +8,26 @@ import { ReactNode } from "react";
 export default function AboutSection({
   paragraphs,
   isButton = true,
+  translationKey = "homeAbout",
 }: {
   paragraphs?: ReactNode[];
   isButton?: boolean;
+  translationKey?: string;
 }) {
-  const t = useTranslations("about");
+  const t = useTranslations(translationKey);
 
   // Use custom paragraphs if provided, otherwise use translations
-  const displayParagraphs = paragraphs || [
-    t("paragraph1"),
-    t("paragraph2"),
-    t("paragraph3"),
-    t("paragraph4"),
-  ];
+  const displayParagraphs =
+    paragraphs ||
+    (() => {
+      const paragraphsFromTranslations = [];
+      let index = 1;
+      while (t.has(`paragraph${index}`)) {
+        paragraphsFromTranslations.push(t(`paragraph${index}`));
+        index++;
+      }
+      return paragraphsFromTranslations;
+    })();
   return (
     <section className="w-full relative py-8 md:py-0">
       <div className="main-wrapper mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-20 items-center justify-between">
@@ -41,7 +48,7 @@ export default function AboutSection({
           {/* Heading */}
           <div className="flex gap-3 justify-start items-center">
             <span className="w-8 sm:w-12 md:w-16 lg:w-20 h-0.5 bg-primary" />
-            <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl whitespace-nowrap">
+            <h2 className="text-black font-poppins font-medium text-3xl sm:text-4xl lg:text-5xl">
               {t("heading")}
             </h2>
           </div>

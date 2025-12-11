@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import type { AppointmentFormData, TimeSlot } from "@/lib/types/appointment";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface AppointmentFormProps {
   selectedDate: string | null;
@@ -19,12 +20,13 @@ export default function AppointmentForm({
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const t = useTranslations("appointment");
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
   const [formData, setFormData] = useState<AppointmentFormData>({
-    firstName: "",
+    name: "",
     email: "",
     phone: "",
     bookingType: "",
@@ -32,7 +34,7 @@ export default function AppointmentForm({
     address: "",
     selectedDate: "",
     selectedTimeSlot: "",
-    notes: "",
+    note: "",
   });
 
   useEffect(() => {
@@ -113,11 +115,11 @@ export default function AppointmentForm({
       if (result.success) {
         setSubmitStatus({
           type: "success",
-          message: "Appointment booked successfully! We'll contact you soon.",
+          message: t("form.successfullyBooked"),
         });
         // Reset form
         setFormData({
-          firstName: "",
+          name: "",
           email: "",
           phone: "",
           bookingType: "",
@@ -125,7 +127,7 @@ export default function AppointmentForm({
           address: "",
           selectedDate: "",
           selectedTimeSlot: "",
-          notes: "",
+          note: "",
         });
         // Revalidate timeslots and calendar after booking
         if (selectedDate) {
@@ -136,15 +138,14 @@ export default function AppointmentForm({
       } else {
         setSubmitStatus({
           type: "error",
-          message:
-            result.message || "Failed to book appointment. Please try again.",
+          message: result.message || t("form.failed"),
         });
       }
     } catch (error) {
       console.error("Error submitting appointment:", error);
       setSubmitStatus({
         type: "error",
-        message: "An error occurred. Please try again.",
+        message: t("form.failed"),
       });
     } finally {
       setSubmitting(false);
@@ -152,7 +153,7 @@ export default function AppointmentForm({
   };
 
   const isFormValid =
-    formData.firstName &&
+    formData.name &&
     formData.email &&
     formData.phone &&
     formData.bookingType &&
@@ -166,10 +167,10 @@ export default function AppointmentForm({
       {selectedDate && (
         <div className="space-y-3">
           <label className="block font-poppins font-medium text-black">
-            Time Slots*
+            {t("form.time")}
           </label>
           {loadingSlots ? (
-            <p className="text-sm text-gray-500">Loading available slots...</p>
+            <p className="text-sm text-gray-500">{t("form.loading")}</p>
           ) : timeSlots.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {timeSlots.map((slot) => (
@@ -194,9 +195,7 @@ export default function AppointmentForm({
               ))}
             </div>
           ) : (
-            <p className="text-sm text-gray-500">
-              No available slots for this date
-            </p>
+            <p className="text-sm text-gray-500">{t("form.unavailable")}</p>
           )}
         </div>
       )}
@@ -204,16 +203,16 @@ export default function AppointmentForm({
       {/* First Name */}
       <div className="space-y-2">
         <label
-          htmlFor="firstName"
+          htmlFor="name"
           className="block font-poppins font-medium text-black"
         >
-          Name*
+          {t("form.input1")}
         </label>
         <input
           type="text"
-          id="firstName"
-          name="firstName"
-          value={formData.firstName}
+          id="name"
+          name={t("form.input1")}
+          value={formData.name}
           onChange={handleInputChange}
           required
           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter"
@@ -226,12 +225,12 @@ export default function AppointmentForm({
             htmlFor="email"
             className="block font-poppins font-medium text-black"
           >
-            Email*
+            {t("form.input2")}
           </label>
           <input
             type="email"
             id="email"
-            name="email"
+            name={t("form.input2")}
             value={formData.email}
             onChange={handleInputChange}
             required
@@ -245,12 +244,12 @@ export default function AppointmentForm({
             htmlFor="phone"
             className="block font-poppins font-medium text-black"
           >
-            Phone*
+            {t("form.input3")}
           </label>
           <input
             type="tel"
             id="phone"
-            name="phone"
+            name={t("form.input3")}
             value={formData.phone}
             onChange={handleInputChange}
             required
@@ -263,26 +262,26 @@ export default function AppointmentForm({
       <div className="grid grid-cols-2 gap-5">
         <div className="space-y-2">
           <label
-            htmlFor="bookingType"
+            htmlFor="booktingType"
             className="block font-poppins font-medium text-black"
           >
-            Booking Type*
+            {t("form.input4.name")}
           </label>
           <div className="relative">
             <select
               id="bookingType"
-              name="bookingType"
+              name={t("form.input4.name")}
               value={formData.bookingType}
               onChange={handleInputChange}
               required
               className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter appearance-none bg-white cursor-pointer"
             >
-              <option value="">Choose Booking</option>
-              <option value="consultation">Consultation</option>
-              <option value="viewing">Carpet Viewing</option>
-              <option value="home-visit">Home Visit</option>
-              <option value="repair">Repair Service</option>
-              <option value="cleaning">Cleaning Service</option>
+              <option value="">{t("form.input4.option1")}</option>
+              <option value="consultation">{t("form.input4.option2")}</option>
+              <option value="viewing">{t("form.input4.option3")}</option>
+              <option value="home-visit">{t("form.input4.option4")}</option>
+              <option value="repair">{t("form.input4.option5")}</option>
+              <option value="cleaning">{t("form.input4.option6")}</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <svg
@@ -306,12 +305,12 @@ export default function AppointmentForm({
             htmlFor="location"
             className="block font-poppins font-medium text-black"
           >
-            Location*
+            {t("form.input5")}
           </label>
           <div className="relative">
             <select
               id="location"
-              name="location"
+              name={t("form.input5")}
               value={formData.location}
               onChange={handleInputChange}
               required
@@ -356,11 +355,11 @@ export default function AppointmentForm({
           htmlFor="address"
           className="block font-poppins font-medium text-black"
         >
-          Address*
+          {t("form.input6")}
         </label>
         <textarea
           id="address"
-          name="address"
+          name={t("form.input6")}
           value={formData.address}
           onChange={handleInputChange}
           required
@@ -375,15 +374,15 @@ export default function AppointmentForm({
           htmlFor="notes"
           className="block font-poppins font-medium text-black"
         >
-          Additional Notes
+          {t("form.input7.name")}
         </label>
         <textarea
           id="notes"
-          name="notes"
-          value={formData.notes}
+          name={t("form.input7.name")}
+          value={formData.note}
           onChange={handleInputChange}
           rows={3}
-          placeholder="Any special requests or information..."
+          placeholder={t("form.input7.placeholder")}
           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-inter resize-none"
         />
       </div>
@@ -394,12 +393,12 @@ export default function AppointmentForm({
         disabled={!isFormValid || submitting}
         className="w-full text-lg font-poppins font-normal uppercase border hover:border-primary"
       >
-        {submitting ? "Submitting..." : "Book Appointment"}
+        {submitting ? t("form.isSubmitting") : t("form.Cta")}
       </Button>
 
       {!selectedDate && (
         <p className="text-sm text-red-600 text-center">
-          Please select a date from the calendar first
+          {t("form.notSelected")}
         </p>
       )}
 

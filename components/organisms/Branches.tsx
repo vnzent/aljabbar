@@ -16,7 +16,12 @@ export default function Branches() {
   return (
     <section className="w-full mx-auto main-wrapper">
       <div className="flex flex-col gap-8 md:gap-10">
-        <HeaderSection isSubHeading heading="AL-JABBAR Carpets" subHeading="Branches" />
+        <HeaderSection
+          isSubHeading
+          heading="heading"
+          subHeading="subHeading"
+          translationKey="branches"
+        />
         {/* Mobile: Single Accordion */}
         <div className="md:hidden">
           <Accordion type="single" collapsible className="w-full space-y-3">

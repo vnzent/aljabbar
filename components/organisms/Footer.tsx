@@ -1,8 +1,10 @@
 import { contactInfo, navMenus, navSocialIcons } from "@/lib/data";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const t = useTranslations("footer");
   return (
     <footer className="w-full bg-[#282828] py-16">
       <div className="mx-auto main-wrapper">
@@ -20,9 +22,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="font-poppins text-sm text-white/80 font-light leading-relaxed max-w-sm">
-                Al-Jabbar carpets is a retail carpet business which dates back
-                to its originating date being march 1994. From the start we have
-                been dedicated to providing the best quality carpets.
+                {t("description")}
               </p>
             </div>
             <div className="flex gap-4 items-center">
@@ -101,7 +101,7 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="text-center font-poppins text-sm text-white/60">
-            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved. {" "}
+            © {new Date().getFullYear()} Al-Jabbar Carpets. All rights reserved.{" "}
             <a
               href="https://sunmedia.co.id/"
               className="underline underline-offset-3 hover:text-primary transition-all duration-300"

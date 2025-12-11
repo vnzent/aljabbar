@@ -13,6 +13,7 @@ import {
 } from "date-fns";
 import type { DateAvailability } from "@/lib/types/appointment";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface AppointmentCalendarProps {
   onDateSelect: (date: string) => void;
@@ -36,6 +37,7 @@ const AppointmentCalendar = forwardRef<
   >(new Map());
   const [loading, setLoading] = useState(false);
 
+const t = useTranslations("appointment")
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
   const nextMonthStart = startOfMonth(nextMonth);
@@ -238,23 +240,23 @@ const AppointmentCalendar = forwardRef<
       <div className="flex flex-wrap gap-4 text-sm font-inter">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-white border border-gray-300 rounded" />
-          <span>Available</span>
+          <span>{t("calendar.status1")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-900 rounded" />
-          <span>Booked</span>
+          <span>{t("calendar.status2")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-100 border border-blue-300 rounded relative">
             <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full" />
           </div>
-          <span>Partially booked</span>
+          <span>{t("calendar.status3")}</span>
         </div>
       </div>
 
       {loading && (
         <div className="text-center text-sm text-gray-500 py-4">
-          Loading availability...
+          {t("calendar.loading")}
         </div>
       )}
     </div>

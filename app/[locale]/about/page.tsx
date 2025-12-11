@@ -21,9 +21,7 @@ export default function About() {
       />
       {/* About us */}
       <AboutSection
-        paragraphs={aboutParagraphs.map((paragraph) =>
-          parseTextWithBold(paragraph)
-        )}
+        translationKey="aboutUs"
         isButton={false}
       />
       {/* Vision Mision */}

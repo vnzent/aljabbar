@@ -11,8 +11,9 @@ export default function CounterSection({ withHeading = true }: CounterSectionPro
       <div className="flex flex-col gap-8 md:gap-10">
         {withHeading && (
           <HeaderBetween
-            heading="Numbers That Tell Our Story"
-            subheading={`Decades of serving customers with a diverse collection of rugs have built a strong foundation of trust and reliability.`}
+          heading="heading"
+          subheading="subHeading"
+          translationKey="counterSection"
           />
         )}
         <ValueCounter />

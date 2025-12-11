@@ -7,6 +7,7 @@ import CollectionsClientWrapper from "@/components/organisms/CollectionsClientWr
 import DynamicBreadcrumb from "@/components/molecules/DynamicBreadcrumb";
 import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
+import { getTranslations } from "next-intl/server";
 
 // Allow dynamic rendering for search params but cache category data
 export const dynamic = "auto";
@@ -84,6 +85,7 @@ async function ProductsGrid({
   orderby: string;
   perPage: string;
 }) {
+  const t = await getTranslations("collections");
   const { products, pagination } = await fetchProducts({
     page: parseInt(page),
     perPage: parseInt(perPage),
@@ -95,10 +97,8 @@ async function ProductsGrid({
   if (products.length === 0) {
     return (
       <div className="py-16 text-center">
-        <h2 className="text-2xl font-bold text-gray-600">No products found</h2>
-        <p className="text-gray-500 mt-2">
-          Try adjusting your search or filters
-        </p>
+        <h2 className="text-2xl font-bold text-gray-600">{t("noFound")}</h2>
+        <p className="text-gray-500 mt-2">{t("adjustFilters")}</p>
       </div>
     );
   }
@@ -129,6 +129,7 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>;
   searchParams: SearchParams;
 }) {
+  const t = await getTranslations("collections");
   const { category: parentCategorySlug } = await params;
   const {
     page = "1",
@@ -147,9 +148,11 @@ export default async function CategoryPage({
   if (!parent) {
     return (
       <div className="container mx-auto px-4 py-32 text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Category Not Found</h1>
+        <h1 className="text-3xl font-bold text-gray-900">
+          {t("categoryPage.noFound")}
+        </h1>
         <p className="text-gray-600 mt-2">
-          The category you're looking for doesn't exist.
+          {t("categoryPage.descriptionNoFound")}
         </p>
       </div>
     );

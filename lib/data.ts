@@ -32,19 +32,19 @@ export const collectionCategories = [
     src: "/our-collection-1.jpg",
     name: "Hand-made Carpets",
     slug: "hand-made-carpets",
-    description: "Authentic handwoven masterpieces",
+    translationKey: "category1",
   },
   {
     src: "/our-collection-2.jpg",
     name: "Machine-made Carpets",
     slug: "machine-made-carpets",
-    description: "Modern precision and style",
+    translationKey: "category2",
   },
   {
     src: "/our-collection-3.jpg",
     name: "Mosque Carpets",
     slug: "mosque-carpets",
-    description: "Sacred spaces, elegant designs",
+    translationKey: "category3",
   },
 ];
 
@@ -78,36 +78,27 @@ export const count = [
 export const uniqueSellingPoints = [
   {
     icon: VscWorkspaceTrusted,
-    point: "26+ Years of Expertise",
-    subpoint: "A generational legacy in crafting and curating premium carpets.",
+    translationKey: "point1",
   },
   {
     icon: HiOutlineBuildingStorefront,
-    point: "9 Branches Across Indonesia",
-    subpoint: "Providing a seamless shopping experience wherever you are.",
+    translationKey: "point2",
   },
   {
     icon: PiRug,
-    point: "10,000+ Rugs Curated",
-    subpoint:
-      "A diverse and carefully selected collection for every interior style.",
+    translationKey: "point3",
   },
   {
     icon: FaRegSmileBeam,
-    point: "5,090+ Happy Customers",
-    subpoint: "A proven track record of quality and satisfaction.",
+    translationKey: "point4",
   },
   {
     icon: FaGem,
-    point: "Premium Quality",
-    subpoint:
-      "We offer only the finest materials and designs to elevate your living space.",
+    translationKey: "point5",
   },
   {
     icon: FaRegHandshake,
-    point: "Approachable & Trusted",
-    subpoint:
-      "Fast, friendly assistance and decades of reliability you can count on.",
+    translationKey: "point6",
   },
 ];
 
@@ -168,31 +159,11 @@ export const galleryLookBook = [
 ];
 
 export const faqs = [
-  {
-    question: "You have more questions?",
-    answer: "Please don't hesitate to contact us on [WhatsApp](whatsapp).",
-  },
-  {
-    question: "How does a hand-made carpet differ from a machine-made carpet?",
-    answer:
-      "There are numerous differences but some of the main ones are: \n\nHandmade carpets are one-off unique whereas machine made carpets are available in bulk. \n\nHand-made carpets material has original wool or silk and sometimes a mix of both depending on the carpet but a machine-made carpets material is synthetic. \n\nHand-made carpets are made by hand therefore guaranteeing exquisite detail and are labor-intensive whereas machine made carpets are made by machines and are capital-intensive.",
-  },
-  {
-    question: "How often do I need to clean my carpet?",
-    answer:
-      "Just vacuum the carpet monthly once a week. Also, if it gets too dirty Al-Jabbar does provide washing services. Click our [services](/service) to find out more.",
-  },
-  {
-    question:
-      "Does Al-Jabbar provide the service or washing and repairing carpets?",
-    answer:
-      "Yes, we definitely do! Please go to our [services](/service) page to find out more about it.",
-  },
-  {
-    question: "I want to inquire about carpets who should I contact?",
-    answer:
-      "You can go to our [collections](/collections) page where there will be a WhatsApp number which you can contact for any detail on the carpets.",
-  },
+  {translationKey: "one"},
+  {translationKey: "two"},
+  {translationKey: "three"},
+  {translationKey: "four"},
+  {translationKey: "five"},
 ];
 
 export const branches = [

@@ -15,7 +15,7 @@ export interface DateAvailability {
 }
 
 export interface AppointmentFormData {
-  firstName: string;
+  name: string;
   email: string;
   phone: string;
   bookingType: string;
@@ -23,7 +23,7 @@ export interface AppointmentFormData {
   address: string;
   selectedDate: string;
   selectedTimeSlot: string;
-  notes?: string;
+  note?: string;
 }
 
 export interface Appointment {

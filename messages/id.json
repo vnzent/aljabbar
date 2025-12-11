@@ -1,4 +1,7 @@
 {
+  "navbar": {
+    "contact": "Hubungi!"
+  },
   "hero": {
     "tagline": "Al-Jabbar House of Carpets",
     "headLine": "Karpet Mewah dan Permadani Premium untuk Rumah Anda",
@@ -16,17 +19,212 @@
     "founded2": "produk",
     "Cta": "Lihat semua hasil"
   },
-  "homeAbout": {
-    "header": "Sejak 1994, Menghadirkan Karpet Terbaik untuk Interior Anda",
-    "paragraph1": "Dengan pengalaman lebih dari tiga dekade, Al-Jabbar Carpets menjadi salah satu tempat untuk permadani dan karpet premium paling terpercaya di Indonesia.",
-    "paragraph2": "Setiap koleksi kami dipilih langsung dari artisan dan produsen ternama di Iran, Turki, Pakistan, Afghanistan, Kashmir, Eropa, dan Amerika Serikat."
+  "collectionHome": {
+    "heading": "Our Collections",
+    "subHeading": "Tepercaya selama puluhan tahun melayani pelanggan dengan karpet premium."
   },
-  "about": {
-    "heading": "Tentang Kami",
-    "paragraph1": "Al-Jabbar Carpets telah menjadi nama terpercaya dalam industri karpet sejak tahun 1994. Dengan pengalaman dan keahlian selama puluhan tahun, kami telah membangun reputasi untuk memberikan keunggulan dalam setiap aspek layanan kami.",
-    "paragraph2": "Perjalanan kami dimulai dengan visi sederhana: membawa karpet berkelas dunia ke rumah dan bisnis Indonesia. Hari ini, kami berdiri sebagai salah satu pengecer karpet terkemuka di Indonesia, menawarkan koleksi luas yang mencakup karya tenunan tangan tradisional hingga desain mesin kontemporer.",
-    "paragraph3": "Kami bekerja langsung dengan pengrajin master dan produsen ternama dari Iran, Turki, Pakistan, Afghanistan, Kashmir, dan lainnya. Setiap karya di showroom kami menceritakan kisah warisan, seni, dan dedikasi terhadap kualitas.",
-    "paragraph4": "Baik Anda melengkapi rumah, kantor, hotel, atau tempat ibadah, Al-Jabbar menyediakan konsultasi personal untuk membantu Anda menemukan karpet sempurna yang sesuai dengan visi dan anggaran Anda. Komitmen kami melampaui penjualan—kami menawarkan instalasi profesional, panduan perawatan, dan layanan perbaikan untuk memastikan investasi Anda bertahan untuk generasi mendatang.",
-    "button": "Selengkapnya Tentang Kami"
+  "collectionCategories": {
+    "category1": "Karpet Handmade",
+    "category2": "Karpet Machine-made",
+    "category3": "Karpet Masjid"
+  },
+  "homeAbout": {
+    "heading": "Sejak 1994, Menghadirkan Karpet Terbaik untuk Interior Anda",
+    "paragraph1": "Dengan pengalaman lebih dari tiga dekade, Al-Jabbar Carpets menjadi salah satu tempat untuk permadani dan karpet premium paling terpercaya di Indonesia.",
+    "paragraph2": "Setiap koleksi kami dipilih langsung dari artisan dan produsen ternama di Iran, Turki, Pakistan, Afghanistan, Kashmir, Eropa, dan Amerika Serikat.",
+    "button": "WhatsApp Now"
+  },
+  "uniqueSellingPoints": {
+    "heading": "Mengapa Memilih Kami",
+    "point1": {
+      "title": "26+ Tahun Pengalaman",
+      "description": "Warisan lintas generasi dalam menyediakan dan mengkurasi karpet premium."
+    },
+    "point2": {
+      "title": "9 Cabang di Seluruh Indonesia",
+      "description": "Memberikan pengalaman berbelanja yang mudah di mana pun Anda berada."
+    },
+    "point3": {
+      "title": "10.000+ Karpet Terkurasi",
+      "description": "Koleksi beragam yang dipilih dengan cermat untuk berbagai gaya interior."
+    },
+    "point4": {
+      "title": "5.090+ Pelanggan Puas",
+      "description": "Reputasi yang terbukti dalam kualitas dan kepuasan pelanggan."
+    },
+    "point5": {
+      "title": "Kualitas Premium",
+      "description": "Kami menghadirkan material dan desain terbaik untuk mempercantik ruang Anda."
+    },
+    "point6": {
+      "title": "Ramah & Terpercaya",
+      "description": "Bantuan cepat dan profesional dengan yang sudah diandalkan selama puluhan tahun."
+    }
+  },
+  "bannerCTA": {
+    "heading1": "Butuh Bantuan Memilih",
+    "heading2": "Karpet yang Tepat?",
+    "subHeading": "Tim kami siap membantu setiap hari pukul 9 pagi sampai 9 malam. termasuk konsultasi gaya, material, dan kecocokan interior.",
+    "Cta": "WhatsApp Now"
+  },
+  "visionMision": {
+    "visionName": "Visi",
+    "misionName": "Misi",
+    "vision": "Menjadi pemimpin pasar global dalam industri karpet premium.",
+    "mision": "Membawa karpet berkualitas tinggi ke rumah, kantor, dan tempat ibadah pelanggan kami."
+  },
+  "aboutUs": {
+    "heading": "Sejak 1994, Menyediakan Permadani Premium Terbaik di Indonesia",
+    "paragraph1": "Al-Jabbar Carpets berdiri sejak 1994 sebagai penyedia permadani dan karpet premium yang terkurasi juga diambil langsung dari negara asalnya.",
+    "paragraph2": "Koleksi kami mencakup karpet handmade dari Iran, Pakistan, Afghanistan, dan Kashmir. Karpet machine-made dari Turki dan Iran. Serta karpet masjid, sajadah, dan karpet wall-to-wall dari Eropa dan Amerika Serikat.",
+    "paragraph3": "Kami percaya sebuah karpet adalah pusat perhatian yang dapat memberi kehidupan, kehangatan, dan karakter pada sebuah ruangan.",
+    "paragraph4": "Karena itu setiap karpet yang kami pilih memenuhi standar kualitas, keaslian craftsmanship, dan desain yang tahan waktu.",
+    "paragraph5": "Selain showroom, kami menyediakan layanan Home Trial Service tanpa biaya. Kami membawa pilihan karpet langsung ke rumah Anda dan membantu menemukan karpet yang paling sesuai dengan interior Anda."
+  },
+  "counterSection": {
+    "heading": "Angka yang Menggambarkan Perjalanan Kami",
+    "subHeading": "Ringkasan perjalanan sekaligus pencapaian utama kami."
+  },
+  "gallery": {
+    "subHeading": "Galeri",
+    "heading": "Jelajahi Buku Tampilan Kami"
+  },
+  "branches": {
+    "heading": "AL-JABBAR CARPETS BRANCHES",
+    "subHeading": "Cabang"
+  },
+  "faqs": {
+    "subTitle": "Kami telah mengumpulkan beberapa pertanyaan yang paling sering diajukan agar Anda bisa mendapatkan jawaban lebih cepat.",
+    "miniText": "Jika Anda belum menemukan jawabannya, silakan [hubungi kami](/contact) langsung.",
+    "one": {
+      "question": "Anda ada pertanyaan lain?",
+      "answer": "Harap jangan ragu untuk menghubungi kami di [WhatsApp](whatsapp)."
+    },
+    "two": {
+      "question": "Apa perbedaan karpet buatan tangan dengan karpet buatan mesin?",
+      "answer": "Ada banyak perbedaan tetapi beberapa yang utama adalah: \n\nKarpet buatan tangan sangat unik sedangkan karpet buatan mesin tersedia dalam jumlah besar. \n\nBahan karpet buatan tangan memiliki wol atau sutra asli dan terkadang campuran keduanya tergantung pada karpetnya tetapi bahan karpet buatan mesin adalah sintetis. \n\nKarpet buatan tangan dibuat dengan tangan sehingga menjamin detail yang sangat indah dan padat karya sedangkan karpet buatan mesin dibuat dengan mesin dan padat modal."
+    },
+    "three": {
+      "question": "Seberapa sering saya perlu membersihkan karpet saya?",
+      "answer": "Sedot karpet setiap bulan sekali seminggu. Juga, jika terlalu kotor Al-Jabbar menyediakan layanan cuci. Klik [Layanan](/service) kami untuk mengetahui lebih lanjut."
+    },
+    "four": {
+      "question": "Apakah Al-Jabbar menyediakan jasa servis atau pencucian dan perbaikkan karpet?",
+      "answer": "Ya, tentu saja! Silakan buka [Layanan](/service) kami untuk mengetahui lebih lanjut tentang itu."
+    },
+    "five": {
+      "question": "Saya ingin bertanya tentang karpet, siapa yang harus saya hubungi?",
+      "answer": "Anda dapat pergi ke [Collections](/collections) kami di mana akan ada nomor WhatsApp yang dapat Anda hubungi untuk detail apa pun tentang karpet."
+    }
+  },
+  "ourServices": {
+    "title": "Servis Kami",
+    "subTitle": "Layanan premium untuk merawat dan menjaga kualitas karpet Anda.",
+    "subHeading1": "Layanan ini kami sediakan untuk shaft roll dan karpet wall-to-wall. Tim kami melakukan pengukuran sesuai area Anda lalu memasang karpet dengan rapi. Tidak ada biaya tambahan selama karpet dibeli dari Al-Jabbar Carpets.",
+    "subHeading2": "Banyak permadani dan karpet Turki kehilangan warna alami ketika dicuci di laundry biasa karena penggunaan bahan kimia yang tidak sesuai. Di Al-Jabbar, proses pencucian dilakukan oleh tenaga terlatih yang memahami karakter setiap jenis karpet. Kami menyediakan layanan pencucian premium untuk menjaga warna, tekstur, dan umur karpet Anda.",
+    "subHeading3": "Al-Jabbar Carpets juga melayani perbaikan karpet. Termasuk karpet kilim, karpet vintage, karpet minimalis, dan jenis lainnya. Hubungi kami melalui WhatsApp untuk informasi lebih lanjut."
+  },
+  "contactSection": {
+    "title": "Kami ingin sekali mendengar dari Anda.",
+    "subTitle": "Kami dengan senang hati mengundang Anda ke showroom karpet kami, atau silakan tinggalkan pesan di formulir ini dan kami juga memiliki kontak WhatsApp untuk menghubungi kami kapan saja.",
+    "phone": "Nomor telepon",
+    "contactForm": {
+      "header": "Hubungi Kami",
+      "subHeader": "Kami dengan senang hati mengundang Anda ke showroom karpet kami.",
+      "input1": "Nama",
+      "input2": "Nomor Telepon",
+      "input3": "Email",
+      "input4": "Notes / Detail Spesifik Karpet",
+      "input5": "Waktu Kunjungan",
+      "Cta": "Kirim Pesan",
+      "isSubmitting": "Mengirim...",
+      "successfullySubmitted": "Pesan berhasil terkirim! Kami akan segera menghubungi Anda kembali.",
+      "failed": "Pesan gagal terkirim. Silakan coba lagi atau hubungi kami langsung."
+    }
+  },
+  "contactPage": {
+    "title": "Jadwalkan Kunjungan Anda",
+    "subTitle": "Pilih tanggal dan waktu yang nyaman untuk mengunjungi showroom kami atau menjadwalkan home visit. Tim ahli kami akan membantu Anda menelusuri koleksi karpet premium kami.",
+    "map": {
+      "title": "Kami ingin sekali mendengar dari Anda.",
+      "subTitle": "Kami dengan senang hati mengundang Anda ke showroom karpet kami, atau silakan tinggalkan pesan di formulir ini dan kami juga memiliki kontak WhatsApp untuk menghubungi kami kapan saja.",
+      "open": {
+        "header": "Kami buka",
+        "detail": "Senin - Jumat 9 AM - 9 PM"
+      },
+      "phone": "Nomor telepon",
+      "find": "Ikuti kami"
+    }
+  },
+  "appointment": {
+    "calendar": {
+      "title": "Pilih Tanggal",
+      "subTitle": "Pilih tanggal yang tersedia untuk janji temu Anda. Tanggal berwarna biru tua sudah penuh dipesan.",
+      "status1": "Tersedia",
+      "status2": "Dipesan",
+      "status3": "Sebagian sudah dipesan",
+      "loading": "Memuat Informasi Penting"
+    },
+    "information": {
+      "title": "Informasi Penting",
+      "point1": "Janji temu harus dipesan setidaknya 24 jam sebelumnya.",
+      "point2": "Anda akan menerima email konfirmasi setelah pemesanan Anda disetujui.",
+      "point3": "Untuk pertanyaan mendesak, silakan hubungi kami langsung di (021) 7197770",
+      "point4": "Layanan kunjungan rumah tersedia di Jakarta dan sekitarnya."
+    },
+    "form": {
+      "title": "Detail Janji Temu",
+      "subTitle": "Isi detail Anda dan pilih waktu yang diinginkan.",
+      "selected": "Tanggal Terpilih : ",
+      "notSelected": "Silakan pilih tanggal dari kalender terlebih dahulu.",
+      "time": "Waktu Kunjungan",
+      "loading": "Memuat waktu yang tersedia...",
+      "unavailable": "Tidak ada slot yang tersedia untuk tanggal ini.",
+      "input1": "Nama",
+      "input2": "Email",
+      "input3": "Nomor Telepon",
+      "input4": {
+        "name": "Jenis Pemesanan",
+        "option1": "Pilih Jenis",
+        "option2": "Konsultasi",
+        "option3": "Melihat Karpet",
+        "option4": "Kunjungan Rumah",
+        "option": "Layanan Perbaikan",
+        "option6": "Layanan Pembersihan"
+      },
+      "input5": "Lokasi",
+      "input6": "Alamat",
+      "input7": {
+        "name": "Notes / Detail Spesifik Karpet",
+        "placeholder": "Permintaan atau informasi khusus..."
+      },
+      "Cta": "Buat Janji Temu",
+      "isSubmitting": "Mengirimkan...",
+      "successfullyBooked": "Janji temu berhasil dipesan! Kami akan segera menghubungi Anda.",
+      "failed": "Pemesanan janji temu gagal. Silakan coba lagi."
+    }
+  },
+  "collections": {
+    "category": "Kategori",
+    "noFound": "Tidak ada produk yang ditemukan",
+    "adjustFilters": "Cobalah menyesuaikan pencarian atau filter Anda.",
+    "allProducts": "Semua Produk",
+    "filteredProducts": "Produk Terfilter",
+    "subTitle": "Jelajahi koleksi lengkap kami",
+    "showing": "Menampilkan produk dari ",
+    "clear": "Bersihkan",
+    "activeFilters": "Filter Aktif",
+    "categoryPage": {
+      "noFound": "Kategori tidak ditemukan",
+      "descriptionNoFound": "Kategori yang Anda cari tidak ditemukan."
+    },
+    "detailPage": {
+      "description": "Deskripsi",
+      "Cta": "Pesan Sekarang",
+      "relatedTitle": "Produk Terkait"
+    }
+  },
+  "footer": {
+    "description": "Al-Jabbar Carpets adalah bisnis ritel karpet yang berdiri sejak Maret 1994. Sejak awal, kami berkomitmen menghadirkan karpet dengan kualitas terbaik."
   }
 }

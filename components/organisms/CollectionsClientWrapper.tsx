@@ -9,6 +9,7 @@ import ShowProductsDropdown from "@/components/molecules/ShowProductsDropdown";
 import { X, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui";
+import { useLocale, useTranslations } from "next-intl";
 
 // Create context for filter state
 const FilterContext = createContext<{
@@ -41,6 +42,8 @@ export default function CollectionsClientWrapper({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const t = useTranslations("collections");
+  const locale = useLocale();
   const [isFiltering, setIsFiltering] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
@@ -219,14 +222,22 @@ export default function CollectionsClientWrapper({
         <div className="grid z-10 bg-white grid-cols-1 md:grid-cols-2 relative md:sticky md:top-16">
           <div className="mb-6">
             <h1 className="font-poppins font-bold text-3xl text-black">
-              {categorySlugs.length > 0 ? `Filtered Products` : "All Products"}
+              {categorySlugs.length > 0
+                ? t("filteredProducts")
+                : t("allProducts")}
             </h1>
             <p className="text-gray-600 mt-2">
               {categorySlugs.length > 0
-                ? `Showing products from ${categorySlugs.length} selected ${
-                    categorySlugs.length === 1 ? "category" : "categories"
+                ? `${t("showing")} ${categorySlugs.length} ${
+                    locale === "en" ? "selected" : "kategori"
+                  } ${
+                    locale === "en"
+                      ? categorySlugs.length === 1
+                        ? "category"
+                        : "categories"
+                      : "terpilih"
                   }`
-                : "Browse our complete collection"}
+                : t("subTitle")}
             </p>
           </div>
 
@@ -255,13 +266,13 @@ export default function CollectionsClientWrapper({
           <div className="mb-6 p-4 bg-gray-50 border border-gray-100">
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-medium text-gray-700">
-                Active Filters ({selectedCategories.length})
+                {t("activeFilters")} ({selectedCategories.length})
               </span>
               <button
                 onClick={clearAllCategories}
                 className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
               >
-                Clear All
+                {t("clear")}
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
