@@ -14,6 +14,55 @@ import FixedContactButton from "@/components/molecules/FixedContactButton";
 import { Button } from "@/components/ui/button";
 import PageWrapper from "@/components/organisms/PageWrapper";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+
+// Generate dynamic metadata for product detail pages
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; category: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await fetchProductBySlug(slug);
+
+  if (!product) {
+    return {
+      title: "Product Not Found - Al-Jabbar House of Carpets",
+      description: "The product you are looking for could not be found.",
+    };
+  }
+
+  // Get featured image (first image)
+  const featuredImage = product.images[0]?.src || "/thumbnails.webp";
+
+  // Extract plain text from description
+  const stripHtml = (html: string) => {
+    return html.replace(/<[^>]*>/g, "").trim();
+  };
+
+  const description =
+    stripHtml(product.short_description || product.description || "").substring(
+      0,
+      160
+    ) ||
+    `Discover ${product.name} at Al-Jabbar House of Carpets. Premium quality carpets for your home.`;
+
+  return {
+    title: `${product.name} - Al-Jabbar House of Carpets`,
+    description: description,
+    openGraph: {
+      title: `${product.name} - Al-Jabbar House of Carpets`,
+      description: description,
+      images: featuredImage,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} - Al-Jabbar House of Carpets`,
+      description: description,
+      images: featuredImage,
+    },
+  };
+}
 
 async function ProductDetailContent({
   slug,

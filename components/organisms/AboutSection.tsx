@@ -69,9 +69,9 @@ export default function AboutSection({
           {/* Button */}
           {isButton && (
             <div className="flex justify-center lg:justify-start mt-2">
-              <Button className="w-full uppercasehero sm:w-fit" asChild>
+              <Button className="w-full sm:w-fit" asChild>
                 {/* Prefill WhatsApp message */}
-                <Link href={"/about-us"}> {t("button")}</Link>
+                <Link href={"/about"}> {t("button")}</Link>
               </Button>
             </div>
           )}

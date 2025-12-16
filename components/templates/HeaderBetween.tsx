@@ -1,4 +1,3 @@
-import { parseTextWithLineBreaks } from "@/lib/textParser";
 import TextHeading from "../atoms/TextHeading";
 import { useTranslations } from "next-intl";
 

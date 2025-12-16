@@ -33,33 +33,42 @@ export const collectionCategories = [
     name: "Hand-made Carpets",
     slug: "hand-made-carpets",
     translationKey: "category1",
+    description:
+      "Discover our exquisite collection of hand-made carpets, meticulously crafted by skilled artisans. Each piece is a unique work of art that brings elegance and tradition to your space.",
+    metaImage: "/our-collection-1.jpg",
   },
   {
     src: "/our-collection-2.jpg",
     name: "Machine-made Carpets",
     slug: "machine-made-carpets",
     translationKey: "category2",
+    description:
+      "Explore our modern machine-made carpets that combine precision engineering with stunning designs. Perfect for contemporary homes seeking durability and style.",
+    metaImage: "/our-collection-2.jpg",
   },
   {
     src: "/our-collection-3.jpg",
     name: "Mosque Carpets",
     slug: "mosque-carpets",
     translationKey: "category3",
+    description:
+      "Browse our specialized mosque carpets designed for sacred spaces. High-quality materials and traditional patterns that honor spiritual environments.",
+    metaImage: "/our-collection-3.jpg",
   },
 ];
 
 export const count = [
   {
     title: "Expert",
-    total: 26,
+    total: new Date().getFullYear() - 1995,
     subtitle: "Years of Expertise",
     showPlus: true,
   },
   {
     title: "Showrooms",
-    total: 9,
+    total: 10,
     subtitle: "Showrooms Across indonesia",
-    showPlus: false,
+    showPlus: true,
   },
   {
     title: "Collections",
@@ -159,11 +168,11 @@ export const galleryLookBook = [
 ];
 
 export const faqs = [
-  {translationKey: "one"},
-  {translationKey: "two"},
-  {translationKey: "three"},
-  {translationKey: "four"},
-  {translationKey: "five"},
+  { translationKey: "one" },
+  { translationKey: "two" },
+  { translationKey: "three" },
+  { translationKey: "four" },
+  { translationKey: "five" },
 ];
 
 export const branches = [

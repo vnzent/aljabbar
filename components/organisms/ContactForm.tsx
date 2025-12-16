@@ -10,7 +10,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    time: "",
+    subject: "",
     note: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +37,7 @@ export default function ContactForm() {
         {
           from_name: formData.name,
           from_email: formData.email,
-          time: formData.time,
+          time: formData.subject,
           note: formData.note,
           to_email: "vincent.ptk17@gmail.com", // Your receiving email
         },
@@ -53,7 +53,7 @@ export default function ContactForm() {
         setFormData({
           name: "",
           email: "",
-          time: "",
+          subject: "",
           note: "",
         });
       }
@@ -97,7 +97,7 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              name={t("contactForm.input1")}
+              name="name"
               placeholder={t("contactForm.input1")}
               value={formData.name}
               onChange={handleChange}
@@ -110,7 +110,7 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="email"
-              name={t("contactForm.input2")}
+              name="email"
               placeholder={t("contactForm.input2")}
               value={formData.email}
               onChange={handleChange}
@@ -123,9 +123,9 @@ export default function ContactForm() {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              name={t("contactForm.input3")}
+              name="subject"
               placeholder={t("contactForm.input3")}
-              value={formData.time}
+              value={formData.subject}
               onChange={handleChange}
               required
               className="bg-transparent border-b-2 border-white/40 text-white placeholder:text-white py-3 px-0 focus:outline-none focus:border-white transition-colors font-poppins text-base md:text-lg"
@@ -135,7 +135,7 @@ export default function ContactForm() {
           {/* Message */}
           <div className="flex flex-col gap-2">
             <textarea
-              name={t("contactForm.input4")}
+              name="note"
               placeholder={t("contactForm.input4")}
               value={formData.note}
               onChange={handleChange}

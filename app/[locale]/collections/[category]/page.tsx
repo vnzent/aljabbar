@@ -8,6 +8,45 @@ import Banner from "@/components/templates/Banner";
 import type { Category } from "@/lib/types";
 import ProductWrapper from "@/components/organisms/ProductWrapper";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import { collectionCategories } from "@/lib/data";
+
+// Generate dynamic metadata for category pages
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+
+  // Find category data from data.ts
+  const categoryData = collectionCategories.find(
+    (cat) => cat.slug === category
+  );
+
+  if (!categoryData) {
+    return {
+      title: "Category Not Found - Al-Jabbar House of Carpets",
+      description: "The category you are looking for could not be found.",
+    };
+  }
+
+  return {
+    title: `${categoryData.name} - Al-Jabbar House of Carpets`,
+    description: categoryData.description,
+    openGraph: {
+      title: `${categoryData.name} - Al-Jabbar House of Carpets`,
+      description: categoryData.description,
+      images: categoryData.metaImage,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${categoryData.name} - Al-Jabbar House of Carpets`,
+      description: categoryData.description,
+      images: categoryData.metaImage,
+    },
+  };
+}
 
 // Allow dynamic rendering for search params but cache category data
 export const dynamic = "auto";

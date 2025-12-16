@@ -205,7 +205,7 @@ export default function AppointmentForm({
       <Field id="firstName" label={t("form.input1")}>
         <Input
           id="firstName"
-          name={t("form.input1")}
+          name="name"
           value={formData.name}
           onChange={handleInputChange as any}
           required
@@ -217,7 +217,7 @@ export default function AppointmentForm({
           <Input
             type="email"
             id="email"
-            name={t("form.input2")}
+            name="email"
             value={formData.email}
             onChange={handleInputChange as any}
             required
@@ -229,7 +229,7 @@ export default function AppointmentForm({
           <Input
             type="tel"
             id="phone"
-            name={t("form.input3")}
+            name="phone"
             value={formData.phone}
             onChange={handleInputChange as any}
             required
@@ -242,7 +242,7 @@ export default function AppointmentForm({
         <Field id="bookingType" label={t("form.input4.name")}>
           <SelectField
             id="bookingType"
-            name={t("form.input4.name")}
+            name="bookingType"
             value={formData.bookingType}
             onChange={handleInputChange as any}
             required
@@ -260,7 +260,7 @@ export default function AppointmentForm({
         <Field id="location" label={t("form.input5")}>
           <SelectField
             id="location"
-            name={t("form.input5")}
+            name="location"
             value={formData.location}
             onChange={handleInputChange as any}
             required
@@ -288,7 +288,7 @@ export default function AppointmentForm({
       <Field id="address" label="Address*">
         <Textarea
           id="address"
-          name={t("form.input6")}
+          name="address"
           value={formData.address}
           onChange={handleInputChange as any}
           required
@@ -300,7 +300,7 @@ export default function AppointmentForm({
       <Field id="notes" label={t("form.input7.name")}>
         <Textarea
           id="notes"
-          name={t("form.input7.name")}
+          name="note"
           value={formData.note}
           onChange={handleInputChange as any}
           rows={3}
