@@ -16,6 +16,8 @@ export default function HeroSection() {
           className="object-cover"
           loading="eager"
           priority={true}
+          quality={75}
+          sizes="100vw"
         />
       </div>
       <div className="bg-black/30 sm:bg-black/30 absolute -z-9 inset-0 w-full h-full" />

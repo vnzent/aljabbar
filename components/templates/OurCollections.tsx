@@ -44,8 +44,10 @@ export default function OurCollections({ id }: OurCollectionsProps) {
                     <Image
                       src={item.src}
                       alt={t(item.translationKey)}
-                      width={800}
-                      height={600}
+                      width={449}
+                      height={337}
+                      quality={75}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover w-full h-full transition-transform duration-500 group-hover/link:scale-110"
                     />
                   </div>

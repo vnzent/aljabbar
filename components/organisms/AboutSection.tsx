@@ -38,8 +38,9 @@ export default function AboutSection({
           <Image
             src="/about.webp"
             alt="About Image"
-            width={800}
-            height={1000}
+            width={650}
+            height={850}
+            quality={75}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 650px, 42vw"
             className="object-cover overflow-hidden w-full h-full"
           />
