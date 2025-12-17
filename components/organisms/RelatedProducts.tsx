@@ -2,7 +2,7 @@ import { fetchProductsByCategory } from "@/lib/fetchProducts";
 import ProductCard from "@/components/molecules/ProductCard";
 import SectionWrapper from "./SectionWrapper";
 import TextHeading from "../atoms/TextHeading";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 interface RelatedProductsProps {
   categoryId: number;
@@ -15,31 +15,36 @@ export default async function RelatedProducts({
   categorySlug,
   currentProductId,
 }: RelatedProductsProps) {
-  const t = useTranslations("collections")
-  const products = await fetchProductsByCategory(categoryId);
+  try {
+    const t = await getTranslations("collections");
+    const products = await fetchProductsByCategory(categoryId);
 
-  if (!products || products.length === 0) {
+    if (!products || products.length === 0) {
+      return null;
+    }
+
+    // Filter out current product and limit to 4 items
+    const relatedProducts = products
+      .filter((product) => product.id !== currentProductId)
+      .slice(0, 4);
+
+    if (relatedProducts.length === 0) {
+      return null;
+    }
+
+    return (
+      <SectionWrapper className="main-wrapper mx-auto">
+        <TextHeading>{t("detailPage.relatedTitle")}</TextHeading>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
+          {relatedProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </SectionWrapper>
+    );
+  } catch (error) {
+    console.error("Error loading related products:", error);
     return null;
   }
-
-  // Filter out current product and limit to 4 items
-  const relatedProducts = products
-    .filter((product) => product.id !== currentProductId)
-    .slice(0, 4);
-
-  if (relatedProducts.length === 0) {
-    return null;
-  }
-
-  return (
-    <SectionWrapper className="main-wrapper mx-auto">
-      <TextHeading>{t("detailPage.relatedTitle")}</TextHeading>
-
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
-        {relatedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </SectionWrapper>
-  );
 }

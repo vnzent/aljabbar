@@ -7,6 +7,19 @@ export async function fetchProducts(
   params: FetchProductsParams = {}
 ): Promise<{ products: Product[]; pagination: Pagination }> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return {
+        products: [],
+        pagination: {
+          total: 0,
+          totalPages: 0,
+          currentPage: 1,
+          perPage: 12,
+        },
+      };
+    }
+
     const {
       page = 1,
       perPage = 12,
@@ -92,6 +105,11 @@ export async function fetchProducts(
 
 export async function fetchProductCategories(): Promise<Category[] | null> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return [];
+    }
+
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");
@@ -123,6 +141,11 @@ export async function fetchProductsByCategory(
   categoryId: number
 ): Promise<Product[] | null> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return [];
+    }
+
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");
@@ -144,6 +167,11 @@ export async function fetchProductBySlug(
   slug: string
 ): Promise<Product | null> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return null;
+    }
+
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");
@@ -165,6 +193,11 @@ export async function fetchSearchProduct(
   search: string
 ): Promise<Product[] | null> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return [];
+    }
+
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");
@@ -186,6 +219,11 @@ export async function fetchCategoryById(
   categoryId: number
 ): Promise<Category[] | null> {
   try {
+    if (!process.env.consumer_key || !process.env.consumer_secret) {
+      console.error("Missing WooCommerce API credentials");
+      return null;
+    }
+
     const auth = Buffer.from(
       `${process.env.consumer_key}:${process.env.consumer_secret}`
     ).toString("base64");

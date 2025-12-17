@@ -22,6 +22,11 @@ export default function ProductCard({
   const [isPending, startTransition] = useTransition();
   const slug = product.categories?.[0]?.slug || "uncategorized";
 
+  // Ensure product has required data
+  if (!product || !product.slug) {
+    return null;
+  }
+
   const handleCategoryClick = (
     e: React.MouseEvent,
     clickedCategorySlug: string
