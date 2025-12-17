@@ -44,6 +44,10 @@ export const metadata: Metadata = {
       "Al-Jabbar House of Carpets offers luxury carpets and premium rugs crafted for timeless comfort and style.",
     images: "/thumbnails.webp",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export function generateStaticParams() {
