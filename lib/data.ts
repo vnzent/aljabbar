@@ -80,7 +80,7 @@ export const count = [
     title: "Showrooms",
     total: 10,
     subtitle: "Showrooms Across indonesia",
-    showPlus: true,
+    showPlus: false,
   },
   {
     title: "Collections",
