@@ -22,9 +22,21 @@ export const navMenus = [
 ];
 
 export const navSocialIcons = [
-  { href: "facebook.com", icon: BiLogoFacebook },
-  { href: "instagram.com", icon: AiOutlineInstagram },
-  { href: "youtube.com", icon: AiOutlineYoutube },
+  {
+    href: "https://www.facebook.com",
+    icon: BiLogoFacebook,
+    label: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com",
+    icon: AiOutlineInstagram,
+    label: "Instagram",
+  },
+  {
+    href: "https://www.youtube.com",
+    icon: AiOutlineYoutube,
+    label: "YouTube",
+  },
 ];
 
 export const collectionCategories = [

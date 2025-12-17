@@ -47,6 +47,7 @@ export default function WhatsappButton() {
           href={contacts[0].link}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Chat ${contacts[0].name} via WhatsApp`}
           className="group/item relative flex items-center justify-center"
         >
           {/* Tooltip */}
@@ -72,6 +73,7 @@ export default function WhatsappButton() {
           href={contacts[1].link}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Chat ${contacts[1].name} via WhatsApp`}
           className="group/item relative flex items-center justify-center"
         >
           {/* Tooltip */}

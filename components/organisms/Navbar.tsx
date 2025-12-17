@@ -112,6 +112,9 @@ export default function Navbar() {
                 <Link
                   key={index}
                   href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
                     "transition-colors duration-300 hover:text-primary",
                     shouldBeWhite ? "text-black" : "text-white"
@@ -367,7 +370,10 @@ export default function Navbar() {
                 <Link
                   key={index}
                   href={social.href}
+                  aria-label={social.label}
                   className="transition-colors duration-300 hover:text-primary text-black"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <social.icon className="size-5" />
                 </Link>

@@ -33,8 +33,8 @@ export default function ContactIntro({
   const headerGap =
     variant === "info" ? "gap-3 md:gap-4 lg:gap-5" : "gap-5 md:gap-6 lg:gap-8";
 
-    const t = useTranslations("contactSection")
-    const tC = useTranslations("contactPage")
+  const t = useTranslations("contactSection");
+  const tC = useTranslations("contactPage");
   const gridClasses =
     variant === "info"
       ? "grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-8 w-full max-w-2xl mx-auto lg:mx-0 lg:max-w-none md:pl-12 lg:pl-0"
@@ -95,6 +95,9 @@ export default function ContactIntro({
                   <Link
                     href={icon.href}
                     className="text-black hover:text-primary transition-colors"
+                    aria-label={icon.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     key={index}
                   >
                     {<icon.icon className="size-5" />}
