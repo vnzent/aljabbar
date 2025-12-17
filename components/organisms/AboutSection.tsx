@@ -40,6 +40,7 @@ export default function AboutSection({
             alt="About Image"
             width={800}
             height={1000}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 650px, 42vw"
             className="object-cover overflow-hidden w-full h-full"
           />
           <div className="hidden lg:block absolute -z-10 -bottom-4 xl:-bottom-8 -right-4 xl:-right-6 bg-primary w-64 xl:w-full h-32 xl:h-48" />

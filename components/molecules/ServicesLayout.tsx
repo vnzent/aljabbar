@@ -44,6 +44,7 @@ export default function ServicesLayout({
           alt="Service 1"
           width={800}
           height={500}
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="w-full h-[200px] sm:h-[300px] md:h-[450px] lg:h-[500px] overflow-hidden object-cover"
         />
       </div>
